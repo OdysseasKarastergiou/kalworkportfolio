@@ -49,7 +49,7 @@ import LocationIcon from '../../assets/locationIcon.svg'
 import FacebookIcon from '../../assets/facebookIcon.svg'
 import InstagramIcon from '../../assets/instagramIcon.svg'
 import YoutubeIcon from '../../assets/youtubeIcon.svg'
-import LeafletMap from '../LeafletMAp.vue'
+import LeafletMap from '../LeafletMap.vue'
 export default {
   name: 'ContactMeView',
   data() {
@@ -70,6 +70,7 @@ export default {
 <style lang="scss" scoped>
 .contact-me {
   display: flex;
+  gap: 2em;
   justify-content: center;
   &__title {
     font-size: 1.6em;
@@ -98,16 +99,18 @@ export default {
   }
   &__links {
     margin-top: 2em;
-    gap: 1em;
+    gap: 4em;
     &-info {
       display: flex;
       align-items: center;
       gap: 0.5em;
+      position: relative;
 
       &::before {
         content: '';
+        position: absolute;
         top: 50%;
-        left: 0;
+        right: 5em;
         width: 10px;
         height: 0.5px;
         background: #c48f56;

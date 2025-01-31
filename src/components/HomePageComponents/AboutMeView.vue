@@ -35,8 +35,12 @@ export default {
 .about-me {
   display: flex;
   flex-direction: column;
-  width: 50%;
-  margin-left: 5em;
+  width: 40%;
+  margin-left: 10em;
+  font-size: 1em;
+  @media (width < 1280px) {
+    font-size: 0.8em;
+  }
   &__title {
     color: #c48f56;
     font-size: 0.8em;
@@ -54,7 +58,7 @@ export default {
   &__img {
     margin-left: 10em;
     height: auto;
-    max-width: 30%;
+    max-width: 25%;
     object-fit: contain;
   }
 }
