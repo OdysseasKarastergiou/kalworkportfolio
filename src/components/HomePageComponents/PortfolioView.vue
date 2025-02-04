@@ -9,47 +9,32 @@
       </div>
       <div>
         <p>Up next</p>
-        <swiper
-          :direction="'vertical'"
-          :slidesPerView="1"
-          :spaceBetween="0"
-          :loop="true"
-          :cssMode="false"
-          class="home-swiper"
-        >
-          <swiper-slide v-for="video in videos" :key="video.id" @click="openVideo(video.videoId)">
-            <div class="video-slide">
-              <img
-                :src="`https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg`"
-                alt="Video Thumbnail"
-                class="thumbnail"
-              />
-              <span class="duration">{{ video.duration }}</span>
-            </div>
-          </swiper-slide>
-        </swiper>
       </div>
-    </div>
-
-    <!-- Video Modal -->
-    <div v-if="selectedVideo" class="video-modal" @click="closeVideo">
-      <div class="video-container">
-        <iframe :src="selectedVideo" frameborder="0" allowfullscreen></iframe>
-      </div>
+      <swiper
+        class="portfolio-swiper"
+        :slidesPerView="3"
+        :speed="800"
+        :loop="true"
+        @swiper="onSwiper"
+        @slideChange="onSlideChange"
+      >
+        <swiper-slide v-for="(video, index) in videos" :key="index"> {{ index + 1 }} </swiper-slide>
+      </swiper>
     </div>
   </div>
 </template>
 
 <script>
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Mousewheel, Pagination } from 'swiper/modules'
 import 'swiper/css'
+import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-import 'swiper/css/mousewheel'
-
 export default {
   name: 'PortfolioView',
-  components: { Swiper, SwiperSlide },
+  components: {
+    Swiper,
+    SwiperSlide,
+  },
   data() {
     return {
       videos: [
@@ -115,44 +100,15 @@ export default {
     left: 4.5em;
   }
 }
-
-.video-slide {
-  position: relative;
-  cursor: pointer;
+.portfolio-swiper {
+  width: 65vw;
+  height: 30vh;
 }
-.thumbnail {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-}
-.duration {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-.video-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+.swiper-slide {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.video-container {
-  width: 80%;
-  max-width: 800px;
-}
-iframe {
-  width: 100%;
-  height: 450px;
+  width: 100vw;
+  height: 40vh !important;
 }
 </style>
