@@ -14,9 +14,22 @@ import {
   faVolumeMute,
   faPlay,
   faPause,
+  faClose,
+  faCaretLeft,
+  faCaretRight,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-library.add(faArrowLeft, faArrowRight, faVolumeUp, faVolumeMute, faPlay, faPause)
+library.add(
+  faArrowLeft,
+  faArrowRight,
+  faVolumeUp,
+  faVolumeMute,
+  faPlay,
+  faPause,
+  faClose,
+  faCaretLeft,
+  faCaretRight,
+)
 
 const app = createApp(App)
 

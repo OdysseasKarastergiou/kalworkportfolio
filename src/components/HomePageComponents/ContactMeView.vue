@@ -25,17 +25,35 @@
         </div>
       </div>
       <div class="contact-me__links flex">
-        <div class="contact-me__links-info">
-          <img class="contact-me__links-icon" :src="facebookIcon" />
-          <p class="contact-me__links-text">facebook</p>
+        <div>
+          <a
+            class="contact-me__links-info"
+            href="https://www.facebook.com/profile.php?id=100000326287497"
+            target="_blank"
+          >
+            <img class="contact-me__links-icon" :src="facebookIcon" />
+            <span class="contact-me__links-text">Facebook</span>
+          </a>
         </div>
-        <div class="contact-me__links-info">
-          <img class="contact-me__links-icon" :src="instagramIcon" />
-          <p class="contact-me__links-text">instagram</p>
+        <div>
+          <a
+            class="contact-me__links-info"
+            href="https://www.instagram.com/george_kalogiannidis/"
+            target="_blank"
+          >
+            <img class="contact-me__links-icon" :src="instagramIcon" />
+            <span class="contact-me__links-text">Instagram</span>
+          </a>
         </div>
-        <div class="contact-me__links-info">
-          <img class="contact-me__links-icon" :src="youtubeIcon" />
-          <p class="contact-me__links-text">youtube</p>
+        <div>
+          <a
+            class="contact-me__links-info"
+            href="https://www.youtube.com/@georgekalogiannidis"
+            target="_blank"
+          >
+            <img class="contact-me__links-icon" :src="youtubeIcon" />
+            <span class="contact-me__links-text">Youtube</span>
+          </a>
         </div>
       </div>
     </div>
