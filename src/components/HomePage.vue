@@ -1,27 +1,13 @@
 <template>
-  <swiper
-    :direction="'vertical'"
-    :pagination="{
-      clickable: true,
-      el: '.swiper-pagination',
-      bulletClass: 'custom-bullet',
-      bulletActiveClass: 'custom-bullet-active',
-    }"
-    :mousewheel="{
-      forceToAxis: true,
-      sensitivity: 1,
-      releaseOnEdges: false,
-    }"
-    :speed="800"
-    :slidesPerView="1"
-    :spaceBetween="0"
-    :loop="false"
-    :cssMode="false"
-    class="home-swiper"
-    :modules="modules"
-  >
-    <swiper-slide>
-      <FeaturedView />
+  <swiper v-bind="swiperOptions" class="home-swiper" :modules="modules">
+    <swiper-slide class="home-swiper__featured-view">
+      <div
+        class="blurred-background"
+        :style="{
+          backgroundImage: 'url(' + backgroundImage + ')',
+        }"
+      ></div>
+      <FeaturedView @update-background="updateBackground" />
     </swiper-slide>
     <swiper-slide>
       <AboutMeView />
@@ -37,8 +23,9 @@
 </template>
 
 <script>
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Mousewheel, Pagination } from 'swiper/modules'
+import { FreeMode, Mousewheel, Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/mousewheel'
@@ -47,6 +34,7 @@ import FeaturedView from './HomePageComponents/FeaturedView.vue'
 import AboutMeView from './HomePageComponents/AboutMeView.vue'
 import PortfolioView from './HomePageComponents/PortfolioView.vue'
 import ContactMeView from './HomePageComponents/ContactMeView.vue'
+import { isMobileUse } from '@/utils/utils'
 
 export default {
   name: 'HomePage',
@@ -59,8 +47,57 @@ export default {
     ContactMeView,
   },
   setup() {
+    const isMobile = isMobileUse().value
+    const backgroundImage = ref('')
+    const swiperOptions = ref({
+      direction: 'vertical',
+      pagination: {
+        clickable: true,
+        el: '.swiper-pagination',
+        bulletClass: 'custom-bullet',
+        bulletActiveClass: 'custom-bullet-active',
+      },
+      mousewheel: {
+        forceToAxis: true,
+        sensitivity: 1,
+        releaseOnEdges: false,
+      },
+      speed: 800,
+      slidesPerView: 1,
+      spaceBetween: 0,
+      loop: false,
+      cssMode: false,
+    })
+
+    const swiperOptionsMobile = ref({
+      direction: 'vertical',
+      slidesPerView: 1,
+      freeMode: true,
+    })
+
+    const swiperOptionsToBind = computed(() =>
+      isMobile ? swiperOptionsMobile.value : swiperOptions.value,
+    )
+
+    const updateBackground = (bkg) => {
+      backgroundImage.value = bkg
+    }
+
+    onMounted(() => {
+      document.body.style.overflow = 'hidden'
+    })
+
+    onUnmounted(() => {
+      document.body.style.overflow = ''
+    })
+
     return {
-      modules: [Mousewheel, Pagination],
+      modules: [FreeMode, Mousewheel, Pagination],
+      backgroundImage,
+      updateBackground,
+      swiperOptionsMobile,
+      swiperOptions: swiperOptionsToBind,
+      isMobile,
     }
   },
 }
@@ -71,7 +108,6 @@ html,
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden;
   height: 100%;
   width: 100%;
 }
@@ -79,6 +115,26 @@ body {
 .home-swiper {
   width: 100vw;
   height: 100vh;
+}
+
+.home-swiper__featured-view {
+  position: relative;
+  overflow: hidden;
+}
+
+.blurred-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(3px);
+  z-index: -1;
+  @media (width<768px) {
+    height: 90%;
+  }
 }
 
 .swiper-slide {
@@ -90,9 +146,12 @@ body {
 }
 
 .swiper-pagination {
+  @media (max-width: 768px) {
+    display: none !important;
+  }
   position: absolute;
   right: 20px;
-  top: 35% !important;
+  top: 40% !important;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;

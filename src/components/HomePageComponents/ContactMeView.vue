@@ -1,6 +1,6 @@
 <template>
   <div class="contact-me">
-    <p class="side__title">Contact me</p>
+    <p v-if="!isMobile" class="side__title">Contact me</p>
     <div class="">
       <p class="contact-me__title">CONTACT ME</p>
       <div class="contact-me__info flex">
@@ -68,8 +68,16 @@ import FacebookIcon from '../../assets/facebookIcon.svg'
 import InstagramIcon from '../../assets/instagramIcon.svg'
 import YoutubeIcon from '../../assets/youtubeIcon.svg'
 import LeafletMap from '../LeafletMap.vue'
+import { isMobileUse } from '@/utils/utils'
 export default {
   name: 'ContactMeView',
+  setup() {
+    const isMobile = isMobileUse().value
+
+    return {
+      isMobile,
+    }
+  },
   data() {
     return {
       mobileIcon: MobileIcon,
@@ -90,6 +98,10 @@ export default {
   display: flex;
   gap: 2em;
   justify-content: center;
+  @media (width < 768px) {
+    display: flex;
+    flex-direction: column;
+  }
   &__title {
     font-size: 1.6em;
     color: white;
@@ -98,6 +110,9 @@ export default {
   &__map {
     margin-left: 2em;
     min-width: 100%;
+    @media (width < 768px) {
+      margin-left: 0;
+    }
   }
   &__info {
     display: flex;
@@ -132,6 +147,9 @@ export default {
         width: 10px;
         height: 0.5px;
         background: #c48f56;
+        @media (width< 768px) {
+          right: 6em;
+        }
       }
     }
     &-text {
@@ -145,7 +163,7 @@ export default {
   .side__title {
     transform: rotate(270deg);
     position: absolute;
-    top: 50%;
+    top: 58%;
     left: 0;
     color: white;
     &::after {

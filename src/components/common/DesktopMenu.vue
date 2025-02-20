@@ -2,7 +2,8 @@
   <nav class="navigator">
     <PortfolioButton to="/" name="Home" />
     <PortfolioButton to="/aboutMe" name="About Me" />
-    <PortfolioButton to="/portfolio" name="Portfolio" />
+    <PortfolioButton to="/videography" name="Videography" />
+    <PortfolioButton to="/photography" name="Photography" />
     <PortfolioButton to="/contact" name="Contact Me" />
   </nav>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <div class="featured-view flex justify-center">
-    <p class="side__title">Featured Work</p>
+    <p v-if="!isMobile" class="side__title">Featured Work</p>
     <div class="featured-view__container flex flex-col items-center">
       <swiper
         :slidesPerView="1"
@@ -29,17 +29,21 @@
           </div>
         </swiper-slide>
       </swiper>
-      <div class="flex items-center">
-        <span v-for="(video, index) in videos" :key="index" class="featured-view__title">{{
-          activeIndex
-        }}</span>
+      <div class="flex items-center" :class="{ 'mt-6': isMobile }">
+        <div class="featured-view__title">
+          <span class="featured-view__title--index">{{ videoIndex }}</span>
+          <div class="featured-view__title--box flex flex-col">
+            <span class="featured-view__title--box-feature">FEATURING</span>
+            <span class="featured-view__title--box-name">{{ activeTitle }}</span>
+          </div>
+        </div>
         <PortfolioButton
-          class="featured-view__button"
-          to="/aboutMe"
+          :class="isMobile ? 'featured-view__button--mobile' : 'featured-view__button'"
+          to="/videography"
           name="VIEW FILM ->"
           :defaultActive="true"
         />
-        <div class="featured-view__navigation flex items-center gap-3">
+        <div v-if="!isMobile" class="featured-view__navigation flex items-center gap-3">
           <span @click="prevSlide" class="arrow"
             ><font-awesome-icon :icon="['fas', 'arrow-left']"
           /></span>
@@ -63,14 +67,19 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue'
+import { computed, ref, onMounted, nextTick } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-import VeniceVideo from '../../assets/carouselVideos/Venice_5.mp4'
-import Carousel1 from '../../assets/carouselVideos/Carousel_1.mp4'
+import Carousel1 from '../../assets/carouselVideos/Carousel1.mp4'
+import Carousel2 from '../../assets/carouselVideos/Carousel2.mp4'
+import Carousel3 from '../../assets/carouselVideos/Carousel3.mp4'
+import Carousel1Image from '../../assets/carouselImages/Carousel1.png'
+import Carousel2Image from '../../assets/carouselImages/Carousel2.png'
+import Carousel3Image from '../../assets/carouselImages/Carousel3.png'
 import PortfolioButton from '../common/PortfolioButton.vue'
+import { isMobileUse } from '@/utils/utils'
 
 export default {
   name: 'FeaturedView',
@@ -79,18 +88,25 @@ export default {
     Swiper,
     SwiperSlide,
   },
-  setup() {
+  setup(_, { emit }) {
     const videos = ref([
-      { src: VeniceVideo, title: 'Venice Feat' },
-      { src: Carousel1, title: 'Carousel1 Feat' },
+      { src: Carousel1, title: 'Carousel1', bkgImage: Carousel1Image },
+      { src: Carousel2, title: 'Carousel2', bkgImage: Carousel2Image },
+      { src: Carousel3, title: 'Carousel3', bkgImage: Carousel3Image },
     ])
     const videoPlayers = ref([])
     const isPlaying = ref([])
     const isMuted = ref([])
+    const activeTitle = computed(() => videos.value[activeIndex.value]?.title || '')
+    const videoIndex = computed(() => (activeIndex.value + 1).toString().padStart(2, '0'))
+    const activeBackground = computed(() => videos.value[activeIndex.value]?.bkgImage || '')
+    const isMobile = isMobileUse().value
 
-    onMounted(() => {
-      isPlaying.value = videos.value.map(() => true) // Videos autoplay
-      isMuted.value = videos.value.map(() => true) // Videos start muted
+    onMounted(async () => {
+      isPlaying.value = videos.value.map(() => true)
+      isMuted.value = videos.value.map(() => true)
+      await nextTick()
+      emit('update-background', activeBackground.value)
     })
     const activeIndex = ref(0)
     let swiperInstance = null
@@ -120,8 +136,11 @@ export default {
       swiperInstance = swiper
     }
 
-    const onSlideChange = (swiper) => {
+    const onSlideChange = async (swiper) => {
       activeIndex.value = swiper.realIndex
+
+      await nextTick()
+      emit('update-background', activeBackground.value)
 
       videoPlayers.value.forEach((video, index) => {
         if (video && index !== activeIndex.value) {
@@ -167,6 +186,10 @@ export default {
       isMuted,
       togglePlayPause,
       toggleMute,
+      activeTitle,
+      activeIndex,
+      videoIndex,
+      isMobile,
     }
   },
 }
@@ -183,10 +206,32 @@ export default {
   }
   &__button {
     margin-top: 1em;
+    &--mobile {
+      position: absolute;
+      right: 0;
+    }
   }
   &__title {
     position: absolute;
     left: 0;
+    margin-top: 2em;
+    &--index {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.2);
+      font-size: 5.5em;
+    }
+
+    &--box {
+      margin-left: 2em;
+      &-feature {
+        margin-top: 4em;
+        font-size: 0.7em;
+      }
+      &-name {
+        color: white;
+        font-size: 1.6em;
+      }
+    }
   }
   &__navigation {
     position: absolute;
@@ -234,20 +279,20 @@ export default {
   cursor: pointer;
 }
 .featured-swiper {
-  width: 80vw;
-  height: 70vh;
+  width: 90vw;
+  height: 75vh;
 }
 .swiper-slide {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
+  width: 100% !important;
   height: 95vh !important;
 }
 .side__title {
   transform: rotate(270deg);
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 0;
   color: white;
   &::after {

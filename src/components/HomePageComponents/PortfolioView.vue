@@ -1,6 +1,6 @@
 <template>
   <div class="portfolio-view">
-    <p class="side__title">Portfolio</p>
+    <p v-if="!isMobile" class="side__title">Portfolio</p>
     <div class="flex flex-col">
       <div class="portfolio-view__categories">
         <button
@@ -30,7 +30,7 @@
       </div>
       <swiper
         class="portfolio-swiper"
-        :slidesPerView="3"
+        :slidesPerView="isMobile ? 1 : 3"
         :space-between="20"
         :speed="800"
         :loop="false"
@@ -67,6 +67,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
+import { isMobileUse } from '@/utils/utils'
 
 export default {
   name: 'PortfolioView',
@@ -76,6 +77,7 @@ export default {
   },
   setup() {
     let swiperInstance = null
+    const isMobile = isMobileUse().value
 
     const onSwiper = (swiper) => {
       swiperInstance = swiper
@@ -98,6 +100,7 @@ export default {
       onSwiper,
       prevSlide,
       nextSlide,
+      isMobile,
     }
   },
   data() {
@@ -168,6 +171,15 @@ export default {
           desc: 'Extra stuff about the video',
           category: 'CINEMATIC',
         },
+        {
+          id: 8,
+          thumbnail: 'https://img.youtube.com/vi/1CuMfKWDj4Q/maxresdefault.jpg',
+          videoUrl: 'https://www.youtube.com/embed/1CuMfKWDj4Q?autoplay=1',
+          time: '3:12',
+          title: 'Explosivo Teen Team Cruising',
+          desc: 'Extra Stuff About the video',
+          category: 'SNOWBOARD',
+        },
       ],
       selectedVideo: null,
       featuredVideo: null,
@@ -223,25 +235,56 @@ export default {
     }
   }
   &__categories {
-    display: flex;
-    margin-bottom: 1em;
-    gap: 1em;
-    button.active {
-      color: #c48f56;
-      text-decoration: underline;
-    }
+    display: inline-flex;
+    margin-bottom: 2em;
+    gap: 2em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    width: max-content;
     &--button {
+      position: relative;
       cursor: pointer;
+      padding-bottom: 5px;
+      color: white;
+      transition: color 0.3s ease;
+
       &:hover {
-        color: #a0a0a0;
+        color: #c48f56;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 50%;
+        width: 0%;
+        height: 1px;
+        background: #c48f56;
+        transition:
+          width 0.3s ease-in-out,
+          left 0.3s ease-in-out,
+          opacity 0.3s ease-in-out;
+        opacity: 0;
+      }
+
+      &.active {
+        color: #c48f56;
+
+        &::after {
+          width: 100%;
+          left: 0;
+          opacity: 1;
+        }
       }
     }
+  }
+  @media (width < 768px) {
+    height: 10%;
   }
 }
 .side__title {
   transform: rotate(270deg);
   position: absolute;
-  top: 50%;
+  top: 53%;
   left: 0;
   color: white;
   &::after {
@@ -277,6 +320,9 @@ export default {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  @media (width < 768px) {
+    margin-top: 2em;
+  }
 }
 .video-thumbnail-wrapper:hover .video-overlay {
   height: 30%;

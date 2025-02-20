@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../views/HomePageView.vue'
 import AboutMe from '../components/AboutMe.vue'
-import ProjectPortfolio from '../components/ProjectPortfolio.vue'
+import Videography from '../components/VideographyCategory.vue'
+import Photography from '../components/PhotographyCategory.vue'
 import ContactMe from '../components/ContactMe.vue'
 
 const router = createRouter({
@@ -18,9 +19,14 @@ const router = createRouter({
       component: AboutMe,
     },
     {
-      path: '/portfolio',
-      name: 'portfolio',
-      component: ProjectPortfolio,
+      path: '/videography',
+      name: 'videography',
+      component: Videography,
+    },
+    {
+      path: '/photography',
+      name: 'photography',
+      component: Photography,
     },
     {
       path: '/contact',

@@ -39,15 +39,14 @@ onUnmounted(() => {
   >
     <img class="logo" :src="KalSiteLogo" />
 
-    <!-- Render Mobile Menu if on mobile, Desktop Menu otherwise -->
     <MobileMenu v-if="isMobile" @toggle="toggleMenu" />
     <DesktopMenu v-else />
-
-    <!-- The mobile menu navigation -->
+    <span />
     <nav v-show="isMobile && isMenuOpen" :class="['navigator', { open: isMenuOpen }]">
       <RouterLink to="/">Home</RouterLink>
       <RouterLink to="/aboutMe">About Me</RouterLink>
-      <RouterLink to="/portfolio">Portfolio</RouterLink>
+      <RouterLink to="/videography">Videography</RouterLink>
+      <RouterLink to="/photography">Photography</RouterLink>
       <RouterLink to="/contact">Contact Me</RouterLink>
     </nav>
   </header>
@@ -58,8 +57,9 @@ onUnmounted(() => {
 <style scoped>
 .header {
   margin-top: 1em;
-  margin-left: 10em;
+  margin-left: 5em;
   margin-right: 10em;
+  margin-bottom: 2em;
   transition: background-color 1s ease;
 }
 
@@ -68,7 +68,7 @@ onUnmounted(() => {
 }
 
 .logo {
-  height: 150px;
+  height: 100px;
   display: block;
   margin: 0 auto 2rem;
 }

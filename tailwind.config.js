@@ -1,5 +1,5 @@
 export default {
-  content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  content: ['./src/**/*.html', './src/**/*.js', './src/**/*.jsx', './src/**/*.tsx'],
   theme: {
     extend: {},
   },

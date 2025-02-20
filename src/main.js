@@ -1,4 +1,5 @@
 import './assets/main.css'
+import { isMobileUse } from './utils/utils'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -33,6 +34,7 @@ library.add(
 
 const app = createApp(App)
 
+app.provide('isMobile', isMobileUse())
 app.use(createPinia())
 app.use(router)
 
