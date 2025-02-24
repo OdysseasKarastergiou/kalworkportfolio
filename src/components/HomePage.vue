@@ -9,7 +9,7 @@
       ></div>
       <FeaturedView @update-background="updateBackground" />
     </swiper-slide>
-    <swiper-slide>
+    <swiper-slide class="home-swiper__about-me-view">
       <AboutMeView />
     </swiper-slide>
     <swiper-slide>
@@ -122,6 +122,10 @@ body {
   overflow: hidden;
 }
 
+.home-swiper__about-me-view {
+  overflow: visible !important;
+}
+
 .blurred-background {
   position: absolute;
   top: 0;
@@ -143,6 +147,10 @@ body {
   justify-content: center;
   width: 100vw;
   height: 95vh !important;
+  overflow: hidden;
+  @media (width<768px) {
+    height: 100vh !important;
+  }
 }
 
 .swiper-pagination {

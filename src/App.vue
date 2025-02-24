@@ -4,6 +4,7 @@ import { RouterView } from 'vue-router'
 import KalSiteLogo from './assets/KalSiteLogo.png'
 import MobileMenu from './components/common/MobileMenu.vue'
 import DesktopMenu from './components/common/DesktopMenu.vue'
+import PortfolioButton from './components/common/PortfolioButton.vue'
 
 const isMenuOpen = ref(false)
 const isMobile = ref(false)
@@ -39,15 +40,15 @@ onUnmounted(() => {
   >
     <img class="logo" :src="KalSiteLogo" />
 
-    <MobileMenu v-if="isMobile" @toggle="toggleMenu" />
+    <MobileMenu v-if="isMobile" :isOpen="isMenuOpen" @toggle="toggleMenu" />
     <DesktopMenu v-else />
     <span />
     <nav v-show="isMobile && isMenuOpen" :class="['navigator', { open: isMenuOpen }]">
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/aboutMe">About Me</RouterLink>
-      <RouterLink to="/videography">Videography</RouterLink>
-      <RouterLink to="/photography">Photography</RouterLink>
-      <RouterLink to="/contact">Contact Me</RouterLink>
+      <PortfolioButton to="/" name="Home" @click="isMenuOpen = false" />
+      <PortfolioButton to="/aboutMe" name="About Me" @click="isMenuOpen = false" />
+      <PortfolioButton to="/videography" name="Videography" @click="isMenuOpen = false" />
+      <PortfolioButton to="/photography" name="Photography" @click="isMenuOpen = false" />
+      <PortfolioButton to="/contact" name="Contact Me" @click="isMenuOpen = false" />
     </nav>
   </header>
 
@@ -108,9 +109,14 @@ onUnmounted(() => {
     background-color: black;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     z-index: 10;
+  }
+  .navigator a {
+    font-size: 1.5em;
+    margin-top: 1em;
+    margin-left: 2em;
   }
 }
 </style>

@@ -1,24 +1,24 @@
 <template>
   <div class="mobile-menu" @click="toggleMenu">
     <span
-      :class="['bar', isMenuOpen ? 'translate-y-2.5 rotate-45' : '', 'transition duration-[1s]']"
+      :class="['bar', isOpen ? 'translate-y-2.5 rotate-45' : '', 'transition duration-[1s]']"
     ></span>
-    <span :class="['bar', isMenuOpen ? 'scale-x-0' : '', 'transition duration-[1s]']"></span>
+    <span :class="['bar', isOpen ? 'scale-x-0' : '', 'transition duration-[1s]']"></span>
     <span
-      :class="['bar', isMenuOpen ? '-rotate-45 -translate-y-2.5' : '', 'transition duration-[1s]']"
+      :class="['bar', isOpen ? '-rotate-45 -translate-y-2.5' : '', 'transition duration-[1s]']"
     ></span>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+defineProps({
+  isOpen: Boolean, // Accept `isMenuOpen` as a prop from the parent
+})
 
 const emit = defineEmits(['toggle'])
-const isMenuOpen = ref(false)
 
 const toggleMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value
-  emit('toggle') // Emit the 'toggle' event to the parent component
+  emit('toggle') // Emit the 'toggle' event to update parent state
 }
 </script>
 
