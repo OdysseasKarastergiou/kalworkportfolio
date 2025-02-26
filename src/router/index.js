@@ -2,8 +2,16 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../views/HomePageView.vue'
 import AboutMe from '../components/AboutMe.vue'
 import Videography from '../components/VideographyCategory.vue'
+import PhotographyView from '../components/PhotographyView.vue'
 import Photography from '../components/PhotographyCategory.vue'
+import OutdoorActivitiesView from '@/components/Photography/OutdoorActivitiesView.vue'
+import PodcastView from '@/components/Photography/PodcastView.vue'
+import ThessalonikiView from '@/components/Photography/ThessalonikiView.vue'
 import ContactMe from '../components/ContactMe.vue'
+import VideographyView from '../components/Videography/VideographyView.vue'
+import DroneView from '../components/Videography/DroneView.vue'
+import CinematicView from '../components/Videography/CinematicView.vue'
+import SnowboardView from '../components/Videography/SnowboardView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -25,13 +33,53 @@ const router = createRouter({
     },
     {
       path: '/photography',
+      name: 'photographyView',
+      component: PhotographyView,
+    },
+    {
+      path: '/photographyCat',
       name: 'photography',
       component: Photography,
+    },
+    {
+      path: '/photography/outdoor',
+      name: 'outdoor',
+      component: OutdoorActivitiesView,
+    },
+    {
+      path: '/photography/podcast',
+      name: 'podcast',
+      component: PodcastView,
+    },
+    {
+      path: '/photography/thessaloniki',
+      name: 'thessaloniki',
+      component: ThessalonikiView,
     },
     {
       path: '/contact',
       name: 'contactMe',
       component: ContactMe,
+    },
+    {
+      path: '/videography/all',
+      name: 'VideographyView',
+      component: VideographyView,
+    },
+    {
+      path: '/videography/drone',
+      name: 'drone',
+      component: DroneView,
+    },
+    {
+      path: '/videography/cinematic',
+      name: 'cinematic',
+      component: CinematicView,
+    },
+    {
+      path: '/videography/snowboard',
+      name: 'snowboard',
+      component: SnowboardView,
     },
   ],
 })

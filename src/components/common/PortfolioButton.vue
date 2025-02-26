@@ -1,7 +1,11 @@
 <template>
-  <RouterLink :to="to" :class="['portfolio-button', { 'default-active': defaultActive }]">
-    <a class="portfolio-link">{{ name }}</a>
-  </RouterLink>
+  <component
+    :is="to ? 'RouterLink' : 'button'"
+    v-bind="to ? { to } : {}"
+    :class="['portfolio-button', { 'default-active': defaultActive }]"
+  >
+    {{ name }}
+  </component>
 </template>
 
 <script setup>
@@ -14,7 +18,7 @@ defineProps({
   },
   to: {
     type: String,
-    default: '/',
+    default: null,
   },
   defaultActive: {
     type: Boolean,
@@ -29,18 +33,13 @@ defineProps({
   font-size: 1rem;
   cursor: pointer;
   position: relative;
-}
-
-.portfolio-link {
-  display: inline-block;
-  overflow: hidden;
-  padding: 0 1rem;
   color: white;
   text-decoration: none;
-  position: relative;
+  padding: 0 1rem;
+  overflow: hidden;
 }
 
-.portfolio-link::before {
+.portfolio-button::before {
   content: '';
   position: absolute;
   left: 0;
@@ -52,20 +51,20 @@ defineProps({
   transition: width 0.4s ease;
 }
 
-.portfolio-button:hover .portfolio-link::before,
-.portfolio-button.default-active .portfolio-link:hover::before {
+.portfolio-button:hover::before,
+.portfolio-button.default-active:hover::before {
   width: 100%;
 }
 
-.portfolio-button.default-active .portfolio-link::before {
+.portfolio-button.default-active::before {
   width: 50%;
 }
 
-.portfolio-button.router-link-exact-active .portfolio-link::before {
+.portfolio-button.router-link-exact-active::before {
   width: 50%;
 }
 
-.portfolio-button.router-link-exact-active .portfolio-link:hover::before {
+.portfolio-button.router-link-exact-active:hover::before {
   width: 100%;
 }
 </style>

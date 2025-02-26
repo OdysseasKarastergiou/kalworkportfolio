@@ -1,5 +1,5 @@
 <template>
-  <div class="flex" :class="{ container: isMobile }">
+  <div class="container flex" :class="{ container: isMobile }">
     <div class="about-me">
       <p class="about-me__title">HELLO & WELCOME</p>
       <p class="about-me__tag">
@@ -90,10 +90,9 @@ export default {
 </script>
 <style lang="scss" scoped>
 .container {
+  margin-top: 8em;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
+  justify-content: center;
 }
 .about-me {
   display: flex;
