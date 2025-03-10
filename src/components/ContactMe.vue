@@ -1,6 +1,6 @@
 <template>
   <div class="contact-me">
-    <div class="">
+    <div class="contact-me__container">
       <p class="contact-me__title">CONTACT ME</p>
       <div class="contact-me__info flex">
         <img class="contact-me__info-icon" :src="mobileIcon" />
@@ -96,15 +96,22 @@ export default {
 .contact-me {
   display: flex;
   align-items: center;
-  gap: 2em;
+  gap: 5em;
   width: 100%;
   max-width: 50rem;
   margin: 8em auto;
+  justify-content: center;
   @media (width < 768px) {
     margin-top: 2em;
     display: flex;
     flex-direction: column;
     width: 85%;
+  }
+  &__container {
+    font-size: 1.5em;
+    @media (width < 768px) {
+      font-size: 1em;
+    }
   }
   &__title {
     font-size: 1.6em;
@@ -113,9 +120,13 @@ export default {
   }
   &__map {
     width: 50%;
-    min-width: 300px;
+    min-width: 450px;
     margin: 0 auto;
     display: block;
+    z-index: 0;
+    @media (width < 768px) {
+      min-width: 300px;
+    }
   }
   &__info {
     display: flex;

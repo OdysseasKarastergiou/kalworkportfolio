@@ -21,39 +21,12 @@
   </div>
 </template>
 <script>
+import videos from '../../assets/youtubeVideos/videos'
 export default {
   name: 'CinematicView',
   data() {
     return {
-      videos: [
-        {
-          id: 1,
-          thumbnail: 'https://img.youtube.com/vi/My_rKhSQZbU/maxresdefault.jpg',
-          videoUrl: 'https://www.youtube.com/embed/My_rKhSQZbU?autoplay=1',
-          time: '0:41',
-          title: 'Cinematic Thessaloniki | SONY FX30',
-          desc: 'Extra stuff about the video',
-          category: 'CINEMATIC',
-        },
-        {
-          id: 2,
-          thumbnail: 'https://img.youtube.com/vi/ba4JqGa-9xU/maxresdefault.jpg',
-          videoUrl: 'https://www.youtube.com/embed/ba4JqGa-9xU?autoplay=1',
-          time: '2:08',
-          title: 'Escape Into The Sky',
-          desc: 'Extra stuff about the video',
-          category: 'CINEMATIC',
-        },
-        {
-          id: 3,
-          thumbnail: 'https://img.youtube.com/vi/85hMoQWRNZg/maxresdefault.jpg',
-          videoUrl: 'https://www.youtube.com/embed/85hMoQWRNZg?autoplay=1',
-          time: '0:30',
-          title: 'Short Cinematic Story FX30',
-          desc: 'Extra stuff about the video',
-          category: 'CINEMATIC',
-        },
-      ],
+      videos: videos.filter((video) => video.category === 'CINEMATIC'),
       selectedVideo: null,
     }
   },

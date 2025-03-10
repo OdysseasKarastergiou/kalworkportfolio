@@ -7,18 +7,29 @@ import DesktopMenu from './components/common/DesktopMenu.vue'
 import PortfolioButton from './components/common/PortfolioButton.vue'
 
 const isMenuOpen = ref(false)
-const isMobile = ref(false)
+const isMobile = ref(window.innerWidth < 768)
+let previousWidth = window.innerWidth
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
 }
 
 const checkScreenSize = () => {
-  isMobile.value = window.innerWidth < 768
+  const currentWidth = window.innerWidth
+  const wasDesktop = previousWidth >= 768
+  const isNowMobile = currentWidth < 768
+  const wasMobile = previousWidth < 768
+  const isNowDesktop = currentWidth >= 768
+
+  if ((wasDesktop && isNowMobile) || (wasMobile && isNowDesktop)) {
+    location.reload() // Refresh only when crossing 768px
+  }
+
+  previousWidth = currentWidth
+  isMobile.value = currentWidth < 768
 }
 
 onMounted(() => {
-  checkScreenSize()
   window.addEventListener('resize', checkScreenSize)
 })
 
@@ -48,6 +59,7 @@ onUnmounted(() => {
       <PortfolioButton to="/aboutMe" name="About Me" @click="isMenuOpen = false" />
       <PortfolioButton to="/videography" name="Videography" @click="isMenuOpen = false" />
       <PortfolioButton to="/photography" name="Photography" @click="isMenuOpen = false" />
+      <PortfolioButton to="/graphics" name="Graphics" @click="isMenuOpen = false" />
       <PortfolioButton to="/contact" name="Contact Me" @click="isMenuOpen = false" />
     </nav>
   </header>
@@ -60,7 +72,7 @@ onUnmounted(() => {
   margin-top: 1em;
   margin-left: 5em;
   margin-right: 10em;
-  margin-bottom: 2em;
+  margin-bottom: 0;
   transition: background-color 1s ease;
 }
 

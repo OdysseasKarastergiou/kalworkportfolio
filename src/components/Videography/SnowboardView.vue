@@ -21,39 +21,12 @@
   </div>
 </template>
 <script>
+import videos from '../../assets/youtubeVideos/videos'
 export default {
   name: 'SnowboardView',
   data() {
     return {
-      videos: [
-        {
-          id: 1,
-          thumbnail: 'https://img.youtube.com/vi/64UVKQ98Jp4/maxresdefault.jpg',
-          videoUrl: 'https://www.youtube.com/embed/64UVKQ98Jp4?autoplay=1',
-          time: '2:46',
-          title: 'Snowboarding | Leave your Worries Under the Mountain',
-          desc: 'Extra stuff about the video',
-          category: 'SNOWBOARD',
-        },
-        {
-          id: 2,
-          thumbnail: 'https://img.youtube.com/vi/D0CqVmD571E/maxresdefault.jpg',
-          videoUrl: 'https://www.youtube.com/embed/D0CqVmD571E?autoplay=1',
-          time: '2:21',
-          title: '3-5 Pigadia Chilling Vibes with Crew',
-          desc: 'Extra stuff about the video',
-          category: 'SNOWBOARD',
-        },
-        {
-          id: 3,
-          thumbnail: 'https://img.youtube.com/vi/1CuMfKWDj4Q/maxresdefault.jpg',
-          videoUrl: 'https://www.youtube.com/embed/1CuMfKWDj4Q?autoplay=1',
-          time: '3:12',
-          title: 'Explosivo Teen Team Cruising',
-          desc: 'Extra Stuff About the video',
-          category: 'SNOWBOARD',
-        },
-      ],
+      videos: videos.filter((video) => video.category === 'SNOWBOARD'),
       selectedVideo: null,
     }
   },

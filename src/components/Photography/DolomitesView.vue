@@ -24,7 +24,7 @@ export default {
     }
   },
   async created() {
-    const images = import.meta.glob('/src/assets/photographyImages/*.jpg')
+    const images = import.meta.glob('/src/assets/photographyImages/DolomitesThumbnails/*.jpg')
 
     this.photos = await Promise.all(
       Object.values(images).map((importFn) => importFn().then((mod) => mod.default)),
@@ -44,15 +44,14 @@ export default {
 
 <style scoped>
 .gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  column-count: 4;
   gap: 10px;
   padding: 20px;
 }
 .gallery-item img {
-  width: auto;
-  height: 100%;
-  border-radius: 10px;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 10px; /* Prevents sticking */
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
 }

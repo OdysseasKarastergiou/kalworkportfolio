@@ -1,7 +1,7 @@
 <template>
   <div class="contact-me">
     <p v-if="!isMobile" class="side__title">Contact me</p>
-    <div class="">
+    <div class="contact-me__container">
       <p class="contact-me__title">CONTACT ME</p>
       <div class="contact-me__info flex">
         <img class="contact-me__info-icon" :src="mobileIcon" />
@@ -101,6 +101,12 @@ export default {
   @media (width < 768px) {
     display: flex;
     flex-direction: column;
+  }
+  &__container {
+    font-size: 1.5em;
+    @media (width < 768px) {
+      font-size: 1em;
+    }
   }
   &__title {
     font-size: 1.6em;

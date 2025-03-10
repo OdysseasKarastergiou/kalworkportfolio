@@ -21,32 +21,12 @@
   </div>
 </template>
 <script>
+import videos from '../../assets/youtubeVideos/videos'
 export default {
   name: 'DroneView',
   data() {
     return {
-      videos: [
-        {
-          id: 1,
-          thumbnail: 'https://img.youtube.com/vi/c7egr0K82Uo/maxresdefault.jpg',
-          videoUrl: 'https://www.youtube.com/embed/c7egr0K82Uo?autoplay=1',
-          time: '1:01',
-          title: 'Drone Footage Vermio',
-          desc: 'Extra stuff about the video',
-          category: 'DRONE',
-          date: '15/5/24',
-        },
-        {
-          id: 2,
-          thumbnail: 'https://img.youtube.com/vi/HSR3cpVChRI/maxresdefault.jpg',
-          videoUrl: 'https://www.youtube.com/embed/HSR3cpVChRI?autoplay=1',
-          time: '1:38',
-          title: 'Drone Footage Numfaio',
-          desc: 'Extra stuff about the video',
-          category: 'DRONE',
-          date: '15/5/24',
-        },
-      ],
+      videos: videos.filter((video) => video.category === 'DRONE'),
       selectedVideo: null,
     }
   },

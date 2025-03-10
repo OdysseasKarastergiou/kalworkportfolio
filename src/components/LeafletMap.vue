@@ -2,7 +2,7 @@
   <div
     class="map-container"
     ref="map"
-    style="height: 300px; width: 100%; border-radius: 10px; overflow: hidden"
+    style="width: 100%; border-radius: 10px; overflow: hidden"
   ></div>
 </template>
 
@@ -36,5 +36,9 @@ export default {
   max-width: 400px;
   margin: auto;
   border-radius: 10px;
+  height: 450px;
+  @media (width < 768px) {
+    height: 300px;
+  }
 }
 </style>

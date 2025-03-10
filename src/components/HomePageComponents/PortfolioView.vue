@@ -1,8 +1,12 @@
 <template>
   <div class="portfolio-view">
+    <video autoplay muted loop class="portfolio-view__background-video">
+      <source :src="PortfolioBackground" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
     <p v-if="!isMobile" class="side__title">Portfolio</p>
     <div class="flex flex-col">
-      <div class="portfolio-view__categories">
+      <div v-if="!isMobile" class="portfolio-view__categories">
         <button
           class="portfolio-view__categories--button"
           v-for="category in categories"
@@ -30,7 +34,7 @@
       </div>
       <swiper
         class="portfolio-swiper"
-        :slidesPerView="isMobile ? 1 : 3"
+        :slidesPerView="isMobile ? 1.1 : 3"
         :space-between="20"
         :speed="800"
         :loop="false"
@@ -68,6 +72,8 @@ import { Navigation } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import { isMobileUse } from '@/utils/utils'
+import videos from '../../assets/youtubeVideos/videos'
+import PortfolioBackground from '../../assets/backgroundVideos/PortfolioBackground.mp4'
 
 export default {
   name: 'PortfolioView',
@@ -101,88 +107,16 @@ export default {
       prevSlide,
       nextSlide,
       isMobile,
+      PortfolioBackground,
     }
   },
   data() {
     return {
-      categories: ['ALL', 'DRONE', 'CINEMATIC', 'SNOWBOARD'],
+      categories: ['ALL', 'DRONE', 'CINEMATIC', 'SNOWBOARD', 'PODCAST'],
       selectedCategory: 'ALL',
-      videos: [
-        {
-          id: 1,
-          thumbnail: 'https://img.youtube.com/vi/c7egr0K82Uo/maxresdefault.jpg',
-          videoUrl: 'https://www.youtube.com/embed/c7egr0K82Uo?autoplay=1',
-          time: '1:01',
-          title: 'Drone Footage Vermio',
-          desc: 'Extra stuff about the video',
-          category: 'DRONE',
-        },
-        {
-          id: 2,
-          thumbnail: 'https://img.youtube.com/vi/HSR3cpVChRI/maxresdefault.jpg',
-          videoUrl: 'https://www.youtube.com/embed/HSR3cpVChRI?autoplay=1',
-          time: '1:38',
-          title: 'Drone Footage Numfaio',
-          desc: 'Extra stuff about the video',
-          category: 'DRONE',
-        },
-        {
-          id: 3,
-          thumbnail: 'https://img.youtube.com/vi/My_rKhSQZbU/maxresdefault.jpg',
-          videoUrl: 'https://www.youtube.com/embed/My_rKhSQZbU?autoplay=1',
-          time: '0:41',
-          title: 'Cinematic Thessaloniki | SONY FX30',
-          desc: 'Extra stuff about the video',
-          category: 'CINEMATIC',
-        },
-        {
-          id: 4,
-          thumbnail: 'https://img.youtube.com/vi/ba4JqGa-9xU/maxresdefault.jpg',
-          videoUrl: 'https://www.youtube.com/embed/ba4JqGa-9xU?autoplay=1',
-          time: '2:08',
-          title: 'Escape Into The Sky',
-          desc: 'Extra stuff about the video',
-          category: 'CINEMATIC',
-        },
-        {
-          id: 5,
-          thumbnail: 'https://img.youtube.com/vi/64UVKQ98Jp4/maxresdefault.jpg',
-          videoUrl: 'https://www.youtube.com/embed/64UVKQ98Jp4?autoplay=1',
-          time: '2:46',
-          title: 'Snowboarding | Leave your Worries Under the Mountain',
-          desc: 'Extra stuff about the video',
-          category: 'SNOWBOARD',
-        },
-        {
-          id: 6,
-          thumbnail: 'https://img.youtube.com/vi/D0CqVmD571E/maxresdefault.jpg',
-          videoUrl: 'https://www.youtube.com/embed/D0CqVmD571E?autoplay=1',
-          time: '2:21',
-          title: '3-5 Pigadia Chilling Vibes with Crew',
-          desc: 'Extra stuff about the video',
-          category: 'SNOWBOARD',
-        },
-        {
-          id: 7,
-          thumbnail: 'https://img.youtube.com/vi/85hMoQWRNZg/maxresdefault.jpg',
-          videoUrl: 'https://www.youtube.com/embed/85hMoQWRNZg?autoplay=1',
-          time: '0:30',
-          title: 'Short Cinematic Story FX30',
-          desc: 'Extra stuff about the video',
-          category: 'CINEMATIC',
-        },
-        {
-          id: 8,
-          thumbnail: 'https://img.youtube.com/vi/1CuMfKWDj4Q/maxresdefault.jpg',
-          videoUrl: 'https://www.youtube.com/embed/1CuMfKWDj4Q?autoplay=1',
-          time: '3:12',
-          title: 'Explosivo Teen Team Cruising',
-          desc: 'Extra Stuff About the video',
-          category: 'SNOWBOARD',
-        },
-      ],
       selectedVideo: null,
       featuredVideo: null,
+      videos,
     }
   },
   computed: {
@@ -213,6 +147,15 @@ export default {
 
 <style lang="scss" scoped>
 .portfolio-view {
+  &__background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
   &__title {
     font-size: 1.6em;
     color: white;

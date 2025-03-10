@@ -148,7 +148,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.8);
   z-index: 1;
 }
 
@@ -157,7 +157,7 @@ body {
   align-items: center;
   justify-content: center;
   width: 100vw;
-  height: 95vh !important;
+  height: 100vh !important;
   overflow: hidden;
   @media (width<768px) {
     height: 100vh !important;

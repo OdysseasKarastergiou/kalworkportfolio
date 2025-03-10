@@ -13,6 +13,8 @@
 import OutdoorCat from '../assets/photographyCategories/OutdoorCat.jpg'
 import PodcastCat from '../assets/photographyCategories/PodcastCat.jpg'
 import ThessalonikiCat from '../assets/photographyCategories/ThessalonikiCat.jpg'
+import BorovetsCat from '../assets/photographyCategories/ThessalonikiCat.jpg'
+import DolomitesCat from '../assets/photographyCategories/ThessalonikiCat.jpg'
 export default {
   name: 'PhotographyView',
   data() {
@@ -21,6 +23,8 @@ export default {
         { id: 1, name: 'Outdoor', image: OutdoorCat, route: 'photography/outdoor' },
         { id: 2, name: 'Podcast', image: PodcastCat, route: 'photography/podcast' },
         { id: 3, name: 'Thessaloniki', image: ThessalonikiCat, route: 'photography/thessaloniki' },
+        { id: 4, name: 'Borovets', image: BorovetsCat, route: 'photography/borovets' },
+        { id: 5, name: 'Dolomites', image: DolomitesCat, route: 'photography/dolomites' },
       ],
     }
   },
@@ -29,8 +33,13 @@ export default {
 <style lang="scss" scoped>
 .photography-view {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   padding: 20px;
+  width: 80%;
+  @media (width < 768px) {
+    display: flex;
+    flex-direction: column;
+  }
   &__category {
     position: relative;
     overflow: hidden;

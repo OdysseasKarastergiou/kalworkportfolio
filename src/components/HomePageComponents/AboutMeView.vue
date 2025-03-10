@@ -4,17 +4,18 @@
     <div class="about-me">
       <p class="about-me__title">HELLO & WELCOME</p>
       <p class="about-me__tag">
-        My Name is George Kalogiannidis, Greece Based Filmmaker & Video Editor
+        My Name is George Kalogiannidis, Greece Based Videographer & Video Editor
       </p>
       <p class="about-me__desc">
-        George is a video editor, and filmmaker based in Thessaloniki, Greece. He has been working
-        as a video editor for the past three years and has recently expanded into filmmaking, which
-        has become his primary professional focus. His work in video production includes editing,
-        storytelling, and visual content creation, showcasing his creativity and technical
-        expertise. Passionate about both health sciences and visual arts, George continuously seeks
-        opportunities to enhance his skills in both fields. He remains committed to lifelong
-        learning, professional development, and creative storytelling through film. In his free
-        time, he enjoys outdoor activities, fitness, and exploring new filmmaking techniques.
+        George is a video editor, and videographer based in Thessaloniki, Greece. He has been
+        working as a video editor for the past three years and has recently expanded into
+        filmmaking, which has become his primary professional focus. His work in video production
+        includes editing, storytelling, and visual content creation, showcasing his creativity and
+        technical expertise. Passionate about both health sciences and visual arts, George
+        continuously seeks opportunities to enhance his skills in both fields. He remains committed
+        to lifelong learning, professional development, and creative storytelling through film. In
+        his free time, he enjoys outdoor activities, fitness, and exploring new filmmaking
+        techniques.
       </p>
       <div class="about-me__flex">
         <div class="about-me__flex-item">

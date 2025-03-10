@@ -3,15 +3,19 @@ import HomePage from '../views/HomePageView.vue'
 import AboutMe from '../components/AboutMe.vue'
 import Videography from '../components/VideographyCategory.vue'
 import PhotographyView from '../components/PhotographyView.vue'
-import Photography from '../components/PhotographyCategory.vue'
-import OutdoorActivitiesView from '@/components/Photography/OutdoorActivitiesView.vue'
-import PodcastView from '@/components/Photography/PodcastView.vue'
-import ThessalonikiView from '@/components/Photography/ThessalonikiView.vue'
+import OutdoorActivitiesView from '../components/Photography/OutdoorActivitiesView.vue'
+import PodcastView from '../components/Photography/PodcastView.vue'
+import ThessalonikiView from '../components/Photography/ThessalonikiView.vue'
+import BorovetsView from '../components/Photography/BorovetsView.vue'
+import DolomitesView from '../components/Photography/DolomitesView.vue'
 import ContactMe from '../components/ContactMe.vue'
 import VideographyView from '../components/Videography/VideographyView.vue'
 import DroneView from '../components/Videography/DroneView.vue'
 import CinematicView from '../components/Videography/CinematicView.vue'
 import SnowboardView from '../components/Videography/SnowboardView.vue'
+import GraphicsView from '../components/GraphicsView.vue'
+import ExplosivoView from '../components/Graphics/ExplosivoView.vue'
+import SportsView from '../components/Graphics/SportsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -37,11 +41,6 @@ const router = createRouter({
       component: PhotographyView,
     },
     {
-      path: '/photographyCat',
-      name: 'photography',
-      component: Photography,
-    },
-    {
       path: '/photography/outdoor',
       name: 'outdoor',
       component: OutdoorActivitiesView,
@@ -55,6 +54,31 @@ const router = createRouter({
       path: '/photography/thessaloniki',
       name: 'thessaloniki',
       component: ThessalonikiView,
+    },
+    {
+      path: '/photography/borovets',
+      name: 'borovets',
+      component: BorovetsView,
+    },
+    {
+      path: '/photography/dolomites',
+      name: 'dolomites',
+      component: DolomitesView,
+    },
+    {
+      path: '/graphics',
+      name: 'Graphics',
+      component: GraphicsView,
+    },
+    {
+      path: '/graphics/explosivo',
+      name: 'Explosivo',
+      component: ExplosivoView,
+    },
+    {
+      path: '/graphics/sports',
+      name: 'Sports',
+      component: SportsView,
     },
     {
       path: '/contact',

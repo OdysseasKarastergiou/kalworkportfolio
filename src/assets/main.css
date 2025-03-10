@@ -7,6 +7,13 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  background-image: url('../assets/siteBackground.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
 header {
   line-height: 1.5;
   max-height: 100vh;

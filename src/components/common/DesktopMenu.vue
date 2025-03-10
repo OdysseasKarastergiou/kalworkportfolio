@@ -14,13 +14,16 @@
       />
       <div class="dropdown-menu">
         <PortfolioButton to="/videography/all" name="All" />
-        <PortfolioButton to="/videography/drone" name="Drone" />
         <PortfolioButton to="/videography/cinematic" name="Cinematic" />
+        <PortfolioButton to="/videography/drone" name="Drone" />
         <PortfolioButton to="/videography/snowboard" name="Snowboard" />
       </div>
     </div>
     <div class="navigator-wrapper">
       <PortfolioButton to="/photography" name="Photography" :defaultActive="isPhotographyActive" />
+    </div>
+    <div class="navigator-wrapper">
+      <PortfolioButton to="/graphics" name="Graphics" />
     </div>
     <div class="navigator-wrapper">
       <PortfolioButton to="/contact" name="Contact Me" />
