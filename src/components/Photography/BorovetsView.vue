@@ -24,7 +24,7 @@ export default {
     }
   },
   async created() {
-    const images = import.meta.glob('/src/assets/photographyImages/BorovetsThumbnails/*.jpg')
+    const images = import.meta.glob('/src/assets/photographyImages/BorovetsThumbnails/*.webp')
 
     this.photos = await Promise.all(
       Object.values(images).map((importFn) => importFn().then((mod) => mod.default)),
