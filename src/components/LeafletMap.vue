@@ -12,8 +12,8 @@ import * as L from 'leaflet'
 export default {
   data() {
     return {
-      latitude: 40.471786,
-      longitude: 23.096967,
+      latitude: 40.62649,
+      longitude: 22.948641,
     }
   },
   mounted() {

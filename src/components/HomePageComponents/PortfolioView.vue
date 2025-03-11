@@ -45,6 +45,7 @@
             <img
               :src="video.thumbnail"
               :alt="`Thumbnail for video ${index + 1}`"
+              loading="lazy"
               class="video-thumbnail"
               @click="openVideo(video.videoUrl)"
             />

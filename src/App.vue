@@ -94,7 +94,7 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 .header {
-  margin-top: 1em;
+  margin-top: 0;
   margin-left: 5em;
   margin-right: 10em;
   margin-bottom: 0;

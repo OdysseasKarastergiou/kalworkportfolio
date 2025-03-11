@@ -48,9 +48,17 @@ export default {
   grid-row-gap: 60px;
   margin-left: 2em;
   width: 95%;
+  @media (width < 768px) {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8em;
+  }
   &__videos {
     &-image {
       cursor: pointer;
+      @media (width < 768px) {
+        max-width: 85%;
+      }
     }
 
     &-text {

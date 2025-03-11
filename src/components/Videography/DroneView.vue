@@ -48,10 +48,17 @@ export default {
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 30px;
   grid-row-gap: 60px;
-
+  @media (width < 768px) {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8em;
+  }
   &__videos {
     &-image {
       cursor: pointer;
+      @media (width < 768px) {
+        max-width: 85%;
+      }
     }
 
     &-text {

@@ -21,7 +21,7 @@
         <img class="contact-me__info-icon" :src="locationIcon" />
         <div>
           <p>Address:</p>
-          <p class="contact-me__info-text">Souroti, Spiti mama mpampa</p>
+          <p class="contact-me__info-text">Thessaloniki, Greece</p>
         </div>
       </div>
       <div class="contact-me__links flex">
