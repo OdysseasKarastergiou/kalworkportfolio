@@ -44,7 +44,8 @@ export default {
     position: relative;
     overflow: hidden;
     &--images {
-      width: auto;
+      width: 100%;
+      object-fit: cover;
       height: 100%;
       cursor: pointer;
       transition: filter 0.3s ease-in-out;

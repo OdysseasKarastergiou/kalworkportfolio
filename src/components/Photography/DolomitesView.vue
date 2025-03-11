@@ -1,5 +1,8 @@
 <template>
   <div class="gallery">
+    <div v-if="isLoading" class="loading-indicator">
+      <span>Loading...</span>
+    </div>
     <div
       v-for="(photo, index) in photos"
       :key="index"
@@ -21,6 +24,7 @@ export default {
       photos: [],
       showModal: false,
       selectedIndex: null,
+      isLoading: true,
     }
   },
   async created() {
@@ -29,6 +33,7 @@ export default {
     this.photos = await Promise.all(
       Object.values(images).map((importFn) => importFn().then((mod) => mod.default)),
     )
+    this.isLoading = false
   },
   methods: {
     openModal(index) {
@@ -47,6 +52,17 @@ export default {
   column-count: 4;
   gap: 10px;
   padding: 20px;
+}
+.loading-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 1000;
 }
 .gallery-item img {
   display: inline-block;

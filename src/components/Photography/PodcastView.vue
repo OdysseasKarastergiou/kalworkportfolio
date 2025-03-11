@@ -1,5 +1,8 @@
 <template>
   <div class="gallery">
+    <div v-if="isLoading" class="loading-indicator">
+      <span>Loading...</span>
+    </div>
     <div
       v-for="(photo, index) in photos"
       :key="index"
@@ -8,6 +11,8 @@
     >
       <img :src="photo" alt="Photo" loading="lazy" />
     </div>
+
+    <!-- Modal -->
     <div v-if="showModal" class="modal" @click="closeModal">
       <img :src="photos[selectedIndex]" class="modal-content" />
     </div>
@@ -21,6 +26,7 @@ export default {
       photos: [],
       showModal: false,
       selectedIndex: null,
+      isLoading: true, // To track the loading state
     }
   },
   async created() {
@@ -29,6 +35,9 @@ export default {
     this.photos = await Promise.all(
       Object.values(images).map((importFn) => importFn().then((mod) => mod.default)),
     )
+
+    // Once images are loaded, set isLoading to false
+    this.isLoading = false
   },
   methods: {
     openModal(index) {
@@ -48,6 +57,20 @@ export default {
   gap: 10px;
   padding: 20px;
 }
+
+/* Loading indicator styles */
+.loading-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 1000;
+}
+
 .gallery-item img {
   display: inline-block;
   width: 100%;
@@ -55,9 +78,11 @@ export default {
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
 }
+
 .gallery-item img:hover {
   transform: scale(1.05);
 }
+
 .modal {
   position: fixed;
   top: 0;
@@ -70,6 +95,7 @@ export default {
   align-items: center;
   transition: opacity 0.3s ease-in-out;
 }
+
 .modal-content {
   max-width: 90%;
   max-height: 90%;
