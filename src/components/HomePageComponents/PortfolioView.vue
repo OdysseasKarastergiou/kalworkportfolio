@@ -1,6 +1,6 @@
 <template>
   <div class="portfolio-view">
-    <video autoplay muted loop class="portfolio-view__background-video">
+    <video loading="lazy" autoplay muted loop class="portfolio-view__background-video">
       <source :src="PortfolioBackground" type="video/mp4" />
       Your browser does not support the video tag.
     </video>

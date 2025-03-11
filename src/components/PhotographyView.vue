@@ -2,7 +2,7 @@
   <div class="photography-view">
     <div v-for="(category, index) in categories" :key="index" class="photography-view__category">
       <router-link :to="category.route">
-        <img class="photography-view__category--images" :src="category.image" />
+        <img class="photography-view__category--images" :src="category.image" loading="lazy" />
         <div class="photography-view__category--label">{{ category.name }}</div>
       </router-link>
     </div>

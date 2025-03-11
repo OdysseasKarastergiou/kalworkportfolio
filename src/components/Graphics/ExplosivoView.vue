@@ -6,7 +6,7 @@
       class="gallery-item"
       @click="openModal(index)"
     >
-      <img :src="photo" alt="Photo" />
+      <img :src="photo" alt="Photo" loading="lazy" />
     </div>
     <div v-if="showModal" class="modal" @click="closeModal">
       <img :src="photos[selectedIndex]" class="modal-content" />

@@ -12,7 +12,14 @@
       >
         <swiper-slide v-for="(video, index) in videos" :key="index">
           <div class="video-container">
-            <video ref="videoPlayers" autoplay loop muted @click="togglePlayPause(index)">
+            <video
+              loading="lazy"
+              ref="videoPlayers"
+              autoplay
+              loop
+              muted
+              @click="togglePlayPause(index)"
+            >
               <source :src="video.src" type="video/mp4" />
             </video>
 
