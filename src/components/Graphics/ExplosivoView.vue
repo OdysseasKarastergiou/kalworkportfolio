@@ -25,7 +25,7 @@ export default {
   },
   async created() {
     const images = import.meta.glob(
-      '/src/assets/photographyImages/GraphicsThumbnails/ExplosivoTravel/*.{jpg,png}',
+      '/src/assets/photographyImages/GraphicsThumbnails/ExplosivoTravel/*.webp',
     )
 
     this.photos = await Promise.all(

@@ -37,8 +37,8 @@ export default {
   padding: 20px;
   width: 80%;
   @media (width < 768px) {
-    display: flex;
-    flex-direction: column;
+    grid-template-columns: repeat(2, 1fr);
+    font-size: 0.6em;
   }
   &__category {
     position: relative;

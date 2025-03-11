@@ -55,19 +55,44 @@ onUnmounted(() => {
     <DesktopMenu v-else />
     <span />
     <nav v-show="isMobile && isMenuOpen" :class="['navigator', { open: isMenuOpen }]">
-      <PortfolioButton to="/" name="Home" @click="isMenuOpen = false" />
-      <PortfolioButton to="/aboutMe" name="About Me" @click="isMenuOpen = false" />
-      <PortfolioButton to="/videography" name="Videography" @click="isMenuOpen = false" />
-      <PortfolioButton to="/photography" name="Photography" @click="isMenuOpen = false" />
-      <PortfolioButton to="/graphics" name="Graphics" @click="isMenuOpen = false" />
-      <PortfolioButton to="/contact" name="Contact Me" @click="isMenuOpen = false" />
+      <PortfolioButton class="navigator__links" to="/" name="Home" @click="isMenuOpen = false" />
+      <PortfolioButton
+        class="navigator__links"
+        to="/aboutMe"
+        name="About Me"
+        @click="isMenuOpen = false"
+      />
+      <PortfolioButton class="navigator__links" name="Videography" hasSubcategories>
+        <PortfolioButton to="/videography/all" name="All" @click="isMenuOpen = false" />
+        <PortfolioButton to="/videography/cinematic" name="Cinematic" @click="isMenuOpen = false" />
+        <PortfolioButton to="/videography/drone" name="Drone" @click="isMenuOpen = false" />
+        <PortfolioButton to="/videography/snowboard" name="Snowboard" @click="isMenuOpen = false" />
+      </PortfolioButton>
+      <PortfolioButton
+        class="navigator__links"
+        to="/photography"
+        name="Photography"
+        @click="isMenuOpen = false"
+      />
+      <PortfolioButton
+        class="navigator__links"
+        to="/graphics"
+        name="Graphics"
+        @click="isMenuOpen = false"
+      />
+      <PortfolioButton
+        class="navigator__links"
+        to="/contact"
+        name="Contact Me"
+        @click="isMenuOpen = false"
+      />
     </nav>
   </header>
 
   <RouterView />
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .header {
   margin-top: 1em;
   margin-left: 5em;
@@ -118,12 +143,16 @@ onUnmounted(() => {
     left: auto;
     width: 50%;
     height: calc(100vh - 100%);
+    gap: 2em;
     background-color: black;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     z-index: 10;
+    &__links {
+      margin-left: 2em;
+    }
   }
   .navigator a {
     font-size: 1.5em;

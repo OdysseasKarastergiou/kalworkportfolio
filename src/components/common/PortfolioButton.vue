@@ -1,17 +1,29 @@
 <template>
-  <component
-    :is="to ? 'RouterLink' : 'button'"
-    v-bind="to ? { to } : {}"
-    :class="['portfolio-button', { 'default-active': defaultActive }]"
-  >
-    {{ name }}
-  </component>
+  <div>
+    <component
+      :is="to ? 'RouterLink' : 'button'"
+      v-bind="to ? { to } : {}"
+      :class="['portfolio-button', { 'default-active': defaultActive }]"
+      @click="handleClick"
+    >
+      {{ name }}
+      <span v-if="hasSubcategories" class="chevron">
+        <FontAwesomeIcon :icon="isOpen ? 'chevron-down' : 'chevron-right'" />
+      </span>
+    </component>
+    <transition name="slide">
+      <div v-if="hasSubcategories && isOpen" class="subcategories">
+        <slot></slot>
+      </div>
+    </transition>
+  </div>
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
+import { ref } from 'vue'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-defineProps({
+const props = defineProps({
   name: {
     type: String,
     required: true,
@@ -24,7 +36,19 @@ defineProps({
     type: Boolean,
     default: false,
   },
+  hasSubcategories: {
+    type: Boolean,
+    default: false,
+  },
 })
+
+const isOpen = ref(false)
+
+const handleClick = () => {
+  if (props.hasSubcategories) {
+    isOpen.value = !isOpen.value
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -37,6 +61,9 @@ defineProps({
   text-decoration: none;
   padding: 0 1rem;
   overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .portfolio-button::before {
@@ -66,5 +93,29 @@ defineProps({
 
 .portfolio-button.router-link-exact-active:hover::before {
   width: 100%;
+}
+
+.chevron {
+  margin-left: 3em;
+  font-size: 0.8em;
+}
+
+.subcategories {
+  padding-left: 2em;
+  border-left: 2px solid #c48f56; /* Add a border to the left of subcategories */
+  margin-left: 1em; /* Add some margin to separate the border from the text */
+  margin-top: 1em;
+}
+
+/* Transition styles */
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.3s ease;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
 }
 </style>

@@ -18,6 +18,8 @@ import {
   faClose,
   faCaretLeft,
   faCaretRight,
+  faChevronRight,
+  faChevronDown,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 library.add(
@@ -30,6 +32,8 @@ library.add(
   faClose,
   faCaretLeft,
   faCaretRight,
+  faChevronRight,
+  faChevronDown,
 )
 
 const app = createApp(App)
