@@ -67,6 +67,7 @@ onUnmounted(() => {
         <PortfolioButton to="/videography/cinematic" name="Cinematic" @click="isMenuOpen = false" />
         <PortfolioButton to="/videography/drone" name="Drone" @click="isMenuOpen = false" />
         <PortfolioButton to="/videography/snowboard" name="Snowboard" @click="isMenuOpen = false" />
+        <PortfolioButton to="/videography/podcast" name="Podcast" @click="isMenuOpen = false" />
       </PortfolioButton>
       <PortfolioButton
         class="navigator__links"

@@ -4,7 +4,7 @@
       <source :src="PortfolioBackground" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
-    <p v-if="!isMobile" class="side__title">Portfolio</p>
+    <p v-if="!isMobile" class="side__title">PORTFOLIO</p>
     <div class="flex flex-col">
       <div v-if="!isMobile" class="portfolio-view__categories">
         <button
@@ -229,7 +229,7 @@ export default {
 .side__title {
   transform: rotate(270deg);
   position: absolute;
-  top: 53%;
+  top: 42%;
   left: 0;
   color: white;
   &::after {
@@ -239,7 +239,7 @@ export default {
     background: #c48f56;
     position: absolute;
     top: 50%;
-    left: 4.5em;
+    left: 6.5em;
   }
 }
 .portfolio-swiper {

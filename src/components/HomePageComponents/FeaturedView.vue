@@ -1,6 +1,6 @@
 <template>
   <div class="featured-view flex justify-center">
-    <p v-if="!isMobile" class="side__title">Featured Work</p>
+    <p v-if="!isMobile" class="side__title">FEATURED WORK</p>
     <div class="featured-view__container flex flex-col items-center">
       <swiper
         :slidesPerView="1"
@@ -46,7 +46,7 @@
         </div>
         <PortfolioButton
           :class="isMobile ? 'featured-view__button--mobile' : 'featured-view__button'"
-          to="/videography"
+          to="/videography/all"
           name="VIEW FILM ->"
           :defaultActive="true"
         />
@@ -298,6 +298,7 @@ export default {
 }
 .side__title {
   transform: rotate(270deg);
+  font-size: 0.75em;
   position: absolute;
   top: 40%;
   left: 0;
@@ -309,7 +310,7 @@ export default {
     background: #c48f56;
     position: absolute;
     top: 50%;
-    left: 6.5em;
+    left: 9.5em;
   }
 }
 </style>

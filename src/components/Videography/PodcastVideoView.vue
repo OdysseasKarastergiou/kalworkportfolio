@@ -1,15 +1,15 @@
 <template>
-  <div class="drone-view">
+  <div class="podcast-view">
     <div
       v-for="(video, index) in videos"
       :key="index"
-      class="drone-view__videos"
+      class="podcast-view__videos"
       @click="openVideo(video.videoUrl)"
     >
-      <img class="drone-view__videos-image" :src="video.thumbnail" alt="Video" />
-      <div class="drone-view__videos-text flex flex-col">
+      <img class="podcast-view__videos-image" :src="video.thumbnail" alt="Video" />
+      <div class="podcast-view__videos-text flex flex-col">
         <div>{{ video.category }} • {{ video.date }}</div>
-        <div class="drone-view__videos-text--title">{{ video.title }}</div>
+        <div class="podcast-view__videos-text--title">{{ video.title }}</div>
       </div>
     </div>
 
@@ -23,10 +23,10 @@
 <script>
 import videos from '../../assets/youtubeVideos/videos'
 export default {
-  name: 'DroneView',
+  name: 'PodcastVideoView',
   data() {
     return {
-      videos: videos.filter((video) => video.category === 'DRONE'),
+      videos: videos.filter((video) => video.category === 'PODCAST'),
       selectedVideo: null,
     }
   },
@@ -41,7 +41,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.drone-view {
+.podcast-view {
   margin-left: 2em;
   width: 95%;
   display: grid;

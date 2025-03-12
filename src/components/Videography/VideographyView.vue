@@ -64,7 +64,7 @@ export default {
     &-text {
       padding: 10px;
       color: white;
-
+      cursor: pointer;
       &--title {
         margin-top: 0.5em;
         font-size: 1.5em;

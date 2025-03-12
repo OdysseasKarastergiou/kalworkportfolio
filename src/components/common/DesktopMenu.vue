@@ -13,10 +13,11 @@
         :defaultActive="isVideographyActive"
       />
       <div class="dropdown-menu">
-        <PortfolioButton to="/videography/all" name="All" />
+        <PortfolioButton class="dropdown-menu__portfolio-button" to="/videography/all" name="All" />
         <PortfolioButton to="/videography/cinematic" name="Cinematic" />
         <PortfolioButton to="/videography/drone" name="Drone" />
         <PortfolioButton to="/videography/snowboard" name="Snowboard" />
+        <PortfolioButton to="/videography/podcast" name="Podcast" />
       </div>
     </div>
     <div class="navigator-wrapper">
@@ -47,7 +48,7 @@ const isPhotographyActive = computed(() => {
 })
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .navigator {
   display: flex;
   gap: 1em;
@@ -87,6 +88,7 @@ const isPhotographyActive = computed(() => {
   border: 1px solid #333;
   padding: 0.5em;
   z-index: 10;
+  gap: 0.5em;
 }
 
 .dropdown:hover .dropdown-menu {

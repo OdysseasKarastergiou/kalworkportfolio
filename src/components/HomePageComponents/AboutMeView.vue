@@ -1,6 +1,6 @@
 <template>
   <div class="flex" :class="{ container: isMobile }">
-    <p v-if="!isMobile" class="side__title">About me</p>
+    <p v-if="!isMobile" class="side__title">ABOUT ME</p>
     <div class="about-me">
       <p class="about-me__title">HELLO & WELCOME</p>
       <p class="about-me__tag">
@@ -180,7 +180,7 @@ export default {
 .side__title {
   transform: rotate(270deg);
   position: absolute;
-  top: 50%;
+  top: 41%;
   color: white;
   &::after {
     content: '';
@@ -189,7 +189,7 @@ export default {
     background: #c48f56;
     position: absolute;
     top: 50%;
-    left: 4.5em;
+    left: 6em;
   }
 }
 </style>

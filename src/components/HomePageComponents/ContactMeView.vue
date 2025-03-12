@@ -1,6 +1,6 @@
 <template>
   <div class="contact-me">
-    <p v-if="!isMobile" class="side__title">Contact me</p>
+    <p v-if="!isMobile" class="side__title">CONTACT ME</p>
     <div class="contact-me__container">
       <p class="contact-me__title">CONTACT ME</p>
       <div class="contact-me__info flex">
@@ -169,7 +169,7 @@ export default {
   .side__title {
     transform: rotate(270deg);
     position: absolute;
-    top: 58%;
+    top: 41%;
     left: 0;
     color: white;
     &::after {
@@ -179,7 +179,7 @@ export default {
       background: #c48f56;
       position: absolute;
       top: 50%;
-      left: 5.5em;
+      left: 7.5em;
     }
   }
 }
