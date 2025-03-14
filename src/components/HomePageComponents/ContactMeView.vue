@@ -106,6 +106,7 @@ export default {
     font-size: 1.5em;
     @media (width < 768px) {
       font-size: 1em;
+      margin-left: 1.5em;
     }
   }
   &__title {

@@ -207,6 +207,9 @@ export default {
   &__container {
     position: fixed;
     top: 0;
+    @media (width<768px) {
+      position: relative;
+    }
   }
   &__video {
     width: 65%;

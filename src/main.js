@@ -20,6 +20,7 @@ import {
   faCaretRight,
   faChevronRight,
   faChevronDown,
+  faLocationDot,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 library.add(
@@ -34,6 +35,7 @@ library.add(
   faCaretRight,
   faChevronRight,
   faChevronDown,
+  faLocationDot,
 )
 
 const app = createApp(App)

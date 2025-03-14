@@ -72,7 +72,9 @@ export default {
     const swiperOptionsMobile = ref({
       direction: 'vertical',
       slidesPerView: 1,
+      spaceBetween: 0,
       freeMode: true,
+      cssMode: true,
     })
 
     const swiperOptionsToBind = computed(() =>
@@ -136,9 +138,6 @@ body {
   background-position: center;
   filter: blur(3px);
   z-index: -1;
-  @media (width<768px) {
-    height: 90%;
-  }
 }
 
 .blurred-background::after {
@@ -159,15 +158,9 @@ body {
   width: 100vw;
   height: 100vh !important;
   overflow: hidden;
-  @media (width<768px) {
-    height: 100vh !important;
-  }
 }
 
 .swiper-pagination {
-  @media (max-width: 768px) {
-    display: none !important;
-  }
   position: absolute;
   right: 20px;
   top: 40% !important;

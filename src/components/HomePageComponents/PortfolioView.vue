@@ -17,7 +17,7 @@
           {{ category }}
         </button>
       </div>
-      <div class="flex flex-col">
+      <div class="portfolio-view__text flex flex-col">
         <p class="portfolio-view__title">{{ currentVideo.title }}</p>
         <p>{{ currentVideo.desc }}</p>
       </div>
@@ -158,6 +158,12 @@ export default {
     z-index: -1;
     filter: blur(2px);
   }
+  &__text {
+    @media (width < 768px) {
+      margin-top: 2em;
+      margin-left: 1em;
+    }
+  }
   &__title {
     font-size: 1.6em;
     color: white;
@@ -171,12 +177,18 @@ export default {
         color: #a0a0a0;
       }
     }
+    @media (width < 768px) {
+      margin-right: 0.5em;
+    }
   }
   &__next {
     margin-top: 5em;
     &--title {
       font-size: 2em;
       color: white;
+      @media (width < 768px) {
+        margin-left: 0.5em;
+      }
     }
   }
   &__categories {

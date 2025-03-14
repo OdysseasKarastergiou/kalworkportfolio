@@ -54,46 +54,73 @@ onUnmounted(() => {
     <MobileMenu v-if="isMobile" :isOpen="isMenuOpen" @toggle="toggleMenu" />
     <DesktopMenu v-else />
     <span />
-    <nav v-show="isMobile && isMenuOpen" :class="['navigator', { open: isMenuOpen }]">
-      <PortfolioButton class="navigator__links" to="/" name="Home" @click="isMenuOpen = false" />
-      <PortfolioButton
-        class="navigator__links"
-        to="/aboutMe"
-        name="About Me"
-        @click="isMenuOpen = false"
-      />
-      <PortfolioButton class="navigator__links" name="Videography" hasSubcategories>
-        <PortfolioButton to="/videography/all" name="All" @click="isMenuOpen = false" />
-        <PortfolioButton to="/videography/cinematic" name="Cinematic" @click="isMenuOpen = false" />
-        <PortfolioButton to="/videography/drone" name="Drone" @click="isMenuOpen = false" />
-        <PortfolioButton to="/videography/snowboard" name="Snowboard" @click="isMenuOpen = false" />
-        <PortfolioButton to="/videography/podcast" name="Podcast" @click="isMenuOpen = false" />
-      </PortfolioButton>
-      <PortfolioButton
-        class="navigator__links"
-        to="/photography"
-        name="Photography"
-        @click="isMenuOpen = false"
-      />
-      <PortfolioButton
-        class="navigator__links"
-        to="/graphics"
-        name="Graphics"
-        @click="isMenuOpen = false"
-      />
-      <PortfolioButton
-        class="navigator__links"
-        to="/contact"
-        name="Contact Me"
-        @click="isMenuOpen = false"
-      />
-    </nav>
+    <!-- Add Transition wrapper here -->
+    <Transition name="slide">
+      <nav v-show="isMobile && isMenuOpen" :class="['navigator', { open: isMenuOpen }]">
+        <PortfolioButton class="navigator__links" to="/" name="Home" @click="isMenuOpen = false" />
+        <PortfolioButton
+          class="navigator__links"
+          to="/aboutMe"
+          name="About Me"
+          @click="isMenuOpen = false"
+        />
+        <PortfolioButton class="navigator__links" name="Videography" hasSubcategories>
+          <PortfolioButton to="/videography/all" name="All" @click="isMenuOpen = false" />
+          <PortfolioButton
+            to="/videography/cinematic"
+            name="Cinematic"
+            @click="isMenuOpen = false"
+          />
+          <PortfolioButton to="/videography/drone" name="Drone" @click="isMenuOpen = false" />
+          <PortfolioButton
+            to="/videography/snowboard"
+            name="Snowboard"
+            @click="isMenuOpen = false"
+          />
+          <PortfolioButton to="/videography/podcast" name="Podcast" @click="isMenuOpen = false" />
+        </PortfolioButton>
+        <PortfolioButton
+          class="navigator__links"
+          to="/photography"
+          name="Photography"
+          @click="isMenuOpen = false"
+        />
+        <PortfolioButton
+          class="navigator__links"
+          to="/graphics"
+          name="Graphics"
+          @click="isMenuOpen = false"
+        />
+        <PortfolioButton
+          class="navigator__links"
+          to="/contact"
+          name="Contact Me"
+          @click="isMenuOpen = false"
+        />
+      </nav>
+    </Transition>
   </header>
 
   <RouterView />
 </template>
 
 <style lang="scss" scoped>
+/* Add these styles for the slide transition */
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform 1s ease;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  transform: translateX(100%);
+}
+
+.slide-enter-to,
+.slide-leave-from {
+  transform: translateX(0);
+}
+
 .header {
   margin-top: 0;
   margin-left: 5em;
@@ -153,6 +180,7 @@ onUnmounted(() => {
     z-index: 10;
     &__links {
       margin-left: 2em;
+      margin-top: 1em;
     }
   }
   .navigator a {
