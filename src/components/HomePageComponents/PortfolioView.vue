@@ -58,12 +58,17 @@
         </swiper-slide>
       </swiper>
     </div>
-
     <div v-if="selectedVideo" class="video-modal" @click="closeVideo">
       <div class="video-modal__content" @click.stop>
         <iframe :src="selectedVideo" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
+    <PortfolioButton
+      class="portfolio-view__view-film"
+      to="/videography/all"
+      name="VIEW FILM ->"
+      :defaultActive="true"
+    />
   </div>
 </template>
 
@@ -75,12 +80,14 @@ import 'swiper/css/navigation'
 import { isMobileUse } from '@/utils/utils'
 import videos from '../../assets/youtubeVideos/videos'
 import PortfolioBackground from '../../assets/backgroundVideos/PortfolioBackground.mp4'
+import PortfolioButton from '../common/PortfolioButton.vue'
 
 export default {
   name: 'PortfolioView',
   components: {
     Swiper,
     SwiperSlide,
+    PortfolioButton,
   },
   setup() {
     let swiperInstance = null
@@ -157,6 +164,11 @@ export default {
     object-fit: cover;
     z-index: -1;
     filter: blur(2px);
+  }
+  &__view-film {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
   }
   &__text {
     @media (width < 768px) {

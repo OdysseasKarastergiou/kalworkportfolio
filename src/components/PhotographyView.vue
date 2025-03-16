@@ -10,11 +10,11 @@
 </template>
 
 <script>
-import OutdoorCat from '../assets/photographyCategories/OutdoorCat.jpg'
-import PodcastCat from '../assets/photographyCategories/PodcastCat.jpg'
-import ThessalonikiCat from '../assets/photographyCategories/ThessalonikiCat.jpg'
-import BorovetsCat from '../assets/photographyCategories/ThessalonikiCat.jpg'
-import DolomitesCat from '../assets/photographyCategories/ThessalonikiCat.jpg'
+import OutdoorCat from '../assets/photographyCategories/OutdoorCat.webp'
+import PodcastCat from '../assets/photographyCategories/PodcastCat.webp'
+import ThessalonikiCat from '../assets/photographyCategories/ThessalonikiCat.webp'
+import BorovetsCat from '../assets/photographyCategories/ThessalonikiCat.webp'
+import DolomitesCat from '../assets/photographyCategories/ThessalonikiCat.webp'
 export default {
   name: 'PhotographyView',
   data() {

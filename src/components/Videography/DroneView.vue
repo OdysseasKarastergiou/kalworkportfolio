@@ -1,5 +1,6 @@
 <template>
   <div class="drone-view">
+    <span v-if="isMobile" class="drone-view__label">CATEGORY: DRONE</span>
     <div
       v-for="(video, index) in videos"
       :key="index"
@@ -22,8 +23,15 @@
 </template>
 <script>
 import videos from '../../assets/youtubeVideos/videos'
+import { isMobileUse } from '@/utils/utils'
 export default {
   name: 'DroneView',
+  setup() {
+    const isMobile = isMobileUse().value
+    return {
+      isMobile,
+    }
+  },
   data() {
     return {
       videos: videos.filter((video) => video.category === 'DRONE'),
@@ -43,6 +51,7 @@ export default {
 <style lang="scss" scoped>
 .drone-view {
   margin-left: 2em;
+  margin-top: 2em;
   width: 95%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -52,6 +61,10 @@ export default {
     display: flex;
     flex-direction: column;
     font-size: 0.8em;
+  }
+  &__label {
+    color: white;
+    font-size: 1.5em;
   }
   &__videos {
     &-image {

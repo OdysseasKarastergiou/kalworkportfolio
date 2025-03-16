@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import ExplosivoCat from '../assets/photographyCategories/OutdoorCat.jpg'
-import SportsCat from '../assets/photographyCategories/PodcastCat.jpg'
+import ExplosivoCat from '../assets/photographyCategories/OutdoorCat.webp'
+import SportsCat from '../assets/photographyCategories/PodcastCat.webp'
 export default {
   name: 'graphicsView',
   data() {

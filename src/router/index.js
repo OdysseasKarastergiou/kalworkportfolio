@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../views/HomePageView.vue'
 import AboutMe from '../components/AboutMe.vue'
-import Videography from '../components/VideographyCategory.vue'
 import PhotographyView from '../components/PhotographyView.vue'
 import OutdoorActivitiesView from '../components/Photography/OutdoorActivitiesView.vue'
 import PodcastView from '../components/Photography/PodcastView.vue'
@@ -30,11 +29,6 @@ const router = createRouter({
       path: '/aboutMe',
       name: 'aboutMe',
       component: AboutMe,
-    },
-    {
-      path: '/videography',
-      name: 'videography',
-      component: Videography,
     },
     {
       path: '/photography',

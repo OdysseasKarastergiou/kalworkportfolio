@@ -1,5 +1,6 @@
 <template>
   <div class="snowboard-view">
+    <span v-if="isMobile" class="snowboard-view__label">CATEGORY: SNOWBOARD</span>
     <div
       v-for="(video, index) in videos"
       :key="index"
@@ -22,8 +23,15 @@
 </template>
 <script>
 import videos from '../../assets/youtubeVideos/videos'
+import { isMobileUse } from '@/utils/utils'
 export default {
   name: 'SnowboardView',
+  setup() {
+    const isMobile = isMobileUse().value
+    return {
+      isMobile,
+    }
+  },
   data() {
     return {
       videos: videos.filter((video) => video.category === 'SNOWBOARD'),
@@ -47,11 +55,16 @@ export default {
   grid-column-gap: 30px;
   grid-row-gap: 60px;
   margin-left: 2em;
+  margin-top: 2em;
   width: 95%;
   @media (width < 768px) {
     display: flex;
     flex-direction: column;
     font-size: 0.8em;
+  }
+  &__label {
+    color: white;
+    font-size: 1.5em;
   }
   &__videos {
     &-image {
