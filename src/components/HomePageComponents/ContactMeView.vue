@@ -14,7 +14,7 @@
         <img class="contact-me__info-icon" :src="emailIcon" />
         <div>
           <p>E-mail:</p>
-          <p class="contact-me__info-text">gkal@mail.com</p>
+          <p class="contact-me__info-text">kre8tivefilmstudio@gmail.com</p>
         </div>
       </div>
       <div class="contact-me__info flex">

@@ -171,9 +171,11 @@ export default {
     margin-bottom: 1em;
   }
   &__text {
+    width: 50%;
     @media (width < 768px) {
       margin-top: 2em;
       margin-left: 1em;
+      width: 90%;
     }
   }
   &__title {

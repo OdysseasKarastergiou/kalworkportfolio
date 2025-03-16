@@ -10,21 +10,21 @@
 </template>
 
 <script>
-import OutdoorCat from '../assets/photographyCategories/OutdoorCat.webp'
-import PodcastCat from '../assets/photographyCategories/PodcastCat.webp'
-import ThessalonikiCat from '../assets/photographyCategories/ThessalonikiCat.webp'
-import BorovetsCat from '../assets/photographyCategories/ThessalonikiCat.webp'
-import DolomitesCat from '../assets/photographyCategories/ThessalonikiCat.webp'
+import OutdoorCat from '../assets/photographyCategories/Outdoor.webp'
+import PodcastCat from '../assets/photographyCategories/Podcast.webp'
+import MountOlympusCat from '../assets/photographyCategories/MountOlympus.webp'
+import BorovetsCat from '../assets/photographyCategories/Borovets.webp'
+import DolomitesCat from '../assets/photographyCategories/Dolomites.webp'
 export default {
   name: 'PhotographyView',
   data() {
     return {
       categories: [
         { id: 1, name: 'Outdoor', image: OutdoorCat, route: 'photography/outdoor' },
-        { id: 2, name: 'Podcast', image: PodcastCat, route: 'photography/podcast' },
-        { id: 3, name: 'Thessaloniki', image: ThessalonikiCat, route: 'photography/thessaloniki' },
+        { id: 2, name: 'Dolomites', image: DolomitesCat, route: 'photography/dolomites' },
+        { id: 3, name: 'Mount Olympus', image: MountOlympusCat, route: 'photography/mountolympus' },
         { id: 4, name: 'Borovets', image: BorovetsCat, route: 'photography/borovets' },
-        { id: 5, name: 'Dolomites', image: DolomitesCat, route: 'photography/dolomites' },
+        { id: 5, name: 'Podcast', image: PodcastCat, route: 'photography/podcast' },
       ],
     }
   },
@@ -36,13 +36,16 @@ export default {
   grid-template-columns: repeat(3, 1fr);
   padding: 20px;
   width: 80%;
+
   @media (width < 768px) {
     grid-template-columns: repeat(2, 1fr);
     font-size: 0.6em;
   }
+
   &__category {
     position: relative;
     overflow: hidden;
+
     &--images {
       width: 100%;
       object-fit: cover;
@@ -54,11 +57,12 @@ export default {
         filter: brightness(0.5);
       }
     }
+
     &--label {
       position: absolute;
-      top: 10%;
-      left: 25%;
-      transform: translate(-50%, -50%);
+      top: 5%;
+      left: 5%; // Adjusted to 10% from the left edge
+      transform: translateX(0); // Removed vertical translation
       color: white;
       padding: 10px 15px;
       border-radius: 5px;

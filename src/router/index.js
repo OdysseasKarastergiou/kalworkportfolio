@@ -4,7 +4,7 @@ import AboutMe from '../components/AboutMe.vue'
 import PhotographyView from '../components/PhotographyView.vue'
 import OutdoorActivitiesView from '../components/Photography/OutdoorActivitiesView.vue'
 import PodcastView from '../components/Photography/PodcastView.vue'
-import ThessalonikiView from '../components/Photography/ThessalonikiView.vue'
+import MountOlympusView from '../components/Photography/MountOlympusView.vue'
 import BorovetsView from '../components/Photography/BorovetsView.vue'
 import DolomitesView from '../components/Photography/DolomitesView.vue'
 import ContactMe from '../components/ContactMe.vue'
@@ -46,9 +46,9 @@ const router = createRouter({
       component: PodcastView,
     },
     {
-      path: '/photography/thessaloniki',
-      name: 'thessaloniki',
-      component: ThessalonikiView,
+      path: '/photography/mountolympus',
+      name: 'mountolympus',
+      component: MountOlympusView,
     },
     {
       path: '/photography/borovets',
