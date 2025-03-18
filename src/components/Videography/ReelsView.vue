@@ -7,10 +7,11 @@
       @slideChange="onSlideChange"
       class="swiper"
     >
-      <swiper-slide v-for="(video, index) in reels" :key="index">
+      <swiper-slide v-for="(video, index) in reels" :key="index" @click="goToSlide(index)">
         <div class="swiper-slide-content">
           <iframe
             v-bind:src="getIframeSrc(video.id)"
+            :style="iframeStyle(index)"
             frameborder="0"
             allow="encrypted-media"
             allowfullscreen
@@ -39,6 +40,7 @@ export default {
     return {
       reels,
       swiperInstance: null,
+      activeSlideIndex: 0, // Initial active slide
     }
   },
   methods: {
@@ -54,51 +56,44 @@ export default {
     goNext() {
       if (this.swiperInstance) this.swiperInstance.slideNext()
     },
+    goToSlide(index) {
+      // Move to the clicked slide
+      if (this.swiperInstance) this.swiperInstance.slideTo(index)
+    },
+    onSlideChange() {
+      // Update the active slide index when the slide changes
+      this.activeSlideIndex = this.swiperInstance.activeIndex
+    },
+    iframeStyle(index) {
+      // Disable pointer events on non-active slides (so iframe is not clickable)
+      return this.activeSlideIndex === index ? {} : { pointerEvents: 'none' }
+    },
   },
   setup() {
     const isMobile = isMobileUse().value
 
     const swiperOptions = {
-      slidesPerView: 3,
-      spaceBetween: 30,
       loop: false,
-      centeredSlides: true,
+      speed: 1000,
       effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      initialSlide: 0,
+      slidesPerView: 'auto',
       coverflowEffect: {
-        rotate: 50,
-        stretch: 0,
-        depth: 100,
+        rotate: 0,
+        stretch: 80,
+        depth: 200,
         modifier: 1,
-        slideShadows: true,
+        slideShadows: false,
       },
-      initialSlide: 1,
-      loopAdditionalSlides: 3,
-      speed: 3000,
-      cssMode: true,
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
       },
     }
 
-    const swiperOptionsMobile = {
-      direction: 'vertical',
-      slidesPerView: 1,
-      spaceBetween: 0,
-      cssMode: true,
-      allowTouchMove: true, // Allow swiping
-      noSwipingClass: 'swiper-slide', // Ensure all slides are swipeable
-      on: {
-        init() {
-          // Disable body scrolling when Swiper is active
-          document.body.style.overflow = 'hidden'
-        },
-        destroy() {
-          // Re-enable body scrolling when Swiper is destroyed
-          document.body.style.overflow = ''
-        },
-      },
-    }
+    const swiperOptionsMobile = {}
 
     const swiperOptionsToBind = computed(() => (isMobile ? swiperOptionsMobile : swiperOptions))
 
@@ -121,6 +116,7 @@ export default {
 
 .swiper-slide {
   height: 80vh !important;
+  width: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;

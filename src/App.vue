@@ -140,7 +140,7 @@ onUnmounted(() => {
 .header {
   width: 100%;
   margin-top: 0;
-  margin-left: 5em;
+  margin-left: 0;
   margin-right: 10em;
   margin-bottom: 0;
   transition: background-color 1s ease;
@@ -153,16 +153,12 @@ onUnmounted(() => {
 .logo {
   height: 85px;
   display: block;
-  margin: 0 auto 2rem;
+  margin-left: 5em;
 }
 
 @media (min-width: 1024px) {
   header {
     display: flex;
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
   }
 
   nav {
