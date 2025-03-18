@@ -91,7 +91,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .container {
-  margin-top: 8em;
+  margin-top: 10em;
   display: flex;
   justify-content: center;
   @media (width < 768px) {

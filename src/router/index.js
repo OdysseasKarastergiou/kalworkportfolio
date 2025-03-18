@@ -16,6 +16,7 @@ import GraphicsView from '../components/GraphicsView.vue'
 import ExplosivoView from '../components/Graphics/ExplosivoView.vue'
 import SportsView from '../components/Graphics/SportsView.vue'
 import PodcastVideoView from '../components/Videography/PodcastVideoView.vue'
+import ReelsView from '../components/Videography/ReelsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -104,6 +105,11 @@ const router = createRouter({
       path: '/videography/podcast',
       name: 'PodcastVideo',
       component: PodcastVideoView,
+    },
+    {
+      path: '/videography/reels',
+      name: 'Reels',
+      component: ReelsView,
     },
   ],
 })

@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import { RouterView } from 'vue-router'
+import { RouterView, useRoute } from 'vue-router'
 import KalSiteLogo from './assets/KalSiteLogo.png'
 import MobileMenu from './components/common/MobileMenu.vue'
 import DesktopMenu from './components/common/DesktopMenu.vue'
@@ -8,6 +8,7 @@ import PortfolioButton from './components/common/PortfolioButton.vue'
 
 const isMenuOpen = ref(false)
 const isMobile = ref(window.innerWidth < 768)
+const route = useRoute()
 let previousWidth = window.innerWidth
 
 const toggleMenu = () => {
@@ -43,6 +44,7 @@ onUnmounted(() => {
     :class="[
       'header',
       { 'header-open': isMenuOpen },
+      { 'header-fixed': route.path === '/' },
       'flex',
       'flex-row',
       'items-center',
@@ -77,6 +79,7 @@ onUnmounted(() => {
             name="Snowboard"
             @click="isMenuOpen = false"
           />
+          <PortfolioButton to="/videography/reels" name="Reels" @click="isMenuOpen = false" />
           <PortfolioButton to="/videography/podcast" name="Podcast" @click="isMenuOpen = false" />
         </PortfolioButton>
         <PortfolioButton
@@ -121,7 +124,21 @@ onUnmounted(() => {
   transform: translateX(0);
 }
 
+.header-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin-top: 0;
+  margin-left: 5em;
+  margin-right: 10em;
+  margin-bottom: 0;
+  transition: background-color 1s ease;
+  z-index: 1000;
+}
+
 .header {
+  width: 100%;
   margin-top: 0;
   margin-left: 5em;
   margin-right: 10em;

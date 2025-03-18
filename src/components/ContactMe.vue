@@ -23,6 +23,29 @@
           <p class="contact-me__info-text">Thessaloniki, Greece</p>
         </div>
       </div>
+      <div>
+        <div class="flex justify-between">
+          <div class="form">
+            <input type="text" name="name" autocomplete="off" placeholder="Your Name" required />
+            <label for="name" class="label-name"> </label>
+          </div>
+          <div class="form">
+            <input type="email" name="email" autocomplete="off" placeholder="Your Email" required />
+            <label for="email" class="label-name"> </label>
+          </div>
+        </div>
+        <div class="form">
+          <input
+            type="message"
+            name="message"
+            autocomplete="off"
+            placeholder="Your Message"
+            required
+          />
+          <label for="message" class="label-name"> </label>
+        </div>
+      </div>
+      <PortfolioButton class="mt-10" name="SEND ->" :defaultActive="true" />
       <div class="contact-me__links flex">
         <div>
           <a
@@ -59,6 +82,7 @@
     <LeafletMap class="contact-me__map" />
   </div>
 </template>
+
 <script>
 import MobileIcon from '../assets/mobileIcon.svg'
 import EmailIcon from '../assets/emailIcon.svg'
@@ -67,6 +91,7 @@ import FacebookIcon from '../assets/facebookIcon.svg'
 import InstagramIcon from '../assets/instagramIcon.svg'
 import YoutubeIcon from '../assets/youtubeIcon.svg'
 import LeafletMap from './LeafletMap.vue'
+import PortfolioButton from './common/PortfolioButton.vue'
 import { isMobileUse } from '@/utils/utils'
 export default {
   name: 'ContactMeView',
@@ -89,6 +114,7 @@ export default {
   },
   components: {
     LeafletMap,
+    PortfolioButton,
   },
 }
 </script>
@@ -106,18 +132,22 @@ export default {
     display: flex;
     flex-direction: column;
     width: 85%;
+    margin-top: 2em;
   }
+
   &__container {
     font-size: 1.5em;
     @media (width < 768px) {
       font-size: 1em;
     }
   }
+
   &__title {
     font-size: 1.6em;
     color: white;
     margin-bottom: 1em;
   }
+
   &__map {
     width: 50%;
     min-width: 450px;
@@ -127,6 +157,56 @@ export default {
     @media (width < 768px) {
       min-width: 300px;
     }
+  }
+
+  .form {
+    width: 100%;
+    position: relative;
+    height: 60px;
+    overflow: hidden;
+  }
+
+  .form input {
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    padding-top: 20px;
+    border: none;
+  }
+  .form label {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-bottom: 1px solid white;
+  }
+  .form label::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid #c48f56;
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+  }
+
+  .content-name {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    padding-bottom: 5px;
+    transition: all 0.3s ease;
+  }
+  .form input:focus {
+    outline: none;
+  }
+  .form input:focus + .label-name::after,
+  .form input:valid + .label-name::after {
+    transform: translateX(0%);
   }
   &__info {
     display: flex;
@@ -144,6 +224,7 @@ export default {
       height: 26px;
     }
   }
+
   &__links {
     margin-top: 2em;
     gap: 4em;
@@ -161,14 +242,16 @@ export default {
         width: 10px;
         height: 0.5px;
         background: #c48f56;
-        @media (width< 768px) {
+        @media (width < 768px) {
           right: 6em;
         }
       }
     }
+
     &-text {
       color: white;
     }
+
     &-icon {
       width: 15px;
       height: 15px;

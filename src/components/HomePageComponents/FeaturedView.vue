@@ -206,9 +206,10 @@ export default {
 .featured-view {
   &__container {
     position: fixed;
-    top: 0;
+    top: 6em;
     @media (width<768px) {
       position: relative;
+      top: 0;
     }
   }
   &__video {
@@ -303,7 +304,7 @@ export default {
   transform: rotate(270deg);
   font-size: 0.75em;
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 0;
   color: white;
   &::after {

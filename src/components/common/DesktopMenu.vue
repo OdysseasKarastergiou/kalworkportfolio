@@ -17,6 +17,7 @@
         <PortfolioButton to="/videography/cinematic" name="Cinematic" />
         <PortfolioButton to="/videography/drone" name="Drone" />
         <PortfolioButton to="/videography/snowboard" name="Snowboard" />
+        <PortfolioButton to="/videography/reels" name="Reels" />
         <PortfolioButton to="/videography/podcast" name="Podcast" />
       </div>
     </div>

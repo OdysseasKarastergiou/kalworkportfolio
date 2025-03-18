@@ -170,7 +170,7 @@ export default {
   .side__title {
     transform: rotate(270deg);
     position: absolute;
-    top: 41%;
+    top: 50%;
     left: 0;
     color: white;
     &::after {

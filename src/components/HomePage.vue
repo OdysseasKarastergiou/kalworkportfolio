@@ -156,14 +156,14 @@ body {
   align-items: center;
   justify-content: center;
   width: 100vw;
-  height: 100vh !important;
+  height: 100vh;
   overflow: hidden;
 }
 
 .swiper-pagination {
   position: absolute;
   right: 20px;
-  top: 40% !important;
+  top: 50%;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;

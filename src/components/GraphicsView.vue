@@ -30,6 +30,7 @@ export default {
   grid-template-columns: repeat(3, 1fr);
   padding: 20px;
   width: 80%;
+  margin-top: 2em;
 
   @media (width < 768px) {
     grid-template-columns: repeat(2, 1fr);
@@ -45,7 +46,7 @@ export default {
       height: 100%; // Ensure the image fills the container
       object-fit: cover; // Maintain aspect ratio
       cursor: pointer;
-      transition: opacity 0.3s ease-in-out;
+      transition: filter 0.3s ease-in-out;
     }
 
     &--overlay {
@@ -54,15 +55,15 @@ export default {
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0); // Fully transparent by default
+      background-color: rgba(0, 0, 0, 0);
       transition: background-color 0.3s ease-in-out;
     }
 
     &--label {
       position: absolute;
       top: 5%;
-      left: calc(5% + 1em); // 10% from the left edge plus 1em margin
-      transform: translateX(0); // Remove vertical translation
+      left: calc(5% + 1em);
+      transform: translateX(0);
       color: white;
       padding: 10px 15px;
       border-radius: 5px;
@@ -72,8 +73,12 @@ export default {
       transition: opacity 0.3s ease-in-out;
     }
 
+    &:hover &--images {
+      filter: brightness(0.5);
+    }
+
     &:hover &--overlay {
-      background-color: rgba(0, 0, 0, 0.5); // Semi-transparent black on hover
+      background-color: rgba(0, 0, 0, 0.3);
     }
 
     &:hover &--label {

@@ -36,7 +36,7 @@ export default {
   grid-template-columns: repeat(3, 1fr);
   padding: 20px;
   width: 80%;
-
+  margin-top: 2em;
   @media (width < 768px) {
     grid-template-columns: repeat(2, 1fr);
     font-size: 0.6em;
