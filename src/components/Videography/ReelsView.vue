@@ -10,10 +10,9 @@
       <swiper-slide v-for="(video, index) in reels" :key="index" @click="goToSlide(index)">
         <div class="swiper-slide-content">
           <iframe
-            v-bind:src="getIframeSrc(video.id)"
+            v-bind:src="getIframeSrc(video.id, index)"
             :style="iframeStyle(index)"
             frameborder="0"
-            allow="encrypted-media"
             allowfullscreen
           ></iframe>
         </div>
@@ -47,8 +46,14 @@ export default {
     setSwiperInstance(swiper) {
       this.swiperInstance = swiper
     },
-    getIframeSrc(videoId) {
-      return `https://www.youtube.com/embed/${videoId}`
+    getIframeSrc(videoId, index) {
+      if (!this.isMobile) {
+        return `https://www.youtube.com/embed/${videoId}`
+      } else {
+        return this.activeSlideIndex === index
+          ? `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`
+          : `https://www.youtube.com/embed/${videoId}?autoplay=0&mute=1`
+      }
     },
     goPrev() {
       if (this.swiperInstance) this.swiperInstance.slidePrev()
@@ -63,10 +68,11 @@ export default {
     onSlideChange() {
       // Update the active slide index when the slide changes
       this.activeSlideIndex = this.swiperInstance.activeIndex
+      this.$forceUpdate()
     },
     iframeStyle(index) {
       // Disable pointer events on non-active slides (so iframe is not clickable)
-      return this.activeSlideIndex === index ? {} : { pointerEvents: 'none' }
+      return !this.isMobile && this.activeSlideIndex === index ? {} : { pointerEvents: 'none' }
     },
   },
   setup() {

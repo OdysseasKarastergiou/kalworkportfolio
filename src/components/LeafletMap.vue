@@ -47,7 +47,6 @@ export default {
 <style>
 .map-container {
   max-width: 400px;
-  margin: auto;
   border-radius: 10px;
   height: 450px;
   @media (width < 768px) {

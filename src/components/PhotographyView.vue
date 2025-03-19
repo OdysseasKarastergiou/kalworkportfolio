@@ -38,7 +38,9 @@ export default {
   width: 80%;
   margin-top: 2em;
   @media (width < 768px) {
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     font-size: 0.6em;
   }
 

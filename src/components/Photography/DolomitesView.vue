@@ -11,8 +11,22 @@
     >
       <img :src="photo" alt="Photo" loading="lazy" />
     </div>
-    <div v-if="showModal" class="modal" @click="closeModal">
+    <div
+      v-if="showModal"
+      class="modal"
+      @click.self="closeModal"
+      @touchstart="startSwipe"
+      @touchmove="onSwipeMove"
+      @touchend="endSwipe"
+    >
+      <!-- Only show buttons on larger screens -->
+      <button v-if="!isMobile" class="nav prev" @click.stop="prevImage">
+        <font-awesome-icon :icon="['fas', 'chevron-left']" />
+      </button>
       <img :src="photos[selectedIndex]" class="modal-content" />
+      <button v-if="!isMobile" class="nav next" @click.stop="nextImage">
+        <font-awesome-icon :icon="['fas', 'chevron-right']" />
+      </button>
     </div>
   </div>
 </template>
@@ -25,6 +39,11 @@ export default {
       showModal: false,
       selectedIndex: null,
       isLoading: true,
+      isMobile: false,
+      touchStartX: 0,
+      touchStartY: 0,
+      touchEndX: 0,
+      touchEndY: 0,
     }
   },
   async created() {
@@ -34,6 +53,14 @@ export default {
       Object.values(images).map((importFn) => importFn().then((mod) => mod.default)),
     )
     this.isLoading = false
+
+    // Check if the user is on a mobile device
+    this.isMobile = window.innerWidth <= 768
+
+    window.addEventListener('keydown', this.handleKeydown)
+  },
+  beforeUnmount() {
+    window.removeEventListener('keydown', this.handleKeydown)
   },
   methods: {
     openModal(index) {
@@ -42,6 +69,68 @@ export default {
     },
     closeModal() {
       this.showModal = false
+    },
+    nextImage() {
+      this.selectedIndex = (this.selectedIndex + 1) % this.photos.length
+    },
+    prevImage() {
+      this.selectedIndex = (this.selectedIndex - 1 + this.photos.length) % this.photos.length
+    },
+    handleKeydown(event) {
+      if (!this.showModal) return
+
+      switch (event.key) {
+        case 'ArrowRight':
+          this.nextImage()
+          break
+        case 'ArrowLeft':
+          this.prevImage()
+          break
+        case 'Escape':
+          this.closeModal()
+          break
+      }
+    },
+
+    // Swipe functionality for mobile users (Left/Right for image navigation)
+    startSwipe(event) {
+      this.touchStartX = event.changedTouches[0].screenX
+      this.touchStartY = event.changedTouches[0].screenY
+    },
+    onSwipeMove(event) {
+      this.touchEndX = event.changedTouches[0].screenX
+      this.touchEndY = event.changedTouches[0].screenY
+    },
+    endSwipe() {
+      // Detect horizontal swipe (Left/Right) for navigation
+      if (
+        Math.abs(this.touchEndX - this.touchStartX) > Math.abs(this.touchEndY - this.touchStartY)
+      ) {
+        if (this.touchEndX - this.touchStartX > 50) {
+          this.nextImage() // Swipe Right
+        } else if (this.touchStartX - this.touchEndX > 50) {
+          this.prevImage() // Swipe Left
+        }
+      }
+      // Detect vertical swipe (Up/Down) to close modal
+      else if (Math.abs(this.touchEndY - this.touchStartY) > 50) {
+        if (this.touchStartY - this.touchEndY > 50) {
+          this.closeModalWithAnimation() // Swipe Down to close
+        } else if (this.touchEndY - this.touchStartY > 50) {
+          this.closeModalWithAnimation() // Swipe Up to close
+        }
+      }
+    },
+
+    // Close modal with fade-out animation
+    closeModalWithAnimation() {
+      const modal = document.querySelector('.modal')
+      if (modal) {
+        modal.classList.add('closing')
+        setTimeout(() => {
+          this.closeModal()
+        }, 300) // Delay to match the animation duration
+      }
     },
   },
 }
@@ -90,5 +179,33 @@ export default {
   max-width: 90%;
   max-height: 90%;
   border-radius: 10px;
+}
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 20px;
+  outline: none;
+  border-radius: 50%;
+}
+.nav:hover {
+  scale: 1.3;
+}
+.prev {
+  left: 20px;
+}
+.next {
+  right: 20px;
+}
+
+/* Hides navigation buttons on mobile */
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
 }
 </style>

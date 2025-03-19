@@ -24,18 +24,35 @@
         </div>
       </div>
       <div>
-        <div class="flex justify-between">
+        <div class="flex gap-4">
           <div class="form">
-            <input type="text" name="name" autocomplete="off" placeholder="Your Name" required />
+            <input
+              v-model="name"
+              type="text"
+              name="name"
+              autocomplete="off"
+              placeholder="Your Name"
+              required
+              @input="validateName"
+            />
             <label for="name" class="label-name"> </label>
           </div>
           <div class="form">
-            <input type="email" name="email" autocomplete="off" placeholder="Your Email" required />
+            <input
+              v-model="email"
+              type="email"
+              name="email"
+              autocomplete="off"
+              placeholder="Your Email"
+              required
+              @input="validateEmail"
+            />
             <label for="email" class="label-name"> </label>
           </div>
         </div>
         <div class="form">
           <input
+            v-model="message"
             type="message"
             name="message"
             autocomplete="off"
@@ -45,7 +62,7 @@
           <label for="message" class="label-name"> </label>
         </div>
       </div>
-      <PortfolioButton class="mt-10" name="SEND ->" :defaultActive="true" />
+      <PortfolioButton class="mt-10" name="SEND ->" :defaultActive="true" @click="handleSubmit" />
       <div class="contact-me__links flex">
         <div>
           <a
@@ -110,7 +127,63 @@ export default {
       facebookIcon: FacebookIcon,
       youtubeIcon: YoutubeIcon,
       instagramIcon: InstagramIcon,
+      name: '',
+      email: '',
+      message: '',
     }
+  },
+  methods: {
+    validateName() {
+      if (this.name.length > 20) {
+        return true
+      } else {
+        return false
+      }
+    },
+    validateEmail() {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      if (!emailRegex.test(this.email)) {
+        this.emailError = 'Invalid email format'
+      } else {
+        this.emailError = ''
+      }
+    },
+    handleSubmit() {
+      this.validateName()
+      this.validateEmail()
+
+      if (this.validateName) {
+        alert('noob nbame')
+        return
+      }
+
+      if (!this.name || !this.email || !this.message) {
+        alert('Please fill in all fields before sending.')
+        return
+      }
+
+      console.log('Form Submitted:', {
+        name: this.name,
+        email: this.email,
+        message: this.message,
+      })
+
+      // Example API Call (Uncomment & Modify if needed)
+      // fetch('/api/contact', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({ name: this.name, email: this.email, message: this.message }),
+      // }).then(response => response.json())
+      //   .then(data => console.log('Success:', data))
+      //   .catch(error => console.error('Error:', error));
+
+      alert('Message sent successfully!')
+
+      // Clear form after submission
+      this.name = ''
+      this.email = ''
+      this.message = ''
+    },
   },
   components: {
     LeafletMap,
@@ -122,9 +195,8 @@ export default {
 .contact-me {
   display: flex;
   align-items: center;
-  gap: 5em;
-  width: 100%;
-  max-width: 50rem;
+
+  max-width: 80%;
   margin: 8em auto;
   justify-content: center;
   @media (width < 768px) {
@@ -151,7 +223,7 @@ export default {
   &__map {
     width: 50%;
     min-width: 450px;
-    margin: 0 auto;
+    margin-left: 2em;
     display: block;
     z-index: 0;
     @media (width < 768px) {
@@ -238,7 +310,7 @@ export default {
         content: '';
         position: absolute;
         top: 50%;
-        right: 5em;
+        right: 5.5em;
         width: 10px;
         height: 0.5px;
         background: #c48f56;

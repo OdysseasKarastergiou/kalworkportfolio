@@ -51,7 +51,9 @@ onUnmounted(() => {
       'justify-between',
     ]"
   >
-    <img class="logo" :src="KalSiteLogo" />
+    <router-link class="logo" to="/">
+      <img class="logo" :src="KalSiteLogo" />
+    </router-link>
 
     <MobileMenu v-if="isMobile" :isOpen="isMenuOpen" @toggle="toggleMenu" />
     <DesktopMenu v-else />
@@ -154,6 +156,7 @@ onUnmounted(() => {
   height: 85px;
   display: block;
   margin-left: 5em;
+  cursor: pointer;
 }
 
 @media (min-width: 1024px) {
