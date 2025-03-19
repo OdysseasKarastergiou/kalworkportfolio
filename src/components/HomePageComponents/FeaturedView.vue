@@ -47,7 +47,8 @@
         <PortfolioButton
           :class="isMobile ? 'featured-view__button--mobile' : 'featured-view__button'"
           to="/videography/all"
-          name="VIEW FILM ->"
+          name="VIEW FILM"
+          :isOperation="true"
           :defaultActive="true"
         />
         <div v-if="!isMobile" class="featured-view__navigation flex items-center gap-3">
@@ -97,9 +98,9 @@ export default {
   },
   setup(_, { emit }) {
     const videos = ref([
-      { src: Carousel1, title: 'Carousel1', bkgImage: Carousel1Image },
-      { src: Carousel2, title: 'Carousel2', bkgImage: Carousel2Image },
-      { src: Carousel3, title: 'Carousel3', bkgImage: Carousel3Image },
+      { src: Carousel1, title: 'Vermio', bkgImage: Carousel1Image },
+      { src: Carousel2, title: 'Numfaio', bkgImage: Carousel2Image },
+      { src: Carousel3, title: 'Thessaloniki', bkgImage: Carousel3Image },
     ])
     const videoPlayers = ref([])
     const isPlaying = ref([])
@@ -216,7 +217,7 @@ export default {
     width: 65%;
   }
   &__button {
-    margin-top: 1em;
+    margin-top: 2.5em;
     &--mobile {
       position: absolute;
       right: 0;
@@ -239,13 +240,15 @@ export default {
         font-size: 0.7em;
       }
       &-name {
+        font-weight: 600;
         color: white;
-        font-size: 1.6em;
+        font-size: 2em;
       }
     }
   }
   &__navigation {
     position: absolute;
+    margin-top: 1.75em;
     gap: 1em;
     right: 0;
     color: white;

@@ -2,6 +2,7 @@
   <div class="photography-view">
     <div v-for="(category, index) in categories" :key="index" class="photography-view__category">
       <router-link :to="category.route">
+        <span v-if="isMobile" class="photography-view__name">{{ category.name }}</span>
         <img class="photography-view__category--images" :src="category.image" loading="lazy" />
         <div class="photography-view__category--label">{{ category.name }}</div>
       </router-link>
@@ -15,8 +16,16 @@ import PodcastCat from '../assets/photographyCategories/Podcast.webp'
 import MountOlympusCat from '../assets/photographyCategories/MountOlympus.webp'
 import BorovetsCat from '../assets/photographyCategories/Borovets.webp'
 import DolomitesCat from '../assets/photographyCategories/Dolomites.webp'
+import { isMobileUse } from '@/utils/utils'
 export default {
   name: 'PhotographyView',
+  setup() {
+    const isMobile = isMobileUse().value
+
+    return {
+      isMobile,
+    }
+  },
   data() {
     return {
       categories: [
@@ -35,13 +44,24 @@ export default {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding: 20px;
-  width: 80%;
+  width: 100%;
   margin-top: 2em;
   @media (width < 768px) {
     display: flex;
     flex-direction: column;
     width: 100%;
     font-size: 0.6em;
+  }
+
+  &__name {
+    position: absolute;
+    width: 100%;
+    top: 40%;
+    display: flex;
+    justify-content: center;
+    font-size: 5em;
+    color: white;
+    font-family: 'Pinkend', sans-serif;
   }
 
   &__category {
@@ -54,7 +74,6 @@ export default {
       height: 100%;
       cursor: pointer;
       transition: filter 0.3s ease-in-out;
-
       &:hover {
         filter: brightness(0.5);
       }
@@ -70,12 +89,18 @@ export default {
       border-radius: 5px;
       font-size: 2em;
       font-weight: 800;
-      opacity: 0;
+      opacity: 0; // Default to visible on mobile
       transition: opacity 0.3s ease-in-out;
+
+      @media (min-width: 768px) {
+        opacity: 0;
+      }
     }
 
-    &:hover &--label {
-      opacity: 1;
+    @media (min-width: 768px) {
+      &:hover &--label {
+        opacity: 1;
+      }
     }
   }
 }

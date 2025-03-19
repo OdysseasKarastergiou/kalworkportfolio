@@ -29,7 +29,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding: 20px;
-  width: 80%;
+  width: 100%;
   margin-top: 2em;
 
   @media (width < 768px) {

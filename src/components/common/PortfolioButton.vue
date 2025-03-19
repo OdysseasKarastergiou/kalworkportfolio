@@ -10,6 +10,9 @@
       <span v-if="hasSubcategories" class="chevron">
         <FontAwesomeIcon :icon="isOpen ? 'chevron-down' : 'chevron-right'" />
       </span>
+      <span class="arrow" v-if="isOperation">
+        <font-awesome-icon :icon="['fas', 'arrow-right']" />
+      </span>
     </component>
     <transition name="slide">
       <div v-if="hasSubcategories && isOpen" class="subcategories">
@@ -40,6 +43,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  isOperation: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 const isOpen = ref(false)
@@ -54,12 +61,13 @@ const handleClick = () => {
 <style lang="scss" scoped>
 .portfolio-button {
   display: inline-block;
-  font-size: 1rem;
+  font-size: 0.8em;
+  font-family: 'Poppins', sans-serif;
   cursor: pointer;
   position: relative;
   color: white;
   text-decoration: none;
-  padding: 0 1rem;
+  padding: 0.5em;
   overflow: hidden;
   display: flex;
   justify-content: space-between;
@@ -98,6 +106,12 @@ const handleClick = () => {
 .chevron {
   margin-left: 3em;
   font-size: 0.8em;
+}
+
+.arrow {
+  margin-left: 0.75em;
+  margin-top: 0.25em;
+  font-size: 0.9em;
 }
 
 .subcategories {

@@ -1,7 +1,7 @@
 <template>
   <div class="contact-me">
     <div class="contact-me__container">
-      <p class="contact-me__title">CONTACT ME</p>
+      <p class="contact-me__title">Contact Me</p>
       <div class="contact-me__info flex">
         <img class="contact-me__info-icon" :src="mobileIcon" />
         <div>
@@ -62,7 +62,13 @@
           <label for="message" class="label-name"> </label>
         </div>
       </div>
-      <PortfolioButton class="mt-10" name="SEND ->" :defaultActive="true" @click="handleSubmit" />
+      <PortfolioButton
+        class="mt-10"
+        name="SEND"
+        :isOperation="true"
+        :defaultActive="true"
+        @click="handleSubmit"
+      />
       <div class="contact-me__links flex">
         <div>
           <a
@@ -143,17 +149,14 @@ export default {
     validateEmail() {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
       if (!emailRegex.test(this.email)) {
-        this.emailError = 'Invalid email format'
+        return true
       } else {
-        this.emailError = ''
+        return false
       }
     },
     handleSubmit() {
-      this.validateName()
-      this.validateEmail()
-
-      if (this.validateName) {
-        alert('noob nbame')
+      if (this.validateName() || this.validateEmail()) {
+        alert('Please enter a valid name and email')
         return
       }
 
@@ -162,27 +165,28 @@ export default {
         return
       }
 
-      console.log('Form Submitted:', {
+      const formData = {
         name: this.name,
         email: this.email,
         message: this.message,
+      }
+
+      fetch('https://formspree.io/f/mwplvljl', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       })
-
-      // Example API Call (Uncomment & Modify if needed)
-      // fetch('/api/contact', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ name: this.name, email: this.email, message: this.message }),
-      // }).then(response => response.json())
-      //   .then(data => console.log('Success:', data))
-      //   .catch(error => console.error('Error:', error));
-
-      alert('Message sent successfully!')
-
-      // Clear form after submission
-      this.name = ''
-      this.email = ''
-      this.message = ''
+        .then((response) => response.json())
+        .then((data) => {
+          alert('Message sent successfully!')
+          this.name = ''
+          this.email = ''
+          this.message = ''
+        })
+        .catch((error) => {
+          alert('Error sending message, please try again later.')
+          console.error('Error:', error)
+        })
     },
   },
   components: {
@@ -216,6 +220,7 @@ export default {
 
   &__title {
     font-size: 1.6em;
+    font-weight: 600;
     color: white;
     margin-bottom: 1em;
   }

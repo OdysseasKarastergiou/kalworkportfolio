@@ -61,45 +61,45 @@ onUnmounted(() => {
     <!-- Add Transition wrapper here -->
     <Transition name="slide">
       <nav v-show="isMobile && isMenuOpen" :class="['navigator', { open: isMenuOpen }]">
-        <PortfolioButton class="navigator__links" to="/" name="Home" @click="isMenuOpen = false" />
+        <PortfolioButton class="navigator__links" to="/" name="HOME" @click="isMenuOpen = false" />
         <PortfolioButton
           class="navigator__links"
           to="/aboutMe"
-          name="About Me"
+          name="ABOUT ME"
           @click="isMenuOpen = false"
         />
-        <PortfolioButton class="navigator__links" name="Videography" hasSubcategories>
-          <PortfolioButton to="/videography/all" name="All" @click="isMenuOpen = false" />
+        <PortfolioButton class="navigator__links" name="VIDEOGRAPHY" hasSubcategories>
+          <PortfolioButton to="/videography/all" name="ALL" @click="isMenuOpen = false" />
           <PortfolioButton
             to="/videography/cinematic"
-            name="Cinematic"
+            name="CINEMATIC"
             @click="isMenuOpen = false"
           />
-          <PortfolioButton to="/videography/drone" name="Drone" @click="isMenuOpen = false" />
+          <PortfolioButton to="/videography/drone" name="DRONE" @click="isMenuOpen = false" />
           <PortfolioButton
             to="/videography/snowboard"
-            name="Snowboard"
+            name="SNOWBOARD"
             @click="isMenuOpen = false"
           />
-          <PortfolioButton to="/videography/reels" name="Reels" @click="isMenuOpen = false" />
-          <PortfolioButton to="/videography/podcast" name="Podcast" @click="isMenuOpen = false" />
+          <PortfolioButton to="/videography/reels" name="REELS" @click="isMenuOpen = false" />
+          <PortfolioButton to="/videography/podcast" name="PODCAST" @click="isMenuOpen = false" />
         </PortfolioButton>
         <PortfolioButton
           class="navigator__links"
           to="/photography"
-          name="Photography"
+          name="PHOTOGRAPHY"
           @click="isMenuOpen = false"
         />
         <PortfolioButton
           class="navigator__links"
           to="/graphics"
-          name="Graphics"
+          name="GRAPHICS"
           @click="isMenuOpen = false"
         />
         <PortfolioButton
           class="navigator__links"
           to="/contact"
-          name="Contact Me"
+          name="CONTACT ME"
           @click="isMenuOpen = false"
         />
       </nav>
@@ -153,10 +153,15 @@ onUnmounted(() => {
 }
 
 .logo {
-  height: 85px;
+  height: 105px;
   display: block;
-  margin-left: 5em;
+  margin-top: 0.5em;
+  margin-left: 2em;
   cursor: pointer;
+  @media (max-width: 768px) {
+    left: 22%;
+    position: relative;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -198,11 +203,6 @@ onUnmounted(() => {
       margin-left: 2em;
       margin-top: 1em;
     }
-  }
-  .navigator a {
-    font-size: 1.5em;
-    margin-top: 1em;
-    margin-left: 2em;
   }
 }
 </style>

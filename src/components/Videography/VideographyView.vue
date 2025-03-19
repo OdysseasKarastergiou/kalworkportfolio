@@ -9,7 +9,6 @@
     >
       <img class="videography-view__videos-image" :src="video.thumbnail" alt="Video" />
       <div class="videography-view__videos-text flex flex-col">
-        <div>{{ video.category }} • {{ video.date }}</div>
         <div class="videography-view__videos-text--title">{{ video.title }}</div>
       </div>
     </div>

@@ -4,18 +4,17 @@
     <div class="about-me">
       <p class="about-me__title">HELLO & WELCOME</p>
       <p class="about-me__tag">
-        My Name is George Kalogiannidis, Greece Based Videographer & Video Editor
+        My name is George Kalogiannidis,2h SEIRA Videographer & Video editor, Based in Greece
       </p>
+
       <p class="about-me__desc">
-        George is a video editor, and videographer based in Thessaloniki, Greece. He has been
-        working as a video editor for the past three years and has recently expanded into
-        filmmaking, which has become his primary professional focus. His work in video production
-        includes editing, storytelling, and visual content creation, showcasing his creativity and
-        technical expertise. Passionate about both health sciences and visual arts, George
-        continuously seeks opportunities to enhance his skills in both fields. He remains committed
-        to lifelong learning, professional development, and creative storytelling through film. In
-        his free time, he enjoys outdoor activities, fitness, and exploring new filmmaking
-        techniques.
+        I have been working as a video editor for the past three years and have recently expanded
+        into filmmaking, which is now my primary professional focus. My work in video production
+        includes editing, storytelling, and visual content creation, allowing me to blend creativity
+        with technical expertise. I am always looking for opportunities to grow and refine my skills
+        and I am committed to lifelong learning, professional development and telling compelling
+        stories through film. In my free time, I enjoy outdoor activities, fitness, and
+        experimenting with new filmmaking techniques.
       </p>
       <div class="about-me__flex">
         <div class="about-me__flex-item">
@@ -23,8 +22,8 @@
           <div>
             <p class="about-me__flex-item--title">Filmmaking</p>
             <p class="about-me__flex-item--desc">
-              Kre8tive Films, led by George Kalogiannidis, brings stories to life with cinematic
-              visuals and compelling storytelling.
+              At Kre8tive Films, I bring stories to life with cinematic visuals and compelling
+              storytelling.
             </p>
           </div>
         </div>
@@ -33,7 +32,7 @@
           <div>
             <p class="about-me__flex-item--title">Project Management</p>
             <p class="about-me__flex-item--desc">
-              From concept to execution, we ensure every production runs smoothly, on time, and on
+              From concept to execution, I ensure every production runs smoothly, on time, and on
               budget with precision and creativity.
             </p>
           </div>
@@ -41,9 +40,9 @@
         <div class="about-me__flex-item">
           <img class="about-me__flex-icon" :src="micIcon" alt="micIcon" />
           <div>
-            <p class="about-me__flex-item--title">Camera Crews</p>
+            <p class="about-me__flex-item--title">Camera Crew</p>
             <p class="about-me__flex-item--desc">
-              Our skilled camera teams capture stunning visuals, delivering high-quality content for
+              My skilled camera team captures stunning visuals, delivering high-quality content for
               any production need.
             </p>
           </div>
@@ -53,7 +52,7 @@
           <div>
             <p class="about-me__flex-item--title">Creative Direction</p>
             <p class="about-me__flex-item--desc">
-              We shape ideas into powerful visual narratives, ensuring your brand’s vision is
+              I shape ideas into powerful visual narratives, making sure your brand’s vision is
               executed with creativity and impact.
             </p>
           </div>
@@ -93,95 +92,118 @@ export default {
 <style lang="scss" scoped>
 .container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  width: 75%;
+  margin: 0 auto;
+  height: 100vh; /* Make sure it fills the screen */
+  position: relative; /* Keep the side title positioned properly */
 }
+
 .about-me {
   display: flex;
   flex-direction: column;
-  width: 50%;
-  margin-left: 10em;
   font-size: 1em;
-  @media (width < 1280px) {
+  text-align: left;
+
+  @media (max-width: 1280px) {
     font-size: 0.8em;
   }
-  @media (width < 768px) {
-    margin-left: 0;
-    font-size: 0.8em;
+
+  @media (max-width: 768px) {
     width: 95%;
+    font-size: 0.8em;
   }
+
   &__title {
     color: #c48f56;
     font-size: 0.8em;
     margin-bottom: 1em;
   }
+
   &__tag {
     font-size: 2.4em;
     margin-bottom: 1em;
     color: white;
-    @media (width < 768px) {
+
+    @media (max-width: 768px) {
       font-size: 1.8em;
     }
   }
+
   &__desc {
-    font-size: 1em;
+    font-size: 1.4em;
     line-height: 1.5em;
     color: #9f9f9f;
-    @media (width < 768px) {
+
+    @media (max-width: 768px) {
       font-size: 1.2em;
     }
   }
-  &__img {
-    margin-left: 3em;
-    height: auto;
-    max-width: 25%;
-    object-fit: contain;
-    @media (width < 768px) {
-      margin-left: 0;
-      max-width: 80%;
-    }
-  }
+
   &__flex {
     display: flex;
     flex-wrap: wrap;
     color: white;
-    margin-top: 1.5em;
-    gap: 10px;
-    @media (width < 768px) {
-      display: flex;
+    margin-top: 4em;
+    gap: 20px; /* Space between items */
+    justify-content: center;
+
+    @media (max-width: 768px) {
       flex-direction: column;
       gap: 0;
     }
+
     &-item {
       width: 45%;
-      height: 100px;
+      height: auto; /* Let height adjust dynamically */
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      @media (width < 768px) {
+      align-items: center;
+
+      @media (max-width: 768px) {
         width: 95%;
       }
+
       &--title {
         font-size: 1.7em;
       }
+
       &--desc {
         margin-top: 1em;
       }
     }
+
     &-icon {
       color: #c48f56;
-      max-width: 8%;
+      max-width: 50px;
       font-size: 2em;
       margin-right: 0.5em;
     }
   }
 }
+
+.about-me__img {
+  max-width: 25%;
+  height: 100%; /* Matches height of .about-me */
+  object-fit: cover; /* Ensures proper image scaling */
+  align-self: stretch; /* Matches height of flex container */
+  margin-left: 3em;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    max-width: 80%;
+    height: auto; /* Prevents stretching on small screens */
+  }
+}
+
 .side__title {
   transform: rotate(270deg);
   position: absolute;
+  left: 2%;
   top: 50%;
   color: white;
+  white-space: nowrap;
+
   &::after {
     content: '';
     width: 40%;

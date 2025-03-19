@@ -19,7 +19,6 @@
       </div>
       <div class="portfolio-view__text flex flex-col">
         <p class="portfolio-view__title">{{ currentVideo.title }}</p>
-        <p>{{ currentVideo.desc }}</p>
       </div>
       <div class="portfolio-view__next flex flex-row justify-between">
         <p class="portfolio-view__next--title">Up next</p>
@@ -66,7 +65,8 @@
     <PortfolioButton
       class="portfolio-view__view-film"
       to="/videography/all"
-      name="VIEW FILM ->"
+      name="VIEW FILM"
+      :isOperation="true"
       :defaultActive="true"
     />
   </div>
@@ -179,7 +179,8 @@ export default {
     }
   }
   &__title {
-    font-size: 1.6em;
+    font-size: 2.4em;
+    font-weight: 600;
     color: white;
   }
   &__navigation {
@@ -198,7 +199,8 @@ export default {
   &__next {
     margin-top: 5em;
     &--title {
-      font-size: 2em;
+      font-size: 1.6em;
+      font-weight: 600;
       color: white;
       @media (width < 768px) {
         margin-left: 0.5em;

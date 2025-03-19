@@ -3,18 +3,16 @@
     <div class="about-me">
       <p class="about-me__title">HELLO & WELCOME</p>
       <p class="about-me__tag">
-        My Name is George Kalogiannidis, Greece Based Videographer & Video Editor
+        My name is George Kalogiannidis, Videographer & Video editor, Based in Greece
       </p>
       <p class="about-me__desc">
-        George is a video editor, and videographer based in Thessaloniki, Greece. He has been
-        working as a video editor for the past three years and has recently expanded into
-        filmmaking, which has become his primary professional focus. His work in video production
-        includes editing, storytelling, and visual content creation, showcasing his creativity and
-        technical expertise. Passionate about both health sciences and visual arts, George
-        continuously seeks opportunities to enhance his skills in both fields. He remains committed
-        to lifelong learning, professional development, and creative storytelling through film. In
-        his free time, he enjoys outdoor activities, fitness, and exploring new filmmaking
-        techniques.
+        I have been working as a video editor for the past three years and have recently expanded
+        into filmmaking, which is now my primary professional focus. My work in video production
+        includes editing, storytelling, and visual content creation, allowing me to blend creativity
+        with technical expertise. I am always looking for opportunities to grow and refine my skills
+        and I am committed to lifelong learning, professional development and telling compelling
+        stories through film. In my free time, I enjoy outdoor activities, fitness, and
+        experimenting with new filmmaking techniques.
       </p>
       <div class="about-me__flex">
         <div class="about-me__flex-item">
@@ -22,8 +20,8 @@
           <div>
             <p class="about-me__flex-item--title">Filmmaking</p>
             <p class="about-me__flex-item--desc">
-              Kre8tive Films, led by George Kalogiannidis, brings stories to life with cinematic
-              visuals and compelling storytelling.
+              At Kre8tive Films, I bring stories to life with cinematic visuals and compelling
+              storytelling.
             </p>
           </div>
         </div>
@@ -32,7 +30,7 @@
           <div>
             <p class="about-me__flex-item--title">Project Management</p>
             <p class="about-me__flex-item--desc">
-              From concept to execution, we ensure every production runs smoothly, on time, and on
+              From concept to execution, I ensure every production runs smoothly, on time, and on
               budget with precision and creativity.
             </p>
           </div>
@@ -40,9 +38,9 @@
         <div class="about-me__flex-item">
           <img class="about-me__flex-icon" :src="micIcon" alt="micIcon" />
           <div>
-            <p class="about-me__flex-item--title">Camera Crews</p>
+            <p class="about-me__flex-item--title">Camera Crew</p>
             <p class="about-me__flex-item--desc">
-              Our skilled camera teams capture stunning visuals, delivering high-quality content for
+              My skilled camera team captures stunning visuals, delivering high-quality content for
               any production need.
             </p>
           </div>
@@ -52,7 +50,7 @@
           <div>
             <p class="about-me__flex-item--title">Creative Direction</p>
             <p class="about-me__flex-item--desc">
-              We shape ideas into powerful visual narratives, ensuring your brand’s vision is
+              I shape ideas into powerful visual narratives, making sure your brand’s vision is
               executed with creativity and impact.
             </p>
           </div>

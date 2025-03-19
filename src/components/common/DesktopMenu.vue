@@ -1,34 +1,34 @@
 <template>
   <nav class="navigator">
     <div class="navigator-wrapper">
-      <PortfolioButton to="/" name="Home" />
+      <PortfolioButton to="/" name="HOME" />
     </div>
     <div class="navigator-wrapper">
-      <PortfolioButton to="/aboutMe" name="About Me" />
+      <PortfolioButton to="/aboutMe" name="ABOUT ME" />
     </div>
     <div class="dropdown navigator-wrapper">
       <PortfolioButton
         class="dropdown-btn"
-        name="Videography"
+        name="VIDEOGRAPHY"
         :defaultActive="isVideographyActive"
       />
       <div class="dropdown-menu">
-        <PortfolioButton class="dropdown-menu__portfolio-button" to="/videography/all" name="All" />
-        <PortfolioButton to="/videography/cinematic" name="Cinematic" />
-        <PortfolioButton to="/videography/drone" name="Drone" />
-        <PortfolioButton to="/videography/snowboard" name="Snowboard" />
-        <PortfolioButton to="/videography/reels" name="Reels" />
-        <PortfolioButton to="/videography/podcast" name="Podcast" />
+        <PortfolioButton class="dropdown-menu__portfolio-button" to="/videography/all" name="ALL" />
+        <PortfolioButton to="/videography/cinematic" name="CINEMATIC" />
+        <PortfolioButton to="/videography/drone" name="DRONE" />
+        <PortfolioButton to="/videography/snowboard" name="SNOWBOARD" />
+        <PortfolioButton to="/videography/reels" name="REELS" />
+        <PortfolioButton to="/videography/podcast" name="PODCAST" />
       </div>
     </div>
     <div class="navigator-wrapper">
-      <PortfolioButton to="/photography" name="Photography" :defaultActive="isPhotographyActive" />
+      <PortfolioButton to="/photography" name="PHOTOGRAPHY" :defaultActive="isPhotographyActive" />
     </div>
     <div class="navigator-wrapper">
-      <PortfolioButton to="/graphics" name="Graphics" />
+      <PortfolioButton to="/graphics" name="GRAPHICS" />
     </div>
     <div class="navigator-wrapper">
-      <PortfolioButton to="/contact" name="Contact Me" />
+      <PortfolioButton to="/contact" name="CONTACT ME" />
     </div>
   </nav>
 </template>

@@ -73,7 +73,7 @@ export default [
   },
   {
     id: 9,
-    thumbnail: 'https://img.youtube.com/vi/2yN4Vy3THEM/hqdefault.jpg',
+    thumbnail: 'https://img.youtube.com/vi/2yN4Vy3THEM/maxresdefault.jpg',
     videoUrl: 'https://www.youtube.com/embed/2yN4Vy3THEM?autoplay=1',
     time: '3:58',
     title: 'Norway Drone Footage 4K',
@@ -97,5 +97,13 @@ export default [
     title: 'Drone Footage Vermio',
     desc: 'Extra stuff about the video',
     category: 'DRONE',
+  },
+  {
+    id: 12,
+    thumbnail: 'https://img.youtube.com/vi/3SA1Jpxt6KU/maxresdefault.jpg',
+    videoUrl: 'https://www.youtube.com/embed/3SA1Jpxt6KU?autoplay=1',
+    time: '27:03',
+    title: 'Kotetsi Podcast Ep.5',
+    category: 'PODCAST',
   },
 ]
