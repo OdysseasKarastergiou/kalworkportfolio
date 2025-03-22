@@ -2,32 +2,17 @@
   <div class="featured-view flex justify-center">
     <p v-if="!isMobile" class="side__title">FEATURED WORK</p>
     <div class="featured-view__container flex flex-col items-center">
-      <swiper
-        :slidesPerView="1"
-        :speed="800"
-        :loop="true"
-        @swiper="onSwiper"
-        @slideChange="onSlideChange"
-        class="featured-swiper"
-      >
+      <swiper :slidesPerView="1" :speed="800" :loop="true" @swiper="onSwiper" @slideChange="onSlideChange"
+        class="featured-swiper">
         <swiper-slide v-for="(video, index) in videos" :key="index">
           <div class="video-container">
-            <video
-              loading="lazy"
-              ref="videoPlayers"
-              autoplay
-              loop
-              muted
-              @click="togglePlayPause(index)"
-            >
+            <video loading="lazy" ref="videoPlayers" autoplay loop muted @click="togglePlayPause(index)">
               <source :src="video.src" type="video/mp4" />
             </video>
 
             <div class="video-controls">
               <button @click.stop="toggleMute(index)">
-                <font-awesome-icon
-                  :icon="isMuted[index] ? ['fas', 'volume-mute'] : ['fas', 'volume-up']"
-                />
+                <font-awesome-icon :icon="isMuted[index] ? ['fas', 'volume-mute'] : ['fas', 'volume-up']" />
               </button>
               <button @click.stop="togglePlayPause(index)">
                 <font-awesome-icon :icon="isPlaying[index] ? ['fas', 'pause'] : ['fas', 'play']" />
@@ -44,30 +29,17 @@
             <span class="featured-view__title--box-name">{{ activeTitle }}</span>
           </div>
         </div>
-        <PortfolioButton
-          :class="isMobile ? 'featured-view__button--mobile' : 'featured-view__button'"
-          to="/videography/all"
-          name="VIEW FILM"
-          :isOperation="true"
-          :defaultActive="true"
-        />
+        <PortfolioButton :class="isMobile ? 'featured-view__button--mobile' : 'featured-view__button'"
+          to="/videography/all" name="VIEW FILM" :isOperation="true" :defaultActive="true" />
         <div v-if="!isMobile" class="featured-view__navigation flex items-center gap-3">
-          <span @click="prevSlide" class="arrow"
-            ><font-awesome-icon :icon="['fas', 'arrow-left']"
-          /></span>
+          <span @click="prevSlide" class="arrow"><font-awesome-icon :icon="['fas', 'arrow-left']" /></span>
 
-          <span
-            v-for="(video, index) in videos"
-            :key="index"
-            @click="goToSlide(index)"
-            :class="{ active: activeIndex === index }"
-          >
+          <span v-for="(video, index) in videos" :key="index" @click="goToSlide(index)"
+            :class="{ active: activeIndex === index }">
             0{{ index + 1 }}
           </span>
 
-          <span @click="nextSlide" class="arrow"
-            ><font-awesome-icon :icon="['fas', 'arrow-right']"
-          /></span>
+          <span @click="nextSlide" class="arrow"><font-awesome-icon :icon="['fas', 'arrow-right']" /></span>
         </div>
       </div>
     </div>
@@ -208,25 +180,31 @@ export default {
   &__container {
     position: fixed;
     top: 6em;
+
     @media (width<768px) {
       position: relative;
       top: 0;
     }
   }
+
   &__video {
     width: 65%;
   }
+
   &__button {
     margin-top: 2.5em;
+
     &--mobile {
       position: absolute;
       right: 0;
     }
   }
+
   &__title {
     position: absolute;
     left: 0;
     margin-top: 2em;
+
     &--index {
       position: absolute;
       color: rgba(255, 255, 255, 0.2);
@@ -235,19 +213,23 @@ export default {
 
     &--box {
       margin-left: 2em;
+
       &-feature {
         margin-top: 4em;
         font-size: 0.7em;
       }
+
       &-name {
-        font-weight: 600;
+        font-weight: 700;
         color: white;
         font-size: 2em;
       }
     }
   }
+
   &__navigation {
     position: absolute;
+    font-size: 0.9em;
     margin-top: 1.75em;
     gap: 1em;
     right: 0;
@@ -255,12 +237,14 @@ export default {
 
     span {
       cursor: pointer;
+
       &:hover {
         scale: 1.2;
       }
     }
   }
 }
+
 .video-container {
   position: relative;
   width: 100%;
@@ -292,10 +276,12 @@ export default {
   font-size: 2em;
   cursor: pointer;
 }
+
 .featured-swiper {
   width: 90vw;
   height: 75vh;
 }
+
 .swiper-slide {
   display: flex;
   align-items: center;
@@ -303,6 +289,7 @@ export default {
   width: 100% !important;
   height: 95vh !important;
 }
+
 .side__title {
   transform: rotate(270deg);
   font-size: 0.75em;
@@ -310,6 +297,7 @@ export default {
   top: 50%;
   left: 0;
   color: white;
+
   &::after {
     content: '';
     width: 40%;

@@ -40,17 +40,15 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <header
-    :class="[
-      'header',
-      { 'header-open': isMenuOpen },
-      { 'header-fixed': route.path === '/' },
-      'flex',
-      'flex-row',
-      'items-center',
-      'justify-between',
-    ]"
-  >
+  <header :class="[
+    'header',
+    { 'header-open': isMenuOpen },
+    { 'header-fixed': route.path === '/' },
+    'flex',
+    'flex-row',
+    'items-center',
+    'justify-between',
+  ]">
     <router-link class="logo" to="/">
       <img class="logo" :src="KalSiteLogo" />
     </router-link>
@@ -62,68 +60,41 @@ onUnmounted(() => {
     <Transition name="slide">
       <nav v-show="isMobile && isMenuOpen" :class="['navigator', { open: isMenuOpen }]">
         <PortfolioButton class="navigator__links" to="/" name="HOME" @click="isMenuOpen = false" />
-        <PortfolioButton
-          class="navigator__links"
-          to="/aboutMe"
-          name="ABOUT ME"
-          @click="isMenuOpen = false"
-        />
+        <PortfolioButton class="navigator__links" to="/aboutMe" name="ABOUT ME" @click="isMenuOpen = false" />
         <PortfolioButton class="navigator__links" name="VIDEOGRAPHY" hasSubcategories>
           <PortfolioButton to="/videography/all" name="ALL" @click="isMenuOpen = false" />
-          <PortfolioButton
-            to="/videography/cinematic"
-            name="CINEMATIC"
-            @click="isMenuOpen = false"
-          />
+          <PortfolioButton to="/videography/cinematic" name="CINEMATIC" @click="isMenuOpen = false" />
           <PortfolioButton to="/videography/drone" name="DRONE" @click="isMenuOpen = false" />
-          <PortfolioButton
-            to="/videography/snowboard"
-            name="SNOWBOARD"
-            @click="isMenuOpen = false"
-          />
+          <PortfolioButton to="/videography/snowboard" name="SNOWBOARD" @click="isMenuOpen = false" />
           <PortfolioButton to="/videography/reels" name="REELS" @click="isMenuOpen = false" />
           <PortfolioButton to="/videography/podcast" name="PODCAST" @click="isMenuOpen = false" />
         </PortfolioButton>
-        <PortfolioButton
-          class="navigator__links"
-          to="/photography"
-          name="PHOTOGRAPHY"
-          @click="isMenuOpen = false"
-        />
-        <PortfolioButton
-          class="navigator__links"
-          to="/graphics"
-          name="GRAPHICS"
-          @click="isMenuOpen = false"
-        />
-        <PortfolioButton
-          class="navigator__links"
-          to="/contact"
-          name="CONTACT ME"
-          @click="isMenuOpen = false"
-        />
+        <PortfolioButton class="navigator__links" to="/photography" name="PHOTOGRAPHY" @click="isMenuOpen = false" />
+        <PortfolioButton class="navigator__links" to="/graphics" name="GRAPHICS" @click="isMenuOpen = false" />
+        <PortfolioButton class="navigator__links" to="/contact" name="CONTACT ME" @click="isMenuOpen = false" />
       </nav>
     </Transition>
   </header>
 
-  <RouterView />
+  <Transition name="blur" mode="out-in">
+    <RouterView />
+  </Transition>
 </template>
 
 <style lang="scss" scoped>
-/* Add these styles for the slide transition */
-.slide-enter-active,
-.slide-leave-active {
-  transition: transform 1s ease;
+.blur-enter-active,
+.blur-leave-active {
+  transition: filter 1s ease, opacity 1s ease;
 }
 
-.slide-enter-from,
-.slide-leave-to {
-  transform: translateX(100%);
+.blur-enter-from {
+  filter: blur(10px);
+  opacity: 0;
 }
 
-.slide-enter-to,
-.slide-leave-from {
-  transform: translateX(0);
+.blur-leave-to {
+  filter: blur(10px);
+  opacity: 0;
 }
 
 .header-fixed {
@@ -140,12 +111,22 @@ onUnmounted(() => {
 }
 
 .header {
-  width: 100%;
+  width: 90%;
+
   margin-top: 0;
   margin-left: 0;
   margin-right: 10em;
   margin-bottom: 0;
   transition: background-color 1s ease;
+
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    /* Vertically center the elements */
+    width: 100%;
+    /* Ensure the header takes the full width */
+    position: relative;
+  }
 }
 
 .header-open {
@@ -156,11 +137,10 @@ onUnmounted(() => {
   height: 105px;
   display: block;
   margin-top: 0.5em;
-  margin-left: 2em;
   cursor: pointer;
-  @media (max-width: 768px) {
-    left: 22%;
-    position: relative;
+
+  @media (min-width: 768px) {
+    margin-left: 2em;
   }
 }
 
@@ -199,6 +179,7 @@ onUnmounted(() => {
     justify-content: flex-start;
     align-items: flex-start;
     z-index: 10;
+
     &__links {
       margin-left: 2em;
       margin-top: 1em;

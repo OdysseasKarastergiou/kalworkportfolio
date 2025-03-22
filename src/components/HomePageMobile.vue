@@ -2,16 +2,10 @@
   <div class="homepage-mobile">
     <swiper>
       <swiper-slide class="mobile-swiper__featured-view">
-        <div
-          class="blurred-background"
-          :style="{
-            backgroundImage: 'url(' + backgroundImage + ')',
-          }"
-        ></div>
-        <FeaturedView
-          class="homepage-mobile__featured-view"
-          @update-background="updateBackground"
-        />
+        <div class="blurred-background" :style="{
+          backgroundImage: 'url(' + backgroundImage + ')',
+        }"></div>
+        <FeaturedView class="homepage-mobile__featured-view" @update-background="updateBackground" />
       </swiper-slide>
       <AboutMeView class="homepage-mobile__about-me" />
       <div class="homepage-mobile__portfolio">
@@ -62,9 +56,11 @@ export default {
       position: absolute;
       top: 0;
     }
+
     &__about-me {
       margin-top: 2em;
     }
+
     &__portfolio {
       margin-top: 2em;
       height: 100%;
@@ -72,11 +68,13 @@ export default {
       position: relative;
       overflow: hidden;
     }
+
     &__contact-me {
       margin-top: 2em;
     }
   }
 }
+
 .mobile-swiper__featured-view {
   position: relative;
   overflow: hidden;

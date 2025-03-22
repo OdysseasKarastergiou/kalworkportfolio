@@ -7,13 +7,8 @@
     <p v-if="!isMobile" class="side__title">PORTFOLIO</p>
     <div class="flex flex-col">
       <div v-if="!isMobile" class="portfolio-view__categories">
-        <button
-          class="portfolio-view__categories--button"
-          v-for="category in categories"
-          :key="category"
-          :class="{ active: selectedCategory === category }"
-          @click="setCategory(category)"
-        >
+        <button class="portfolio-view__categories--button" v-for="category in categories" :key="category"
+          :class="{ active: selectedCategory === category }" @click="setCategory(category)">
           {{ category }}
         </button>
       </div>
@@ -23,31 +18,16 @@
       <div class="portfolio-view__next flex flex-row justify-between">
         <p class="portfolio-view__next--title">Up next</p>
         <div class="portfolio-view__navigation flex items-center gap-1">
-          <span @click="prevSlide" class="arrow"
-            ><font-awesome-icon :icon="['fas', 'caret-left']"
-          /></span>
-          <span @click="nextSlide" class="arrow"
-            ><font-awesome-icon :icon="['fas', 'caret-right']"
-          /></span>
+          <span @click="prevSlide" class="arrow"><font-awesome-icon :icon="['fas', 'caret-left']" /></span>
+          <span @click="nextSlide" class="arrow"><font-awesome-icon :icon="['fas', 'caret-right']" /></span>
         </div>
       </div>
-      <swiper
-        class="portfolio-swiper"
-        :slidesPerView="isMobile ? 1.1 : 3"
-        :space-between="20"
-        :speed="800"
-        :loop="false"
-        @swiper="onSwiper"
-      >
+      <swiper class="portfolio-swiper" :slidesPerView="isMobile ? 1.1 : 3" :space-between="20" :speed="800"
+        :loop="false" @swiper="onSwiper">
         <swiper-slide v-for="(video, index) in filteredVideos" :key="index">
           <div class="video-thumbnail-wrapper">
-            <img
-              :src="video.thumbnail"
-              :alt="`Thumbnail for video ${index + 1}`"
-              loading="lazy"
-              class="video-thumbnail"
-              @click="openVideo(video.videoUrl)"
-            />
+            <img :src="video.thumbnail" :alt="`Thumbnail for video ${index + 1}`" loading="lazy" class="video-thumbnail"
+              @click="openVideo(video.videoUrl)" />
             <span class="video-thumbnail__time">{{ video.time }}</span>
             <div class="video-overlay" @click="openVideo(video.videoUrl)">
               <p class="video-overlay__title">{{ video.title }} --</p>
@@ -62,13 +42,8 @@
         <iframe :src="selectedVideo" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-    <PortfolioButton
-      class="portfolio-view__view-film"
-      to="/videography/all"
-      name="VIEW FILM"
-      :isOperation="true"
-      :defaultActive="true"
-    />
+    <PortfolioButton class="portfolio-view__view-film" to="/videography/all" name="VIEW FILM" :isOperation="true"
+      :defaultActive="true" />
   </div>
 </template>
 
@@ -165,54 +140,66 @@ export default {
     z-index: -1;
     filter: blur(2px);
   }
+
   &__view-film {
     display: flex;
     justify-content: center;
     margin-bottom: 1em;
   }
+
   &__text {
     width: 50%;
+
     @media (width < 768px) {
       margin-top: 2em;
       margin-left: 1em;
       width: 90%;
     }
   }
+
   &__title {
     font-size: 2.4em;
-    font-weight: 600;
+    font-weight: 700;
     color: white;
   }
+
   &__navigation {
     cursor: pointer;
     color: #b0b0b0;
     font-size: 2em;
+
     span {
       &:hover {
         color: #a0a0a0;
       }
     }
+
     @media (width < 768px) {
       margin-right: 0.5em;
     }
   }
+
   &__next {
     margin-top: 5em;
+
     &--title {
       font-size: 1.6em;
-      font-weight: 600;
+      font-weight: 700;
       color: white;
+
       @media (width < 768px) {
         margin-left: 0.5em;
       }
     }
   }
+
   &__categories {
     display: inline-flex;
     margin-bottom: 2em;
     gap: 2em;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     width: max-content;
+
     &--button {
       position: relative;
       cursor: pointer;
@@ -250,16 +237,19 @@ export default {
       }
     }
   }
+
   @media (width < 768px) {
     height: 10%;
   }
 }
+
 .side__title {
   transform: rotate(270deg);
   position: absolute;
   top: 50%;
   left: 0;
   color: white;
+
   &::after {
     content: '';
     width: 40%;
@@ -270,37 +260,48 @@ export default {
     left: 6.5em;
   }
 }
+
 .portfolio-swiper {
   width: 65vw;
   height: 30vh;
 }
+
 .video-thumbnail {
   height: 100%;
-  width: 100%;
+  width: 366px;
   object-fit: cover;
   cursor: pointer;
+
   &__time {
-    background: black;
-    padding: 0px 10px;
     position: absolute;
-    color: white;
     top: 3%;
     left: 3%;
+    background: black;
+    padding: 2px 8px;
+    color: white;
+    font-size: 0.9em;
+    z-index: 2;
+    border-radius: 4px;
+    max-width: 90%;
   }
 }
+
 .video-thumbnail-wrapper {
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
+
   @media (width < 768px) {
     margin-top: 2em;
   }
 }
+
 .video-thumbnail-wrapper:hover .video-overlay {
   height: 30%;
   transform: translateY(0);
 }
+
 .video-overlay {
   display: flex;
   justify-content: center;
@@ -317,12 +318,14 @@ export default {
   transition:
     height 0.3s ease,
     transform 0.3s ease;
+
   &__title {
     &--icon {
       margin-left: 0.5em;
     }
   }
 }
+
 .video-modal {
   position: absolute;
   z-index: 10;
@@ -335,16 +338,19 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
 .video-modal__content {
   position: relative;
   width: 80%;
   max-width: 800px;
 }
+
 .video-modal iframe {
   width: 100%;
   height: 450px;
   border-radius: 10px;
 }
+
 .swiper-slide {
   height: 75% !important;
   width: 40%;

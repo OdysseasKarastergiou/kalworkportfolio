@@ -2,9 +2,14 @@
   <div class="container flex" :class="{ container: isMobile }">
     <div class="about-me">
       <p class="about-me__title">HELLO & WELCOME</p>
-      <p class="about-me__tag">
-        My name is George Kalogiannidis, Videographer & Video editor, Based in Greece
-      </p>
+      <div class="flex flex-col">
+        <p class="about-me__tag">
+          My name is George Kalogiannidis
+        </p>
+        <p class="about-me__tag">
+          Videographer & Video editor, Based in Greece
+        </p>
+      </div>
       <p class="about-me__desc">
         I have been working as a video editor for the past three years and have recently expanded
         into filmmaking, which is now my primary professional focus. My work in video production
@@ -89,9 +94,22 @@ export default {
 </script>
 <style lang="scss" scoped>
 .container {
-  margin-top: 10em;
+  margin-top: 3em;
   display: flex;
   justify-content: center;
+
+  @media(min-width: 1024px) {
+    width: 80%;
+    right: 10%;
+    position: absolute;
+  }
+
+  @media(min-width: 768px) {
+    width: 80%;
+    right: 10%;
+    position: absolute;
+  }
+
   @media (width < 768px) {
     display: flex;
     flex-direction: column;
@@ -99,78 +117,102 @@ export default {
     margin-top: 2em;
   }
 }
+
 .about-me {
   display: flex;
   flex-direction: column;
-  width: 50%;
-  margin-left: 10em;
+  width: 55%;
   font-size: 1em;
+
   @media (width < 1280px) {
     font-size: 0.8em;
   }
+
   @media (width < 768px) {
     margin-left: 0;
     font-size: 0.8em;
     width: 95%;
   }
+
   &__title {
     color: #c48f56;
-    font-size: 0.8em;
+    font-size: 1em;
+    font-weight: 600;
     margin-bottom: 1em;
   }
+
   &__tag {
-    font-size: 2.4em;
-    margin-bottom: 1em;
+    font-size: 2.5em;
+    font-weight: 600;
     color: white;
+
     @media (width < 768px) {
       font-size: 1.8em;
     }
   }
+
   &__desc {
-    font-size: 1em;
+    font-size: 1.4em;
     line-height: 1.5em;
+    margin-top: 2em;
+    margin-bottom: 2em;
     color: #9f9f9f;
+
     @media (width < 768px) {
       font-size: 1.2em;
     }
   }
+
   &__img {
-    margin-left: 3em;
+    margin-left: 2em;
     height: auto;
-    max-width: 25%;
-    object-fit: contain;
+    max-width: 35%;
+    object-fit: cover;
+
     @media (width < 768px) {
       margin-left: 0;
       max-width: 80%;
     }
   }
+
   &__flex {
     display: flex;
     flex-wrap: wrap;
     color: white;
     margin-top: 1.5em;
     gap: 10px;
+
     @media (width < 768px) {
       display: flex;
       flex-direction: column;
       gap: 0;
     }
+
     &-item {
       width: 45%;
-      height: 100px;
+      height: 140px;
       display: flex;
       justify-content: center;
       align-items: flex-start;
+
       @media (width < 768px) {
         width: 95%;
       }
+
       &--title {
         font-size: 1.7em;
+        font-weight: 600;
+
+        @media (max-width: 768px) {
+          font-size: 1.4em;
+        }
       }
+
       &--desc {
         margin-top: 1em;
       }
     }
+
     &-icon {
       color: #c48f56;
       max-width: 8%;

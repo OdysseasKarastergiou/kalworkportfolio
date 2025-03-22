@@ -2,7 +2,6 @@
   <div class="photography-view">
     <div v-for="(category, index) in categories" :key="index" class="photography-view__category">
       <router-link :to="category.route">
-        <span v-if="isMobile" class="photography-view__name">{{ category.name }}</span>
         <img class="photography-view__category--images" :src="category.image" loading="lazy" />
         <div class="photography-view__category--label">{{ category.name }}</div>
       </router-link>
@@ -16,16 +15,8 @@ import PodcastCat from '../assets/photographyCategories/Podcast.webp'
 import MountOlympusCat from '../assets/photographyCategories/MountOlympus.webp'
 import BorovetsCat from '../assets/photographyCategories/Borovets.webp'
 import DolomitesCat from '../assets/photographyCategories/Dolomites.webp'
-import { isMobileUse } from '@/utils/utils'
 export default {
   name: 'PhotographyView',
-  setup() {
-    const isMobile = isMobileUse().value
-
-    return {
-      isMobile,
-    }
-  },
   data() {
     return {
       categories: [
@@ -51,17 +42,6 @@ export default {
     flex-direction: column;
     width: 100%;
     font-size: 0.6em;
-  }
-
-  &__name {
-    position: absolute;
-    width: 100%;
-    top: 40%;
-    display: flex;
-    justify-content: center;
-    font-size: 5em;
-    color: white;
-    font-family: 'Pinkend', sans-serif;
   }
 
   &__category {

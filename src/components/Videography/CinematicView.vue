@@ -1,15 +1,10 @@
 <template>
   <div class="cinematic-view">
     <span v-if="isMobile" class="cinematic-view__label">CATEGORY: CINEMATIC</span>
-    <div
-      v-for="(video, index) in videos"
-      :key="index"
-      class="cinematic-view__videos"
-      @click="openVideo(video.videoUrl)"
-    >
+    <div v-for="(video, index) in videos" :key="index" class="cinematic-view__videos"
+      @click="openVideo(video.videoUrl)">
       <img class="cinematic-view__videos-image" :src="video.thumbnail" alt="Video" />
-      <div class="cinematic-view__videos-text flex flex-col">
-        <div>{{ video.category }} • {{ video.date }}</div>
+      <div class="flex flex-col cinematic-view__videos-text">
         <div class="cinematic-view__videos-text--title">{{ video.title }}</div>
       </div>
     </div>
@@ -57,18 +52,22 @@ export default {
   margin-left: 2em;
   margin-top: 2em;
   width: 95%;
+
   @media (width < 768px) {
     display: flex;
     flex-direction: column;
     font-size: 0.8em;
   }
+
   &__label {
     color: white;
     font-size: 1.5em;
   }
+
   &__videos {
     &-image {
       cursor: pointer;
+
       @media (width < 768px) {
         max-width: 85%;
       }
@@ -78,14 +77,16 @@ export default {
       padding: 10px;
       color: white;
       cursor: pointer;
+
       &--title {
         margin-top: 0.5em;
         font-size: 1.5em;
-        font-weight: 500;
+        font-weight: 600;
       }
     }
   }
 }
+
 .video-modal {
   position: fixed;
   z-index: 10;
@@ -98,11 +99,13 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
 .video-modal__content {
   position: relative;
   width: 80%;
   max-width: 800px;
 }
+
 .video-modal iframe {
   width: 100%;
   height: 450px;

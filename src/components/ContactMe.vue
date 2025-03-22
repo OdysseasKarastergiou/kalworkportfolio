@@ -23,79 +23,43 @@
           <p class="contact-me__info-text">Thessaloniki, Greece</p>
         </div>
       </div>
-      <div>
+      <div class="mt-10">
+        <span class="contact-me__title mt-2">Mail Me</span>
         <div class="flex gap-4">
           <div class="form">
-            <input
-              v-model="name"
-              type="text"
-              name="name"
-              autocomplete="off"
-              placeholder="Your Name"
-              required
-              @input="validateName"
-            />
+            <input v-model="name" type="text" name="name" autocomplete="off" placeholder="Your Name" required
+              @input="validateName" />
             <label for="name" class="label-name"> </label>
           </div>
           <div class="form">
-            <input
-              v-model="email"
-              type="email"
-              name="email"
-              autocomplete="off"
-              placeholder="Your Email"
-              required
-              @input="validateEmail"
-            />
+            <input v-model="email" type="email" name="email" autocomplete="off" placeholder="Your Email" required
+              @input="validateEmail" />
             <label for="email" class="label-name"> </label>
           </div>
         </div>
         <div class="form">
-          <input
-            v-model="message"
-            type="message"
-            name="message"
-            autocomplete="off"
-            placeholder="Your Message"
-            required
-          />
+          <input v-model="message" type="message" name="message" autocomplete="off" placeholder="Your Message"
+            required />
           <label for="message" class="label-name"> </label>
         </div>
       </div>
-      <PortfolioButton
-        class="mt-10"
-        name="SEND"
-        :isOperation="true"
-        :defaultActive="true"
-        @click="handleSubmit"
-      />
+      <PortfolioButton class="mt-10" name="SEND" :isOperation="true" :defaultActive="true" @click="handleSubmit" />
       <div class="contact-me__links flex">
         <div>
-          <a
-            class="contact-me__links-info"
-            href="https://www.facebook.com/profile.php?id=100000326287497"
-            target="_blank"
-          >
+          <a class="contact-me__links-info" href="https://www.facebook.com/profile.php?id=100000326287497"
+            target="_blank">
             <img class="contact-me__links-icon" :src="facebookIcon" />
             <span class="contact-me__links-text">Facebook</span>
           </a>
         </div>
         <div>
-          <a
-            class="contact-me__links-info"
-            href="https://www.instagram.com/george_kalogiannidis/"
-            target="_blank"
-          >
+          <a class="contact-me__links-info" href="https://www.instagram.com/george_kalogiannidis/" target="_blank">
             <img class="contact-me__links-icon" :src="instagramIcon" />
             <span class="contact-me__links-text">Instagram</span>
           </a>
         </div>
         <div>
-          <a
-            class="contact-me__links-info"
-            href="https://www.youtube.com/@georgekalogiannidis"
-            target="_blank"
-          >
+          <a class="contact-me__links-info" href="https://www.youtube.com/@georgekalogiannidis" target="_blank">
             <img class="contact-me__links-icon" :src="youtubeIcon" />
             <span class="contact-me__links-text">Youtube</span>
           </a>
@@ -198,23 +162,31 @@ export default {
 <style lang="scss" scoped>
 .contact-me {
   display: flex;
-  align-items: center;
-
-  max-width: 80%;
-  margin: 8em auto;
   justify-content: center;
+  margin-top: 3em;
+
   @media (width < 768px) {
-    margin-top: 2em;
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 85%;
     margin-top: 2em;
   }
 
   &__container {
     font-size: 1.5em;
+
+    @media(max-width: 1024px) {
+      font-size: 0.8em;
+    }
+
+    @media (max-width: 1279px) {
+      font-size: 1.1em;
+    }
+
     @media (width < 768px) {
       font-size: 1em;
+      margin-left: 1.5em;
     }
   }
 
@@ -226,14 +198,22 @@ export default {
   }
 
   &__map {
-    width: 50%;
-    min-width: 450px;
     margin-left: 2em;
-    display: block;
-    z-index: 0;
-    @media (width < 768px) {
-      min-width: 300px;
+    min-width: 35%;
+
+    @media(max-width:768px) {
+      margin-left: 4em;
+      margin-top: 2em;
     }
+
+    @media(max-width: 1024px) {
+      min-width: 40%;
+    }
+
+    @media (min-width:768px) {
+      height: auto;
+    }
+
   }
 
   .form {
@@ -250,6 +230,7 @@ export default {
     padding-top: 20px;
     border: none;
   }
+
   .form label {
     position: absolute;
     bottom: 0px;
@@ -259,6 +240,7 @@ export default {
     pointer-events: none;
     border-bottom: 1px solid white;
   }
+
   .form label::after {
     content: '';
     position: absolute;
@@ -278,21 +260,26 @@ export default {
     padding-bottom: 5px;
     transition: all 0.3s ease;
   }
+
   .form input:focus {
     outline: none;
   }
-  .form input:focus + .label-name::after,
-  .form input:valid + .label-name::after {
+
+  .form input:focus+.label-name::after,
+  .form input:valid+.label-name::after {
     transform: translateX(0%);
   }
+
   &__info {
     display: flex;
     align-items: center;
     gap: 1em;
     margin-bottom: 1em;
+
     &-text {
       color: white;
     }
+
     &-icon {
       margin-right: 1em;
       padding-left: 2px;
@@ -305,6 +292,7 @@ export default {
   &__links {
     margin-top: 2em;
     gap: 4em;
+
     &-info {
       display: flex;
       align-items: center;
@@ -319,6 +307,7 @@ export default {
         width: 10px;
         height: 0.5px;
         background: #c48f56;
+
         @media (width < 768px) {
           right: 6em;
         }
