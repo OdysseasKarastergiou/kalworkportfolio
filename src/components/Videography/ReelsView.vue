@@ -1,25 +1,16 @@
 <template>
   <div class="swiper-container">
-    <swiper
-      ref="swiperRef"
-      v-bind="swiperOptions"
-      @swiper="setSwiperInstance"
-      @slideChange="onSlideChange"
-      class="swiper"
-    >
+    <swiper ref="swiperRef" v-bind="swiperOptions" @swiper="setSwiperInstance" @slideChange="onSlideChange"
+      class="swiper">
       <swiper-slide v-for="(video, index) in reels" :key="index" @click="goToSlide(index)">
         <div class="swiper-slide-content">
-          <iframe
-            v-bind:src="getIframeSrc(video.id, index)"
-            :style="iframeStyle(index)"
-            frameborder="0"
-            allowfullscreen
-          ></iframe>
+          <iframe v-bind:src="getIframeSrc(video.id, index)" :style="iframeStyle(index)" frameborder="0"
+            allowfullscreen></iframe>
         </div>
       </swiper-slide>
     </swiper>
-    <div v-if="!isMobile" class="swiper-button-prev" @click="goPrev"></div>
-    <div v-if="!isMobile" class="swiper-button-next" @click="goNext"></div>
+    <div class="swiper-button-prev" @click="goPrev"></div>
+    <div class="swiper-button-next" @click="goNext"></div>
   </div>
 </template>
 
@@ -115,9 +106,11 @@ export default {
 <style scoped>
 .swiper-container {
   width: 100%;
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
+  /* Full viewport height */
   position: relative;
-  overflow: hidden; /* Prevent page scrolling */
+  overflow: hidden;
+  /* Prevent page scrolling */
 }
 
 .swiper-slide {
@@ -163,21 +156,25 @@ export default {
   justify-content: center;
   cursor: pointer;
   z-index: 10;
+
+  @media(max-width:768px) {
+    top: 75%;
+  }
 }
 
 .swiper-button-prev {
   left: 10px;
+
+  @media(max-width:768px) {
+    left: 35%;
+  }
 }
 
 .swiper-button-next {
   right: 10px;
-}
 
-/* Hide navigation buttons on mobile */
-@media (max-width: 768px) {
-  .swiper-button-prev,
-  .swiper-button-next {
-    display: none;
+  @media(max-width:768px) {
+    right: 35%;
   }
 }
 </style>

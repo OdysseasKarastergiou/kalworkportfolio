@@ -185,6 +185,7 @@ export default {
     @media (width < 768px) {
       font-size: 1em;
       margin-left: 1.5em;
+      margin-right: 1.5em;
     }
   }
 

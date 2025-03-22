@@ -76,24 +76,22 @@ onUnmounted(() => {
     </Transition>
   </header>
 
-  <Transition name="blur" mode="out-in">
+  <Transition name="fade" mode="out-in">
     <RouterView />
   </Transition>
 </template>
 
 <style lang="scss" scoped>
-.blur-enter-active,
-.blur-leave-active {
-  transition: filter 1s ease, opacity 1s ease;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .5s ease-in-out;
 }
 
-.blur-enter-from {
-  filter: blur(10px);
+.fade-enter-from {
   opacity: 0;
 }
 
-.blur-leave-to {
-  filter: blur(10px);
+.fade-leave-to {
   opacity: 0;
 }
 

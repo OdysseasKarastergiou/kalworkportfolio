@@ -147,6 +147,10 @@ export default {
     width: 95%;
   }
 
+  @media (width < 400px) {
+    font-size: 0.75em;
+  }
+
   &__title {
     color: #c48f56;
     font-size: 1em;
