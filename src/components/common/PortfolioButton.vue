@@ -1,11 +1,7 @@
 <template>
   <div>
-    <component
-      :is="to ? 'RouterLink' : 'button'"
-      v-bind="to ? { to } : {}"
-      :class="['portfolio-button', { 'default-active': defaultActive }]"
-      @click="handleClick"
-    >
+    <component :is="to ? 'RouterLink' : 'button'" v-bind="to ? { to } : {}"
+      :class="['portfolio-button', { 'default-active': defaultActive }]" @click="handleClick">
       {{ name }}
       <span v-if="hasSubcategories" class="chevron">
         <FontAwesomeIcon :icon="isOpen ? 'chevron-down' : 'chevron-right'" />
@@ -62,7 +58,6 @@ const handleClick = () => {
 .portfolio-button {
   display: inline-block;
   font-size: 0.8em;
-  font-family: 'Poppins', sans-serif;
   cursor: pointer;
   position: relative;
   color: white;
@@ -116,8 +111,10 @@ const handleClick = () => {
 
 .subcategories {
   padding-left: 2em;
-  border-left: 2px solid #c48f56; /* Add a border to the left of subcategories */
-  margin-left: 1em; /* Add some margin to separate the border from the text */
+  border-left: 2px solid #c48f56;
+  /* Add a border to the left of subcategories */
+  margin-left: 1em;
+  /* Add some margin to separate the border from the text */
   margin-top: 1em;
 }
 

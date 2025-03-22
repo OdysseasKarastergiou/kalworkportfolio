@@ -7,11 +7,7 @@
       <PortfolioButton to="/aboutMe" name="ABOUT ME" />
     </div>
     <div class="dropdown navigator-wrapper">
-      <PortfolioButton
-        class="dropdown-btn"
-        name="VIDEOGRAPHY"
-        :defaultActive="isVideographyActive"
-      />
+      <PortfolioButton class=" dropdown-btn" name="VIDEOGRAPHY" :defaultActive="isVideographyActive" />
       <div class="dropdown-menu">
         <PortfolioButton class="dropdown-menu__portfolio-button" to="/videography/all" name="ALL" />
         <PortfolioButton to="/videography/cinematic" name="CINEMATIC" />
@@ -54,6 +50,7 @@ const isPhotographyActive = computed(() => {
   display: flex;
   gap: 1em;
   font-size: 1rem;
+  font-weight: 500;
   text-align: left;
   padding: 1rem 0;
   margin-top: 1rem;
