@@ -97,6 +97,21 @@ onUnmounted(() => {
   opacity: 0;
 }
 
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform 1s ease;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  transform: translateX(100%);
+}
+
+.slide-enter-to,
+.slide-leave-from {
+  transform: translateX(0);
+}
+
 .header-fixed {
   position: fixed;
   top: 0;
