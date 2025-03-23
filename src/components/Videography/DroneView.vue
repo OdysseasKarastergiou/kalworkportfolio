@@ -78,6 +78,7 @@ export default {
       cursor: pointer;
 
       &--title {
+        max-width: 85%;
         margin-top: 0.5em;
         font-size: 1.5em;
         font-weight: 600;

@@ -120,6 +120,10 @@ export default {
   justify-content: center;
   align-items: center;
   transition: transform 0.5s ease-in-out;
+
+  @media(max-width:768px) {
+    height: 70vh !important;
+  }
 }
 
 .swiper-slide-content {
@@ -148,7 +152,6 @@ export default {
   position: absolute;
   top: 50%;
   width: 50px;
-  height: 50px;
   background: transparent;
   border-radius: 50%;
   display: flex;
@@ -158,7 +161,7 @@ export default {
   z-index: 10;
 
   @media(max-width:768px) {
-    top: 75%;
+    top: 70%;
   }
 }
 

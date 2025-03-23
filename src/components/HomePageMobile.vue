@@ -78,6 +78,7 @@ export default {
 .mobile-swiper__featured-view {
   position: relative;
   overflow: hidden;
+  height: 90vh;
 }
 
 .blurred-background {
