@@ -101,6 +101,7 @@ export default {
   @media(min-width: 1024px) {
     width: 80%;
     right: 10%;
+    height: 75%;
     position: absolute;
   }
 
@@ -121,11 +122,12 @@ export default {
 .about-me {
   display: flex;
   flex-direction: column;
-  width: 50%;
-  font-size: 0.8em;
+  width: 35%;
+  font-size: 0.7em;
 
   @media (width < 1280px) {
     font-size: 0.6em;
+    width: 55%;
   }
 
   @media (width < 768px) {
@@ -200,7 +202,7 @@ export default {
       }
 
       &--title {
-        font-size: 1.7em;
+        font-size: 1.8em;
         font-weight: 600;
 
         @media (max-width: 768px) {
@@ -210,6 +212,7 @@ export default {
 
       &--desc {
         margin-top: 1em;
+        font-size: 1.1em;
 
         @media (width < 1280px) {
           font-size: 1.3em;

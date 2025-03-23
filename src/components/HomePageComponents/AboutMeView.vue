@@ -1,7 +1,7 @@
 <template>
   <div class="container flex">
     <p v-if="!isMobile" class="side__title">ABOUT ME</p>
-    <div class="box flex">
+    <div class="box flex justify-center">
       <div class="about-me">
         <p class="about-me__title">HELLO & WELCOME</p>
         <div>
@@ -112,8 +112,8 @@ export default {
 
 .box {
   position: absolute;
-  bottom: 5%;
-  height: 75%;
+  bottom: 10%;
+  height: 70%;
 
   @media (max-width: 768px) {
     position: relative; // Prevents overflowing
@@ -127,11 +127,12 @@ export default {
 .about-me {
   display: flex;
   flex-direction: column;
-  width: 55%;
-  font-size: 0.8em;
+  width: 35%;
+  font-size: 0.7em;
 
   @media (width < 1280px) {
     font-size: 0.7em;
+    width: 55%;
   }
 
   @media (width < 1024px) {
@@ -180,13 +181,13 @@ export default {
     display: flex;
     flex-wrap: wrap;
     color: white;
-    margin-top: 2em;
-    gap: 20px;
+    margin-top: 3em;
+    gap: 35px;
     /* Space between items */
     justify-content: center;
 
     @media (max-width: 1280px) {
-      margin-top: 1em;
+      margin-top: 2em;
     }
 
     @media (max-width: 768px) {
@@ -238,8 +239,12 @@ export default {
 .about-me__img {
   margin-left: 2em;
   height: auto;
-  max-width: 35%;
+  max-width: 25%;
   object-fit: cover;
+
+  @media (width < 1280px) {
+    max-width: 35%;
+  }
 
   @media (width < 768px) {
     margin-left: 0;

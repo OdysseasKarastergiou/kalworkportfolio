@@ -152,7 +152,8 @@ onUnmounted(() => {
   cursor: pointer;
 
   @media (min-width: 768px) {
-    margin-left: 3.5em;
+    margin-left: 3em;
+    margin-top: 0.25em;
   }
 }
 

@@ -203,7 +203,8 @@ export default {
 
   &__map {
     margin-left: 2em;
-    min-width: 35%;
+    min-width: 30%;
+    z-index: 0;
 
     @media(max-width:768px) {
       margin-left: 4em;

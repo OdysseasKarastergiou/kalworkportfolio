@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="map-container"
-    ref="map"
-    style="width: 100%; border-radius: 10px; overflow: hidden"
-  ></div>
+  <div class="map-container" ref="map" style="width: 100%; border-radius: 10px; overflow: hidden"></div>
 </template>
 
 <script>
@@ -12,8 +8,8 @@ import * as L from 'leaflet'
 export default {
   data() {
     return {
-      latitude: 40.62649,
-      longitude: 22.948641,
+      latitude: 40.627207,
+      longitude: 22.949745,
     }
   },
   mounted() {
@@ -52,6 +48,7 @@ export default {
   max-width: 400px;
   border-radius: 10px;
   height: 450px;
+
   @media (width < 768px) {
     height: 300px;
   }
