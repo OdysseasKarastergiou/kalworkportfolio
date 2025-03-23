@@ -164,6 +164,9 @@ export default {
   display: flex;
   justify-content: center;
   margin-top: 3em;
+  font-size: 0.8em;
+
+
 
   @media (width < 768px) {
     display: flex;
@@ -171,6 +174,7 @@ export default {
     align-items: center;
     width: 85%;
     margin-top: 2em;
+    font-size: 1em;
   }
 
   &__container {
@@ -303,13 +307,13 @@ export default {
         content: '';
         position: absolute;
         top: 50%;
-        right: 5.5em;
+        right: 6em;
         width: 10px;
         height: 0.5px;
         background: #c48f56;
 
         @media (width < 768px) {
-          right: 6em;
+          right: 5.5em;
         }
       }
     }

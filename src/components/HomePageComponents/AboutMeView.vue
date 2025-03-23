@@ -99,18 +99,14 @@ export default {
 .container {
   display: flex;
   align-items: center;
-  /* Center content vertically */
   justify-content: center;
-  /* Center content horizontally */
   width: 85%;
   margin: 0 auto;
-  height: 100vh;
-  /* Make sure it fills the screen */
+  min-height: 100vh; // Allow container to expand dynamically
   position: relative;
 
-  /* Keep the side title positioned properly */
-  @media (max-width:768px) {
-    height: 110vh;
+  @media (max-width: 768px) {
+    min-height: auto; // Ensure it grows as needed
   }
 }
 
@@ -119,8 +115,9 @@ export default {
   bottom: 5%;
   height: 75%;
 
-  @media (max-width:768px) {
-    height: 95%;
+  @media (max-width: 768px) {
+    position: relative; // Prevents overflowing
+    height: auto; // Let it grow naturally
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -134,7 +131,7 @@ export default {
   font-size: 0.8em;
 
   @media (width < 1280px) {
-    font-size: 0.8em;
+    font-size: 0.7em;
   }
 
   @media (width < 1024px) {
@@ -172,7 +169,6 @@ export default {
     font-size: 1.4em;
     line-height: 1.5em;
     margin-top: 2em;
-    margin-bottom: 2em;
     color: #9f9f9f;
 
     @media (max-width: 768px) {
@@ -208,7 +204,7 @@ export default {
 
       @media (max-width: 768px) {
         width: 95%;
-        margin-top: 1em;
+        margin-top: 3em;
       }
 
       &--title {
@@ -247,16 +243,15 @@ export default {
 
   @media (width < 768px) {
     margin-left: 0;
-    max-width: 50%;
-    margin-top: 1em;
+    max-width: 100%;
+    margin-top: 2em;
   }
 }
 
 .side__title {
   transform: rotate(270deg);
-  position: relative;
-  right: 56%;
-  top: 0%;
+  position: fixed;
+  left: 0;
   color: white;
   white-space: nowrap;
 

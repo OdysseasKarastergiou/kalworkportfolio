@@ -164,11 +164,13 @@ export default {
   display: flex;
   gap: 2em;
   justify-content: center;
+  font-size: 0.8em;
 
   @media (width < 768px) {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 1em;
   }
 
   &__container {

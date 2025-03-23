@@ -161,6 +161,11 @@ export default {
     font-size: 2.4em;
     font-weight: 700;
     color: white;
+
+    @media (width < 768px) {
+      font-size: 1.6em;
+      font-weight: 600;
+    }
   }
 
   &__navigation {
@@ -175,7 +180,7 @@ export default {
     }
 
     @media (width < 768px) {
-      margin-right: 0.5em;
+      margin-right: 2em;
     }
   }
 
@@ -188,7 +193,9 @@ export default {
       color: white;
 
       @media (width < 768px) {
-        margin-left: 0.5em;
+        font-size: 1.1em;
+        font-weight: 600;
+        margin-left: 3em;
       }
     }
   }
@@ -264,6 +271,10 @@ export default {
 .portfolio-swiper {
   width: 65vw;
   height: 30vh;
+
+  @media (width < 768px) {
+    width: 80vw;
+  }
 }
 
 .video-thumbnail {

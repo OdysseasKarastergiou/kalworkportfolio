@@ -121,11 +121,11 @@ export default {
 .about-me {
   display: flex;
   flex-direction: column;
-  width: 55%;
-  font-size: 1em;
+  width: 50%;
+  font-size: 0.8em;
 
   @media (width < 1280px) {
-    font-size: 0.8em;
+    font-size: 0.6em;
   }
 
   @media (width < 768px) {
@@ -166,7 +166,7 @@ export default {
   &__img {
     margin-left: 2em;
     height: auto;
-    max-width: 35%;
+    max-width: 30%;
     object-fit: cover;
 
     @media (width < 768px) {
@@ -210,6 +210,10 @@ export default {
 
       &--desc {
         margin-top: 1em;
+
+        @media (width < 1280px) {
+          font-size: 1.3em;
+        }
       }
     }
 
