@@ -51,9 +51,15 @@ const isPhotographyActive = computed(() => {
   gap: 1em;
   font-size: 1rem;
   font-weight: 500;
+  margin-right: 5em;
   text-align: left;
   padding: 1rem 0;
   margin-top: 1rem;
+
+  @media(max-width:1024px) {
+    font-size: 0.8em;
+    margin-right: 2em;
+  }
 }
 
 /* Dropdown Styling */
