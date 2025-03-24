@@ -15,6 +15,8 @@ import PodcastCat from '../assets/photographyCategories/Podcast.webp'
 import MountOlympusCat from '../assets/photographyCategories/MountOlympus.webp'
 import BorovetsCat from '../assets/photographyCategories/Borovets.webp'
 import DolomitesCat from '../assets/photographyCategories/Dolomites.webp'
+import GreeceU21View from '../assets/photographyCategories/GreeceU21.webp'
+
 export default {
   name: 'PhotographyView',
   data() {
@@ -24,7 +26,8 @@ export default {
         { id: 2, name: 'Dolomites', image: DolomitesCat, route: 'photography/dolomites' },
         { id: 3, name: 'Mount Olympus', image: MountOlympusCat, route: 'photography/mountolympus' },
         { id: 4, name: 'Borovets', image: BorovetsCat, route: 'photography/borovets' },
-        { id: 5, name: 'Podcast', image: PodcastCat, route: 'photography/podcast' },
+        { id: 5, name: 'Greece U21', image: GreeceU21View, route: 'photography/greeceU21' },
+        { id: 6, name: 'Podcast', image: PodcastCat, route: 'photography/podcast' },
       ],
     }
   },
@@ -33,10 +36,11 @@ export default {
 <style lang="scss" scoped>
 .photography-view {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   padding: 20px;
   width: 100%;
   margin-top: 2em;
+
   @media (width < 768px) {
     display: flex;
     flex-direction: column;
@@ -54,6 +58,7 @@ export default {
       height: 100%;
       cursor: pointer;
       transition: filter 0.3s ease-in-out;
+
       &:hover {
         filter: brightness(0.5);
       }
