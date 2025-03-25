@@ -99,7 +99,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 85%;
+  width: 90%;
   margin: 0 auto;
   height: 87svh;
   position: relative;
@@ -157,13 +157,13 @@ export default {
 
   &__title {
     color: #c48f56;
-    font-size: 1em;
+    font-size: 1.1em;
     font-weight: 600;
     margin-bottom: 1em;
   }
 
   &__tag {
-    font-size: 2.5em;
+    font-size: 2.7em;
     font-weight: 600;
     color: white;
 
@@ -176,7 +176,7 @@ export default {
     font-size: 1.4em;
     line-height: 1.5em;
     margin-top: 2em;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
     color: #9f9f9f;
 
     @media (width < 768px) {
