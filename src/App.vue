@@ -147,11 +147,12 @@ onUnmounted(() => {
 }
 
 .logo {
-  height: 80px;
+  height: 105px;
   display: block;
   cursor: pointer;
 
   @media (min-width: 768px) {
+    height: 80px;
     margin-left: 3em;
     margin-top: 0.25em;
   }
