@@ -15,6 +15,7 @@ import PodcastCat from '../assets/photographyCategories/Podcast.webp'
 import MountOlympusCat from '../assets/photographyCategories/MountOlympus.webp'
 import BorovetsCat from '../assets/photographyCategories/Borovets.webp'
 import DolomitesCat from '../assets/photographyCategories/Dolomites.webp'
+import ComingSoonCat from '../assets/photographyCategories/ComingSoonCat.webp'
 
 export default {
   name: 'PhotographyView',
@@ -25,7 +26,7 @@ export default {
         { id: 2, name: 'Dolomites', image: DolomitesCat, route: 'photography/dolomites' },
         { id: 3, name: 'Mount Olympus', image: MountOlympusCat, route: 'photography/mountolympus' },
         { id: 4, name: 'Borovets', image: BorovetsCat, route: 'photography/borovets' },
-        { id: 5, name: 'Upcoming', route: 'photography/upcoming' },
+        { id: 5, name: '', image: ComingSoonCat, route: 'photography/upcoming' },
         { id: 6, name: 'Podcast', image: PodcastCat, route: 'photography/podcast' },
       ],
     }
