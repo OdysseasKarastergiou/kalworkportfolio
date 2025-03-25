@@ -15,7 +15,6 @@ import PodcastCat from '../assets/photographyCategories/Podcast.webp'
 import MountOlympusCat from '../assets/photographyCategories/MountOlympus.webp'
 import BorovetsCat from '../assets/photographyCategories/Borovets.webp'
 import DolomitesCat from '../assets/photographyCategories/Dolomites.webp'
-import GreeceU21View from '../assets/photographyCategories/GreeceU21.webp'
 
 export default {
   name: 'PhotographyView',
@@ -26,7 +25,7 @@ export default {
         { id: 2, name: 'Dolomites', image: DolomitesCat, route: 'photography/dolomites' },
         { id: 3, name: 'Mount Olympus', image: MountOlympusCat, route: 'photography/mountolympus' },
         { id: 4, name: 'Borovets', image: BorovetsCat, route: 'photography/borovets' },
-        { id: 5, name: 'Greece U21', image: GreeceU21View, route: 'photography/greeceU21' },
+        { id: 5, name: 'Upcoming', route: 'photography/upcoming' },
         { id: 6, name: 'Podcast', image: PodcastCat, route: 'photography/podcast' },
       ],
     }
@@ -52,6 +51,10 @@ export default {
     position: relative;
     overflow: hidden;
 
+    @media(max-width: 768px) {
+      text-align: center;
+    }
+
     &--images {
       width: 100%;
       object-fit: cover;
@@ -67,18 +70,18 @@ export default {
     &--label {
       position: absolute;
       top: 5%;
-      left: 5%; // Adjusted to 10% from the left edge
-      transform: translateX(0); // Removed vertical translation
+      left: 5%;
+      transform: translateX(0);
       color: white;
       padding: 10px 15px;
       border-radius: 5px;
       font-size: 2em;
       font-weight: 800;
-      opacity: 0; // Default to visible on mobile
+      opacity: 0;
       transition: opacity 0.3s ease-in-out;
 
-      @media (min-width: 768px) {
-        opacity: 0;
+      @media (max-width: 768px) {
+        opacity: 1;
       }
     }
 

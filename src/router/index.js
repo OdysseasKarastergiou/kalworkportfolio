@@ -6,7 +6,7 @@ import OutdoorActivitiesView from "../components/Photography/OutdoorActivitiesVi
 import PodcastView from "../components/Photography/PodcastView.vue";
 import MountOlympusView from "../components/Photography/MountOlympusView.vue";
 import BorovetsView from "../components/Photography/BorovetsView.vue";
-import GreeceU21View from "../components/Photography/GreeceU21View.vue";
+import Upcoming from "../components/Photography/Upcoming.vue";
 import DolomitesView from "../components/Photography/DolomitesView.vue";
 import ContactMe from "../components/ContactMe.vue";
 import VideographyView from "../components/Videography/VideographyView.vue";
@@ -58,9 +58,9 @@ const router = createRouter({
       component: BorovetsView,
     },
     {
-      path: "/photography/greeceU21",
-      name: "GreeceU21",
-      component: GreeceU21View,
+      path: "/photography/upcoming",
+      name: "Upcoming",
+      component: Upcoming,
     },
     {
       path: "/photography/dolomites",

@@ -162,15 +162,17 @@ export default {
 <style lang="scss" scoped>
 .contact-me {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  margin-top: 3em;
+  align-content: center;
   font-size: 0.8em;
+  padding-bottom: 80px;
+  height: 100vh;
 
 
 
   @media (width < 768px) {
     display: flex;
-    flex-direction: column;
     align-items: center;
     width: 85%;
     margin-top: 2em;
@@ -188,6 +190,10 @@ export default {
       font-size: 1.1em;
     }
 
+    @media(width < 857px) {
+      font-size: 0.75em;
+    }
+
     @media (width < 768px) {
       font-size: 1em;
       margin-left: 1.5em;
@@ -203,8 +209,8 @@ export default {
 
   &__map {
     margin-left: 2em;
-    min-width: 30%;
     z-index: 0;
+    max-width: 500px;
 
     @media(max-width:768px) {
       margin-left: 4em;

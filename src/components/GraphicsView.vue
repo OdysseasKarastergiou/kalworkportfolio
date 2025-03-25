@@ -73,6 +73,10 @@ export default {
       font-weight: 800;
       opacity: 0;
       transition: opacity 0.3s ease-in-out;
+
+      @media (max-width: 768px) {
+        opacity: 1;
+      }
     }
 
     &:hover &--images {

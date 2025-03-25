@@ -22,8 +22,7 @@
           <span @click="nextSlide" class="arrow"><font-awesome-icon :icon="['fas', 'caret-right']" /></span>
         </div>
       </div>
-      <swiper class="portfolio-swiper" :slidesPerView="isMobile ? 1.1 : 3" :space-between="20" :speed="800"
-        :loop="false" @swiper="onSwiper">
+      <swiper class="portfolio-swiper" v-bind="swiperOptions" @swiper="onSwiper">
         <swiper-slide v-for="(video, index) in filteredVideos" :key="index">
           <div class="video-thumbnail-wrapper">
             <img :src="video.thumbnail" :alt="`Thumbnail for video ${index + 1}`" loading="lazy" class="video-thumbnail"
@@ -68,6 +67,30 @@ export default {
     let swiperInstance = null
     const isMobile = isMobileUse().value
 
+    const swiperOptions = {
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+        },
+        500: {
+          slidesPerView: 1.2,
+        },
+        768: {
+          slidesPerView: 1.6,
+        },
+        1024: {
+          slidesPerView: 2.2,
+        },
+        1280: {
+          slidesPerView: 3,
+        },
+      },
+      spaceBetween: 20,
+      speed: 800,
+      loop: false,
+      modules: [Navigation],
+    };
+
     const onSwiper = (swiper) => {
       swiperInstance = swiper
     }
@@ -91,6 +114,7 @@ export default {
       nextSlide,
       isMobile,
       PortfolioBackground,
+      swiperOptions,
     }
   },
   data() {
@@ -279,7 +303,7 @@ export default {
 
 .video-thumbnail {
   height: 100%;
-  width: 366px;
+  min-width: 300px;
   object-fit: cover;
   cursor: pointer;
 

@@ -111,9 +111,15 @@ export default {
 }
 
 .box {
-  position: absolute;
-  bottom: 10%;
-  height: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  height: 100vh;
+
+  @media(min-width: 1281px) {
+    font-size: 0.9em;
+  }
 
   @media (max-width: 768px) {
     position: relative; // Prevents overflowing
