@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 import HomePage from "../views/HomePageView.vue";
 import AboutMe from "../components/AboutMe.vue";
 import PhotographyView from "../components/PhotographyView.vue";
@@ -20,7 +20,7 @@ import PodcastVideoView from "../components/Videography/PodcastVideoView.vue";
 import ReelsView from "../components/Videography/ReelsView.vue";
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(),
   routes: [
     {
       path: "/",
