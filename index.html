@@ -1,13 +1,58 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preload" as="script" href="/src/main.js" />
+    <link
+      rel="preload"
+      as="style"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.5/dist/tailwind.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.5/dist/tailwind.min.css"
+      media="print"
+      onload="this.media='all'"
+    />
+
     <title>Vite App</title>
+
+    <noscript>
+      <style>
+        body {
+          display: block;
+          background: #fff;
+          text-align: center;
+          padding: 20px;
+        }
+        #app {
+          display: none;
+        }
+      </style>
+      <p>JavaScript is required for this website to function properly.</p>
+    </noscript>
+
+    <meta http-equiv="Cache-Control" content="max-age=31536000, immutable" />
   </head>
   <body>
     <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/vue@3.3.4/dist/vue.global.prod.js"
+      defer
+    ></script>
+    <script type="module" src="/src/main.js" defer></script>
+
+    <script>
+      window.addEventListener("load", () => {
+        let script = document.createElement("script");
+        script.src = "/src/extra.js";
+        script.defer = true;
+        document.body.appendChild(script);
+      });
+    </script>
   </body>
 </html>
