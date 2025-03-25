@@ -147,7 +147,7 @@ onUnmounted(() => {
 }
 
 .logo {
-  height: 105px;
+  height: 80px;
   display: block;
   cursor: pointer;
 

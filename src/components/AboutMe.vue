@@ -101,11 +101,11 @@ export default {
   justify-content: center;
   width: 85%;
   margin: 0 auto;
-  height: 100vh;
-  padding-bottom: 80px;
+  height: 87svh;
   position: relative;
 
   @media (width < 768px) {
+    height: 100%;
     flex-direction: column;
     align-items: center;
     margin-top: 2em;

@@ -75,10 +75,8 @@ const isPhotographyActive = computed(() => {
 .dropdown-btn {
   background: none;
   border: none;
-  font-size: 1rem;
   color: white;
   cursor: pointer;
-  padding: 0 1rem;
 }
 
 .dropdown-menu {

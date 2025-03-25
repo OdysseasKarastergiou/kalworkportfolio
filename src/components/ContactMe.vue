@@ -166,14 +166,14 @@ export default {
   justify-content: center;
   align-content: center;
   font-size: 0.8em;
-  padding-bottom: 80px;
-  height: 100vh;
+  height: 87svh;
 
 
 
   @media (width < 768px) {
     display: flex;
     align-items: center;
+    height: 100%;
     width: 85%;
     margin-top: 2em;
     font-size: 1em;

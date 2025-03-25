@@ -161,7 +161,7 @@ export default {
   z-index: 10;
 
   @media(max-width:768px) {
-    top: 70%;
+    top: 75%;
   }
 }
 
