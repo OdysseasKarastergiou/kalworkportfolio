@@ -49,12 +49,16 @@ const isPhotographyActive = computed(() => {
 .navigator {
   display: flex;
   gap: 1em;
-  font-size: 1rem;
+  font-size: 1.3em;
   font-weight: 500;
-  margin-right: 5em;
+  margin-right: 3em;
   text-align: left;
   padding: 1rem 0;
   margin-top: 1rem;
+
+  @media(max-width:1280px) {
+    font-size: 1.05em;
+  }
 
   @media(max-width:1024px) {
     font-size: 0.8em;

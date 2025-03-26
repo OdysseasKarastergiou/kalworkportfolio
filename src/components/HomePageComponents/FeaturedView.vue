@@ -292,7 +292,8 @@ export default {
 
 .side__title {
   transform: rotate(270deg);
-  font-size: 0.75em;
+  font-size: 1em;
+  margin-left: -1.5em;
   position: absolute;
   top: 50%;
   left: 0;

@@ -26,8 +26,8 @@ export default {
         { id: 2, name: 'Dolomites', image: DolomitesCat, route: 'photography/dolomites' },
         { id: 3, name: 'Mount Olympus', image: MountOlympusCat, route: 'photography/mountolympus' },
         { id: 4, name: 'Borovets', image: BorovetsCat, route: 'photography/borovets' },
-        { id: 5, name: '', image: ComingSoonCat, route: 'photography/upcoming' },
-        { id: 6, name: 'Podcast', image: PodcastCat, route: 'photography/podcast' },
+        { id: 5, name: 'Podcast', image: PodcastCat, route: 'photography/podcast' },
+        { id: 6, name: '', image: ComingSoonCat, route: 'photography/upcoming' },
       ],
     }
   },
@@ -36,7 +36,7 @@ export default {
 <style lang="scss" scoped>
 .photography-view {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   padding: 20px;
   width: 100%;
   margin-top: 2em;

@@ -29,8 +29,7 @@
               @click="openVideo(video.videoUrl)" />
             <span class="video-thumbnail__time">{{ video.time }}</span>
             <div class="video-overlay" @click="openVideo(video.videoUrl)">
-              <p class="video-overlay__title">{{ video.title }} --</p>
-              <font-awesome-icon class="video-overlay__title--icon" :icon="['fas', 'play']" />
+              <p class="video-overlay__title">{{ video.title }}</p>
             </div>
           </div>
         </swiper-slide>

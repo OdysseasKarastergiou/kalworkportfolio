@@ -101,7 +101,7 @@ export default {
   justify-content: center;
   width: 90%;
   margin: 0 auto;
-  height: 87svh;
+  height: 86svh;
   position: relative;
 
   @media (width < 768px) {
@@ -133,7 +133,7 @@ export default {
 .about-me {
   display: flex;
   flex-direction: column;
-  width: 35%;
+  width: 40%;
   font-size: 0.7em;
 
   @media (width < 1280px) {

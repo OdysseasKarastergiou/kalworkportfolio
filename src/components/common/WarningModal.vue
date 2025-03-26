@@ -48,6 +48,10 @@ const closeModal = () => {
     z-index: 1000;
     position: absolute;
 
+    @media(max-width:768px) {
+        position: fixed;
+    }
+
     &__triangle {
         color: #771505;
     }
@@ -91,7 +95,7 @@ const closeModal = () => {
 
 .modal {
     background: #ffe9d9;
-    min-width: 400px;
+    min-width: 350px;
 }
 
 .modal-text {

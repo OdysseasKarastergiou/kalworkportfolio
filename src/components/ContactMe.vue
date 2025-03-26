@@ -178,7 +178,7 @@ export default {
   justify-content: center;
   align-content: center;
   font-size: 0.8em;
-  height: 87svh;
+  height: 86svh;
 
 
 
