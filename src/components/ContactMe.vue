@@ -31,18 +31,23 @@
               @input="validateName" />
             <label for="name" class="label-name"> </label>
           </div>
+          <WarningModal :message="'Name must be between 3 and 20 characters'" :isOpen="showNameWarning"
+            @close="showNameWarning = false" />
           <div class="form">
             <input v-model="email" type="email" name="email" autocomplete="off" placeholder="Your Email" required
               @input="validateEmail" />
             <label for="email" class="label-name"> </label>
           </div>
         </div>
+        <WarningModal :message="'Invalid email address'" :isOpen="showEmailWarning" @close="showEmailWarning = false" />
         <div class="form">
           <input v-model="message" type="message" name="message" autocomplete="off" placeholder="Your Message"
             required />
           <label for="message" class="label-name"> </label>
         </div>
       </div>
+      <WarningModal :message="'Invalid name and email inputs'" :isOpen="showWarning" @close="showWarning = false" />
+      <SuccessModal :message="'Success'" :isOpen="showSuccess" @close="showSuccess = false" />
       <PortfolioButton class="mt-10" name="SEND" :isOperation="true" :defaultActive="true" @click="handleSubmit" />
       <div class="contact-me__links flex">
         <div>
@@ -80,6 +85,7 @@ import YoutubeIcon from '../assets/youtubeIcon.svg'
 import LeafletMap from './LeafletMap.vue'
 import PortfolioButton from './common/PortfolioButton.vue'
 import { isMobileUse } from '@/utils/utils'
+import WarningModal from './common/WarningModal.vue'
 export default {
   name: 'ContactMeView',
   setup() {
@@ -100,40 +106,45 @@ export default {
       name: '',
       email: '',
       message: '',
+      showNameWarning: false,
+      showEmailWarning: false,
+      showWarning: false,
+      showSuccess: false,
     }
   },
   methods: {
     validateName() {
-      if (this.name.length > 20) {
-        return true
-      } else {
-        return false
-      }
+      const isValid = this.name.length <= 20 && this.name.length > 2;
+      return isValid;
     },
     validateEmail() {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-      if (!emailRegex.test(this.email)) {
-        return true
-      } else {
-        return false
-      }
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const isValid = emailRegex.test(this.email);
+      return isValid;
     },
     handleSubmit() {
-      if (this.validateName() || this.validateEmail()) {
-        alert('Please enter a valid name and email')
-        return
+      const isNameValid = this.validateName();
+      const isEmailValid = this.validateEmail();
+
+      this.showNameWarning = !isNameValid;
+      this.showEmailWarning = !isEmailValid;
+
+      if (!isNameValid && !isEmailValid) {
+        this.showWarning = true;
+        this.showNameWarning = false;
+        this.showEmailWarning = false;
+        return;
       }
 
-      if (!this.name || !this.email || !this.message) {
-        alert('Please fill in all fields before sending.')
-        return
+      if (!isNameValid || !isEmailValid) {
+        return;
       }
 
       const formData = {
         name: this.name,
         email: this.email,
         message: this.message,
-      }
+      };
 
       fetch('https://formspree.io/f/mwplvljl', {
         method: 'POST',
@@ -142,20 +153,21 @@ export default {
       })
         .then((response) => response.json())
         .then((data) => {
-          alert('Message sent successfully!')
-          this.name = ''
-          this.email = ''
-          this.message = ''
+          this.showSuccess = true;
+          this.name = '';
+          this.email = '';
+          this.message = '';
         })
         .catch((error) => {
-          alert('Error sending message, please try again later.')
-          console.error('Error:', error)
-        })
+          alert('Error sending message, please try again later.');
+          console.error('Error:', error);
+        });
     },
   },
   components: {
     LeafletMap,
     PortfolioButton,
+    WarningModal,
   },
 }
 </script>
