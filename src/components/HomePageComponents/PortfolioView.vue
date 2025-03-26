@@ -354,6 +354,8 @@ export default {
     transform 0.3s ease;
 
   &__title {
+    padding: 15px;
+
     &--icon {
       margin-left: 0.5em;
     }
