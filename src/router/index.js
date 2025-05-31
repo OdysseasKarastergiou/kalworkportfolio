@@ -15,6 +15,7 @@ import CinematicView from "../components/Videography/CinematicView.vue";
 import SnowboardView from "../components/Videography/SnowboardView.vue";
 import GraphicsView from "../components/GraphicsView.vue";
 import ExplosivoView from "../components/Graphics/ExplosivoView.vue";
+import ArtPostersView from "../components/Graphics/ArtPostersView.vue";
 import SportsView from "../components/Graphics/SportsView.vue";
 import PodcastVideoView from "../components/Videography/PodcastVideoView.vue";
 import ReelsView from "../components/Videography/ReelsView.vue";
@@ -81,6 +82,11 @@ const router = createRouter({
       path: "/graphics/sports",
       name: "Sports",
       component: SportsView,
+    },
+    {
+      path: "/graphics/artPosters",
+      name: "Art Posters",
+      component: ArtPostersView,
     },
     {
       path: "/contact",

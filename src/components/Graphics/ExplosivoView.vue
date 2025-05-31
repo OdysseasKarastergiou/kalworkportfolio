@@ -139,6 +139,7 @@ export default {
 <style scoped>
 .gallery {
   column-count: 4;
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   padding: 20px;
 }

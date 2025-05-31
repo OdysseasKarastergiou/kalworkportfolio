@@ -2,7 +2,9 @@
   <div class="graphics-view">
     <div v-for="(category, index) in categories" :key="index" class="graphics-view__category">
       <router-link :to="category.route">
-        <img class="graphics-view__category--images" :src="category.image" loading="lazy" />
+        <div class="graphics-view__category--image-wrapper">
+          <img class="graphics-view__category--images" :src="category.image" loading="lazy" />
+        </div>
         <div class="graphics-view__category--label">{{ category.name }}</div>
       </router-link>
     </div>
@@ -12,6 +14,7 @@
 <script>
 import ExplosivoCat from '../assets/photographyCategories/Explosivo.webp'
 import SportsCat from '../assets/photographyCategories/Sports.webp'
+import ArtPostersCat from '../assets/photographyCategories/ArtPosters.webp'
 export default {
   name: 'graphicsView',
   data() {
@@ -19,18 +22,19 @@ export default {
       categories: [
         { id: 1, name: 'Explosivo', image: ExplosivoCat, route: 'graphics/explosivo' },
         { id: 2, name: 'Sports', image: SportsCat, route: 'graphics/sports' },
+        { id: 3, name: 'Art Posters', image: ArtPostersCat, route: 'graphics/ArtPosters' },
       ],
     }
   },
 }
 </script>
+
 <style lang="scss" scoped>
 .graphics-view {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
   padding: 20px;
-  width: 100%;
-  margin-top: 2em;
 
   @media (width < 768px) {
     display: flex;
@@ -43,10 +47,19 @@ export default {
     position: relative;
     overflow: hidden;
 
+    &--image-wrapper {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
     &--images {
-      width: 100%; // Ensure the image fills the container
-      height: 100%; // Ensure the image fills the container
-      object-fit: cover; // Maintain aspect ratio
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       cursor: pointer;
       transition: filter 0.3s ease-in-out;
     }
