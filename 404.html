@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="refresh" content="0; url=/" />
+    <script>
+      // This script preserves the path after the redirect
+      var redirect = window.location.pathname + window.location.search + window.location.hash;
+      window.location.replace('/' + redirect.replace(/^\//, ''));
+    </script>
+  </head>
+  <body>
+    Redirecting...
+  </body>
+</html>
