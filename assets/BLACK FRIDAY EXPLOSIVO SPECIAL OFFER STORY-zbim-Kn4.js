@@ -1,1 +1,0 @@
-const O="/kalworkportfolio/assets/BLACK%20FRIDAY%20EXPLOSIVO%20SPECIAL%20OFFER%20STORY-NdU6Qav5.webp";export{O as default};
